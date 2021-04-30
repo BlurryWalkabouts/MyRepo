@@ -1,0 +1,19 @@
+﻿CREATE TABLE [Staging].[invoice] (
+    [unid]						UNIQUEIDENTIFIER	NOT NULL,
+	[dataanmk]					DATETIME2(0)		NULL,
+	[datwijzig]					DATETIME2(0)		NULL,
+	[motherprojectid]			UNIQUEIDENTIFIER	NULL,
+	[debtorid]					UNIQUEIDENTIFIER	NULL,
+	[contactpersonid]			UNIQUEIDENTIFIER	NULL,
+	[start_span]				DATETIME2(0)		NULL,
+	[end_span]					DATETIME2(0)		NULL,
+	[document_date]				DATETIME2(0)		NULL,
+	[price_ex_vat]				MONEY				NULL,
+	[invoicenr]					NVARCHAR(20)		NULL,
+	[corrected_invoiceid]		UNIQUEIDENTIFIER	NULL,
+	[specify_per_child_project]	BIT					NULL,
+	[payment_conditionid]		UNIQUEIDENTIFIER	NULL,
+	[nr_of_intervals]			INT					NULL,
+	[vat_price]					MONEY				NULL,
+    [AuditDWKey]				INT					NULL
+);

@@ -1,0 +1,26 @@
+﻿CREATE TABLE [Dim].[Grootboek]
+(
+	[GrootboekKey]				INT					IDENTITY (1,1) NOT FOR REPLICATION,
+	[GrootboekRekening]			AS					NULLIF(CONCAT(GrootboekRekeningCode, ' ' + GrootboekRekeningNaam),''),
+	[GrootboekRekeningCode]		NVARCHAR(16)		NULL,
+	[GrootboekRekeningNaam]		NVARCHAR(60)		NULL,
+	[RekeningType]				VARCHAR(100)		NULL,
+	[RekeningSubtype]			VARCHAR(100)		NULL,
+	[Balanszijde]				VARCHAR(100)		NULL,
+	[Categorie]					AS					NULLIF(CONCAT(CategorieCode, ' ' + CategorieNaam),''),
+	[CategorieCode]				NVARCHAR(20)		NULL,
+	[CategorieNaam]				NVARCHAR(160)		NULL,
+	[EFJ_Hoofdrubriek]			AS					NULLIF(CONCAT(EFJ_HoofdrubriekCode, ' ' + EFJ_HoofdrubriekNaam),''),
+	[EFJ_HoofdrubriekCode]		VARCHAR(30)			NULL,
+	[EFJ_HoofdrubriekNaam]		NVARCHAR(160)		NULL,
+	[EFJ_Rubriek]				AS					NULLIF(CONCAT(EFJ_RubriekCode, ' ' + EFJ_RubriekNaam),''),
+	[EFJ_RubriekCode]			VARCHAR(30)			NULL,
+	[EFJ_RubriekNaam]			NVARCHAR(160)		NULL,
+	[EFJ_Subrubriek]			AS					NULLIF(CONCAT(EFJ_SubrubriekCode, ' ' + EFJ_SubrubriekNaam),''),
+	[EFJ_SubrubriekCode]		VARCHAR(30)			NULL,
+	[EFJ_SubrubriekNaam]		VARCHAR(160)		NULL,
+	[HRM_Subrubriek]			AS					NULLIF(CONCAT(HRM_SubrubriekCode, ' ' + HRM_SubrubriekNaam),''),
+	[HRM_SubrubriekCode]		VARCHAR(30)			NULL,
+	[HRM_SubrubriekNaam]		VARCHAR(160)		NULL,
+	CONSTRAINT [PK_Grootboek] PRIMARY KEY ([GrootboekKey])
+)

@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>DWH_Quadraam</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{fa6303ba-d65b-4d0c-93e6-c83340ba8c93}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>DWH_Quadraam</RootNamespace>
+    <AssemblyName>DWH_Quadraam</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <Recovery>SIMPLE</Recovery>
+    <DefaultCollation>Latin1_General_CI_AS</DefaultCollation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Security" />
+    <Folder Include="Fact" />
+    <Folder Include="Dim" />
+    <Folder Include="Dim\Tables" />
+    <Folder Include="Fact\Tables" />
+    <Folder Include="Fin" />
+    <Folder Include="Fin\Views" />
+    <Folder Include="HR" />
+    <Folder Include="HR\Views" />
+    <Folder Include="Quriuz" />
+    <Folder Include="Quriuz\Views" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Security\Dim.sql" />
+    <Build Include="Security\Fact.sql" />
+    <Build Include="Dim\Tables\Datum.sql" />
+    <Build Include="Dim\Tables\TransactieType.sql" />
+    <Build Include="Dim\Tables\Scenario.sql" />
+    <Build Include="Dim\Tables\Kostenplaats.sql" />
+    <Build Include="Dim\Tables\Kostendrager.sql" />
+    <Build Include="Dim\Tables\Grootboek.sql" />
+    <Build Include="Fact\Tables\Mutatie.sql" />
+    <Build Include="Dim\Tables\Medewerker.sql" />
+    <Build Include="Dim\Tables\Dagboek.sql" />
+    <Build Include="Security\Fin.sql" />
+    <Build Include="Fin\Views\VwExcelMaandrapportage.sql" />
+    <Build Include="Security\HR.sql" />
+    <Build Include="Fact\Tables\Verzuim.sql" />
+    <Build Include="Fact\Tables\Werkgeverskosten.sql" />
+    <Build Include="Dim\Tables\Looncomponent.sql" />
+    <Build Include="Dim\Tables\Dienstverband.sql" />
+    <Build Include="Dim\Tables\Maand.sql" />
+    <Build Include="Dim\Tables\Jaar.sql" />
+    <Build Include="Fact\Tables\FormatieBegroting.sql" />
+    <Build Include="Dim\Tables\Functie.sql" />
+    <Build Include="Fact\Tables\LeerlingaantalBegroot.sql" />
+    <Build Include="Dim\Tables\FunctieSchaal.sql" />
+    <Build Include="Fact\Tables\LeerlingaantalHistorie.sql" />
+    <Build Include="Fact\Tables\LeerlingBevordering.sql" />
+    <Build Include="Fact\Tables\ToezichtsArrangement.sql" />
+    <Build Include="Fact\Tables\FTE.sql" />
+    <Build Include="HR\Views\VwPbiVerzuimpercentage.sql" />
+    <Build Include="HR\Views\VwPbiVerzuimfrequentie.sql" />
+    <Build Include="HR\Views\VwPbiVerzuimdetails.sql" />
+    <Build Include="HR\Views\VwPbiBezettingFunctiemix.sql" />
+    <Build Include="HR\Views\VwPbiBezettingVerloop.sql" />
+    <Build Include="HR\Views\VwPbiBezettingDoorstroom.sql" />
+    <Build Include="Fact\Tables\Tevredenheid.sql" />
+    <Build Include="Fact\Tables\LeerlingaantalRealisatie.sql" />
+    <Build Include="Dim\Tables\Factuur.sql" />
+    <Build Include="HR\Views\VwExcelBezettingWerkgeversKosten.sql" />
+    <Build Include="HR\Views\VwExcelBezettingRealisatie_maandv2.sql" />
+    <Build Include="Fin\Views\VwExcelBezettingBegroot_maand.sql" />
+    <Build Include="Dim\Tables\Bevoegdheid.sql" />
+    <Build Include="HR\Views\VwPbiVerzuimPerMaand.sql" />
+    <Build Include="HR\Views\VwPbiVerzuimduur_TEST.sql" />
+    <Build Include="HR\Views\VwExcelMedewerkers.sql" />
+    <Build Include="HR\Views\VwPbiVerzuimduur.sql" />
+    <Build Include="HR\Views\VwExcelBezettingRealisatie_vs_Begr.sql" />
+    <Build Include="HR\Views\AOWUitstroom.sql" />
+    <Build Include="Fin\Views\VwExcelJaarrekening.sql" />
+    <Build Include="Fact\Tables\Salarissen.sql" />
+    <Build Include="Security\Quriuz.sql" />
+    <Build Include="Quriuz\Views\BevoegdhedenMedewerkers.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DWH_Quadraam.publish.xml" />
+  </ItemGroup>
+</Project>

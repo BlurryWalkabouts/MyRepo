@@ -1,0 +1,26 @@
+﻿CREATE TABLE [DUO].[leerlingen_bo_referentieniveaus] (
+    [BevoegdGezagNummer]       NVARCHAR (5)  NULL,
+    [BrinNummer]               NVARCHAR (4)  NULL,
+    [DenominatieVestiging]     NVARCHAR (24) NULL,
+    [Gemeentenaam]             NVARCHAR (17) NULL,
+    [Gemeentenummer]           NVARCHAR (4)  NULL,
+    [InstellingsnaamVestiging] NVARCHAR (30) NULL,
+    [Lv1f]                     NVARCHAR (2)  NULL,
+    [Lv2f]                     NVARCHAR (2)  NULL,
+    [LvLager1f]                NVARCHAR (2)  NULL,
+    [Peildatum]                NVARCHAR (8)  NULL,
+    [Plaatsnaam]               NVARCHAR (20) NULL,
+    [PostcodeVestiging]        NVARCHAR (6)  NULL,
+    [Provincie]                NVARCHAR (13) NULL,
+    [Rekenen1f]                NVARCHAR (2)  NULL,
+    [Rekenen1s]                NVARCHAR (2)  NULL,
+    [Rekenen2f]                NVARCHAR (2)  NULL,
+    [RekenenLager1f]           NVARCHAR (2)  NULL,
+    [SoortPo]                  NVARCHAR (2)  NULL,
+    [Tv1f]                     NVARCHAR (2)  NULL,
+    [Tv2f]                     NVARCHAR (2)  NULL,
+    [TvLager1f]                NVARCHAR (2)  NULL,
+    [Vestigingsnummer]         NVARCHAR (2)  NULL,
+    [Jaar]                     VARCHAR (9)   NULL
+);
+

@@ -1,0 +1,26 @@
+﻿CREATE TABLE [Fact].[Mutatie]
+(
+	[BoekDatumKey]				INT				NOT NULL,
+	[FactuurDatumKey]			INT				NOT NULL,
+	[DagboekKey]				INT				NOT NULL,
+	[GrootboekKey]				INT				NOT NULL,
+	[KostenplaatsKey]			INT				NOT NULL,
+	[KostendragerKey]			INT				NOT NULL,
+	[ScenarioKey]				INT				NOT NULL,
+	[TransactieTypeKey]			INT				NOT NULL,
+	[FactuurKey]				INT				DEFAULT -1,
+	[MutatieOmschrijving]		NVARCHAR (MAX)	NULL,
+	[BegrotingOpmerking]		NVARCHAR(512)	NULL, 
+	[MutatieBedrag]				DECIMAL (14,4)	NULL,
+	[Boekstuknummer]			NVARCHAR (32)	NULL,
+	[Source]					CHAR (1)		NOT NULL,
+	CONSTRAINT [FK_Mutatie_BoekDatum] FOREIGN KEY ([BoekDatumKey]) REFERENCES [Dim].[Datum]([DatumKey]),
+	CONSTRAINT [FK_Mutatie_FactuurDatum] FOREIGN KEY ([FactuurDatumKey]) REFERENCES [Dim].[Datum]([DatumKey]),
+	CONSTRAINT [FK_Mutatie_Dagboek] FOREIGN KEY ([DagboekKey]) REFERENCES [Dim].[Dagboek]([DagboekKey]),
+	CONSTRAINT [FK_Mutatie_Grootboek] FOREIGN KEY ([GrootboekKey]) REFERENCES [Dim].[Grootboek]([GrootboekKey]),
+	CONSTRAINT [FK_Mutatie_Kostenplaats] FOREIGN KEY ([KostenplaatsKey]) REFERENCES [Dim].[Kostenplaats]([KostenplaatsKey]),
+	CONSTRAINT [FK_Mutatie_Kostendrager] FOREIGN KEY ([KostendragerKey]) REFERENCES [Dim].[Kostendrager]([KostendragerKey]),
+	CONSTRAINT [FK_Mutatie_Scenario] FOREIGN KEY ([ScenarioKey]) REFERENCES [Dim].[Scenario]([ScenarioKey]),
+	CONSTRAINT [FK_Mutatie_TransactieTypeKey] FOREIGN KEY ([TransactieTypeKey]) REFERENCES [Dim].[TransactieType]([TransactieTypeKey]),
+	CONSTRAINT [FK_Mutatie_Factuur] FOREIGN KEY ([FactuurKey]) REFERENCES [Dim].[Factuur]([FactuurKey])
+)

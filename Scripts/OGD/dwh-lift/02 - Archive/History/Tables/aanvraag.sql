@@ -1,0 +1,27 @@
+﻿CREATE TABLE [History].[aanvraag] (
+    [unid]                  UNIQUEIDENTIFIER NOT NULL,
+    [dataanmk]              DATETIME         NULL,
+    [datwijzig]             DATETIME         NULL,
+    [uidaanmk]              UNIQUEIDENTIFIER NULL,
+    [uidwijzig]             UNIQUEIDENTIFIER NULL,
+    [status]                INT              NULL,
+    [archiefid]             UNIQUEIDENTIFIER NULL,
+    [archiefdatum]          DATETIME         NULL,
+    [attentieid]            UNIQUEIDENTIFIER NULL,
+    [attentiemelding]       NVARCHAR (200)   NULL,
+    [projectid]             UNIQUEIDENTIFIER NULL,
+    [aanvraagnr]            NVARCHAR (20)    NULL,
+    [slagingspercentage]    INT              NULL,
+    [interessecijferid]     UNIQUEIDENTIFIER NULL,
+    [interessefaseid]       UNIQUEIDENTIFIER NULL,
+    [bewaakttot]            DATETIME         NULL,
+    [afkorting]             NVARCHAR (10)    NULL,
+    [projectleadid]         UNIQUEIDENTIFIER NULL,
+    [amount_quoted]         MONEY            NULL,
+    [datacceptatie]         DATETIME         NULL,
+    [is_additional_request] BIT              NULL,
+    [AuditDWKey]            INT              NULL,
+    [ValidFrom]             DATETIME2 (0)    NOT NULL,
+    [ValidTo]               DATETIME2 (0)    NOT NULL
+);
+

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseName>OGDW_Metadata</TargetDatabaseName>
+    <DeployScriptFileName>OGDW_Metadata.sql</DeployScriptFileName>
+    <TargetConnectionString>Data Source=localhost;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True</TargetConnectionString>
+    <ProfileVersionNumber>1</ProfileVersionNumber>
+    <BlockWhenDriftDetected>False</BlockWhenDriftDetected>
+    <RegisterDataTierApplication>True</RegisterDataTierApplication>
+  </PropertyGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="DB_Exports">
+      <Value>DB Source Backups</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ETL_Path">
+      <Value>E:\ETL</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="LIFT5">
+      <Value>LIFT5_Live</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="LIFTDW">
+      <Value>LIFT_DW</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="LIFTServer">
+      <Value>DWH01_readonly</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="LIFT_Archive">
+      <Value>LIFT_Archive</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="LIFT_Staging">
+      <Value>LIFT_Staging</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="MDS">
+      <Value>MDS</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="OGDW">
+      <Value>TOPdesk_DW</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="OGDW_Archive">
+      <Value>OGDW_Archive</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="OGDW_Staging">
+      <Value>OGDW_Staging</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ReportDWH">
+      <Value>ReportDWH2016</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ReportServer">
+      <Value>DWH01_readonly</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ServerObjects">
+      <Value>ServerObjects</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="SSISDB">
+      <Value>SSISDB</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,83 @@
+﻿CREATE PROCEDURE [shared].[ToggleForeignKeys]
+(
+	@db nvarchar(64)
+	, @enable bit
+)
+AS
+BEGIN
+
+SET NOCOUNT ON
+
+BEGIN TRY
+
+-- Declare variables for logging
+DECLARE @newLogID int
+DECLARE @newSessionID int = @@SPID
+DECLARE @newObjectID int = @@PROCID
+DECLARE @newMessage nvarchar(max) = CASE WHEN @enable = 0 THEN 'Disabling' ELSE 'Enabling' END + ' foreign keys in progress...'
+DECLARE @newRowCount int
+
+-- Start logging
+EXEC [log].NewProcLogRecord @LogID = @newLogID OUTPUT, @SessionID = @newSessionID, @ObjectID = @newObjectID, @Message = @newMessage
+
+--BEGIN TRANSACTION
+
+DECLARE @SQLString nvarchar(max) = ''
+
+SET @SQLString += '
+DECLARE ExecuteBatches CURSOR FOR
+(' + CASE WHEN @enable = 0 THEN '
+SELECT
+	ForeignKey = [name]
+FROM
+	' + @db + '.sys.foreign_keys' ELSE '
+SELECT DISTINCT
+	ForeignKey
+FROM
+	shared.ForeignKeys
+WHERE 1=1
+	AND DbName = ''' + @db + '''' END + '
+)
+
+DECLARE @ForeignKey nvarchar(128)
+'
+-- Voer de gegenereerde statements uit
+SET @SQLString += '
+OPEN ExecuteBatches
+FETCH NEXT FROM ExecuteBatches INTO @ForeignKey
+WHILE @@FETCH_STATUS = 0
+BEGIN
+	EXEC shared.' + CASE WHEN @enable = 0 THEN 'Disable' ELSE 'Enable' END + 'ForeignKey ''' + @db + ''', @ForeignKey
+	FETCH NEXT FROM ExecuteBatches INTO @ForeignKey
+END
+CLOSE ExecuteBatches
+DEALLOCATE ExecuteBatches'
+
+EXEC (@SQLString)
+
+SET @newRowCount = @@ROWCOUNT
+--COMMIT TRANSACTION
+
+-- Logging of success
+SET @newMessage = CASE WHEN @enable = 0 THEN 'Disabling' ELSE 'Enabling' END + ' foreign keys completed...'
+EXEC [log].UpdateProcLogRecord @LogID = @newLogID, @Message = @newMessage, @Success = 1, @RowCount = @newRowCount
+
+END TRY
+
+BEGIN CATCH
+--ROLLBACK TRANSACTION
+
+PRINT ERROR_MESSAGE()
+
+-- Logging of failure
+SET @newMessage = CASE WHEN @enable = 0 THEN 'Disabling' ELSE 'Enabling' END + ' foreign keys FAILED...'
+EXEC [log].UpdateProcLogRecord @LogID = @newLogID, @Message = @newMessage
+
+END CATCH
+
+END
+
+/*
+EXEC shared.ToggleForeignKeys '[TOPdesk_DW]', 0
+EXEC shared.ToggleForeignKeys '[TOPdesk_DW]', 1
+*/

@@ -1,0 +1,45 @@
+﻿CREATE PROCEDURE [etl].[LoadDimJaar]
+AS
+BEGIN
+
+-- Get StartTime
+DECLARE @StartTime DATETIME2 = GETDATE()
+
+BEGIN TRY
+BEGIN TRANSACTION
+
+TRUNCATE TABLE [$(DWH_Quadraam)].Dim.Jaar
+
+SET XACT_ABORT ON
+INSERT INTO
+	[$(DWH_Quadraam)].Dim.Jaar (JaarKey, JaarNum)
+VALUES
+	(-1, 1900)
+
+INSERT INTO
+	[$(DWH_Quadraam)].Dim.Jaar
+	(
+	JaarKey
+	, JaarNum
+	)
+SELECT DISTINCT
+	JaarKey = JaarNum
+	, JaarNum = JaarNum
+FROM
+	[$(DWH_Quadraam)].Dim.Datum
+
+WHERE JaarNum > 1900
+
+;EXEC [log].[Log] @@PROCID, @StartTime
+
+SET XACT_ABORT OFF
+COMMIT TRANSACTION
+
+END TRY
+BEGIN CATCH
+	ROLLBACK TRANSACTION
+	EXEC [log].[Log] @@PROCID, @StartTime
+	SET XACT_ABORT OFF
+END CATCH
+RETURN 0
+END

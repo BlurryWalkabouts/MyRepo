@@ -1,0 +1,195 @@
+server performance 
+
+- headlines
+sp_BlitzFirst
+
+- waits per core 
+sp_BlitzFirst @ExpoertMode = 1
+
+(sp_BlitzFirst @SinceStartup = 1
+Based on Hours Sample, see percore per hour, wait time
+0 per core per hour, sql is bored
+
+
+Measure using batch per secs (transactions doesnt count everything)
+
+0 - 1000	nomral hardware
+1000 - 5000	edges on normal hardware , bad query can knock out server
+5000 - 25000	you need a scale out or caching plan
+25000		doable , but attention needed
+
+Types of server performance issues
+- on fire constantly
+- bursts  (you cant fix this with hardwar e)
+- server not doing anything
+
+
+preemptive = outside of sql (clr , oledb , com)
+- performance tuning perspective , dont do this. For linked servers you could go check other server4:19 PM 4/30/2021
+
+
+
+return heavy server using
+sp_BlitzFirst @SinceStartup = 1 @OutputType = 'Top10'
+
+async_network_io 
+waits by slow application
+
+usually wait name with wait in name, is ignoreable
+also the case when hours sample = wait time (horus)
+
+============== PAGEIOLATCH demo ============== 
+See waits
+sp_blitzFirst @ExpertMode = 1
+	, @Seconds = 30 -- sample time
+
+PAGEIOLATCH_SH/PAGEIOLATCH_EX 	-	reading from disk
+cxconsumer/cxpacket/latch_ex	-	same problem as PageIOLATCH (but already in memroy but going paralel)
+
+FIX
+
+1. sp_BlitzIndex (tune index)
+	do this on A machine with high memory to test , evaul using reads  to save time testing and adding quries
+	dbcc dropcleanbuffers (only erases cache, only use to test storage )
+
+2. sp_BLitzCache (tune query)
+3. add memory
+4. tune storage (difficult to impossbile, expensive)
+Pove slow san
+go to brentozar.com/go/cdm
+download crystacldiskmark standard edtion
+first row = sequential = best case scenario
+data you have to read / how fast you read = min query runtime
+table = 21GB / crystal diskmark 1024mb/s / = 21 seconds
+
+notes:
+select reads * 8 / 1024 / 1024 = GB
+sp_blitzFirst @ExpertMode = 1
+	, @Seconds = 30 -- sample time
+
+dbautils.dbo.sp_blitzFirst SHOW CURRENT STATS 
+
+/************************* LAB 1 *************************/
+
+1. dbautils.dbo.sp_blitzFirst @ExpertMode = 1	, @Seconds = 60 
+
+	a. sp_BlitzIndex (tune index)
+		do this on A machine with high memory to test , evaul using reads  to save time testing and adding quries
+		dbcc dropcleanbuffers (only erases cache, only use to test storage )
+	b. sp_BLitzCache (tune query)
+	c. add memory
+	d. tune storage (difficult to impossbile, expensive)
+
+
+2. dbautils.dbo.sp_BlitsIndex @GetAllDatabases = 1
+
+3. dbautils.dbo.spBlitzCache @SortOrder = 'reads'
+
+/************************* LAB 1 *************************/
+
+dbautils.dbo.sp_BlitzIndex @GetAllDatabases = 1
+
+/*
+dbo.posts
+
+EQUALITY:  [ParentId]  {int} INCLUDE:  [AcceptedAnswerId]  {int}, [AnswerCount]  {int}, [Body]  {nvarchar(max)}, [ClosedDate]  {datetime}, [CommentCount]  {int}, [CommunityOwnedDate]  {datetime}, [CreationDate]  {datetime}, [FavoriteCount]  {int}, [LastActivityDate]  {datetime}, [LastEditDate]  {datetime}, [LastEditorDisplayName]  {nvarchar(40)}, [LastEditorUserId]  {int}, [OwnerUserId]  {int}, [PostTypeId]  {int}, [Score]  {int}, [Tags]  {nvarchar(150)}, [Title]  {nvarchar(250)}, [ViewCount]  {int} 
+EQUALITY:  [AcceptedAnswerId]  {int} INCLUDE:  [AnswerCount]  {int}, [Body]  {nvarchar(max)}, [ClosedDate]  {datetime}, [CommentCount]  {int}, [CommunityOwnedDate]  {datetime}, [CreationDate]  {datetime}, [FavoriteCount]  {int}, [LastActivityDate]  {datetime}, [LastEditDate]  {datetime}, [LastEditorDisplayName]  {nvarchar(40)}, [LastEditorUserId]  {int}, [OwnerUserId]  {int}, [ParentId]  {int}, [PostTypeId]  {int}, [Score]  {int}, [Tags]  {nvarchar(150)}, [Title]  {nvarchar(250)}, [ViewCount]  {int} 
+EQUALITY:  [OwnerUserId]  {int} INCLUDE:  [AcceptedAnswerId]  {int}, [AnswerCount]  {int}, [Body]  {nvarchar(max)}, [ClosedDate]  {datetime}, [CommentCount]  {int}, [CommunityOwnedDate]  {datetime}, [CreationDate]  {datetime}, [FavoriteCount]  {int}, [LastActivityDate]  {datetime}, [LastEditDate]  {datetime}, [LastEditorDisplayName]  {nvarchar(40)}, [LastEditorUserId]  {int}, [ParentId]  {int}, [PostTypeId]  {int}, [Score]  {int}, [Tags]  {nvarchar(150)}, [Title]  {nvarchar(250)}, [ViewCount]  {int} 
+EQUALITY:  [LastEditorUserId]  {int} INCLUDE:  [AcceptedAnswerId]  {int}, [AnswerCount]  {int}, [Body]  {nvarchar(max)}, [ClosedDate]  {datetime}, [CommentCount]  {int}, [CommunityOwnedDate]  {datetime}, [CreationDate]  {datetime}, [FavoriteCount]  {int}, [LastActivityDate]  {datetime}, [LastEditDate]  {datetime}, [LastEditorDisplayName]  {nvarchar(40)}, [OwnerUserId]  {int}, [ParentId]  {int}, [PostTypeId]  {int}, [Score]  {int}, [Tags]  {nvarchar(150)}, [Title]  {nvarchar(250)}, [ViewCount]  {int} 
+
+dbautils.dbo.sp_BlitzIndex @databasename = 'stackoverflow' , @TableName = 'posts'
+
+no indexes so create
+
+*/
+CREATE INDEX [posts_ParentId_OwnerUserId_AcceptedAnswerId_LastEditorUserId] 
+ON [StackOverflow].[dbo].[Posts] ([ParentId], OwnerUserId , [AcceptedAnswerId],[LastEditorUserId]
+) 
+
+
+/*
+dbo.comments
+
+EQUALITY:  [UserId]  {int} INCLUDE:  [CreationDate]  {datetime}, [PostId]  {int}, [Score]  {int}, [Text]  {nvarchar(700)} 
+EQUALITY:  [PostId]  {int} 
+
+dbautils.dbo.sp_BlitzIndex @databasename = 'stackoverflow' , @TableName = 'comments'
+
+no indexes so create
+
+*/
+CREATE INDEX [comments_PostId_UserId] ON [StackOverflow].[dbo].[comments] 
+(PostId,UserId) 
+
+
+/* dbo.votes
+
+EQUALITY:  [UserId]  {int} INCLUDE:  [PostId]  {int}, [BountyAmount]  {int}, [VoteTypeId]  {int}, [CreationDate]  {datetime} 
+EQUALITY:  [PostId]  {int} INCLUDE:  [UserId]  {int}, [BountyAmount]  {int}, [VoteTypeId]  {int}, [CreationDate]  {datetime} 
+
+dbautils.dbo.sp_BlitzIndex @databasename = 'stackoverflow' , @TableName = 'votes'
+
+no indexes so create
+
+*/
+CREATE INDEX [votes_PostId_UserId] ON [StackOverflow].[dbo].[votes] 
+(PostId,UserId) 
+
+dbautils.dbo.sp_blitzFirst
+
+
+/* after adding indexes 
+iterations / sec 
+850 > 17
+
+avg logical reads / iteration
+3.6MLN > 155.000
+
+-- now check indexes being used
+*/
+
+-- flush plancache and rerun stress
+dbcc freeproccache
+dbautils.dbo.sp_BlitzIndex @DatabaseName = 'StackoverFlow'
+
+ set statistics io on
+ dbautils.dbo.sp_BlitzCache @SortOrder = 'reads'
+
+ 
+ /* 132 exec down to 1 
+EXEC [dbo].[usp_GetVotesByUserId]  @UserId = 7642349
+ Missing Indexes (1), Parameter Sniffing, Downlevel CE, Forced Serialization, Plan created last 4hrs
+ */
+ CREATE INDEX [votes_UserId]  
+ON [dbo].[Votes] ([UserId])
+INCLUDE ([PostId],[BountyAmount],[VoteTypeId],[CreationDate])
+
+/*   
+CREATE   PROC [dbo].[usp_GetCommentsByUser] @UserId INT AS  BEGIN 
+ SELECT *    FROM dbo.Comments    
+ WHERE UserId = @UserId;  END  
+
+ Duraiont = 3604
+ Reads = 145006
+
+ EXEC [dbo].[usp_GetCommentsByUser]  @UserId = 9415937
+
+CREATE INDEX Comments_UserId
+ON [dbo].[Comments] ([UserId])
+
+
+dbautils.dbo.sp_blitzfirst
+-- mem = 1GB
+batches per sec = 7.6
+6.7 iterations per second
+
+-- 4 GB
+14.41 iterations per second
+
+*/
+
+
+
+dbautils.dbo.sp_BlitzCache @SortOrder = 'reads'
+
+

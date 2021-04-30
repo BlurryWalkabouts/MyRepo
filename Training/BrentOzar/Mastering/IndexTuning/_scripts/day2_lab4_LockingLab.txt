@@ -1,0 +1,112 @@
+-- Locking Lab
+
+
+/*
+Brents fix:
+-- find problem db`s
+exec dbautils.dbo.sp_blitzindex @getalldatabases = 1
+-- dril into table (DEAth in 1 swoop)
+-- dEath
+EXEC dbautils.dbo.sp_BlitzIndex @DatabaseName='stackoverflow', @SchemaName='dbo', @TableName='Badges'
+EXEC dbautils.dbo.sp_BlitzIndex @DatabaseName='stackoverflow', @SchemaName='dbo', @TableName='Posts';
+EXEC dbautils.dbo.sp_BlitzIndex @DatabaseName='stackoverflow', @SchemaName='dbo', @TableName='Votes';
+
+**these indexes are not being used , drop `m , [drop statements]**
+**incase things go wrong , [create statements]**
+
+
+-- deAth
+options: 
+ a. create index now
+ b. create index with only keys ,not includes
+ c. ignore index for now , come back after wweek
+
+missing index on id, and table has no primary 
+order of thining in sequence, options:
+ a. create primary
+ b. create unique clustered
+ c. create clustered
+
+ -- dEath
+EXEC dbautils.dbo.sp_BlitzIndex @DatabaseName='stackoverflow', @SchemaName='dbo', @TableName='Badges'
+
+EQUALITY: [Name] INCLUDES: [UserId] 
+EQUALITY: [Name], [UserId] 
+
+I`m gonna combine the 2:
+CREATE INDEX [UserId_Name] ON [StackOverflow].[dbo].[Badges]
+ ([UserId], [Name])  
+*/
+
+
+
+-- lab worksheet
+exec dbautils.dbo.sp_BlitzLock
+/*
+find deadlocks
+*/
+
+EXEC sp_WhoIsActive @get_locks =1
+-/*
+get locks
+*/
+
+exec dbautils.dbo.sp_blitzindex @databasename = 'stackoverflow'
+/*
+10	Aggressive Under-Indexing: Total lock wait time > 5 minutes (row + page) with short average waits	stackoverflow 	dbo.Users.Unknown (0): Page lock waits: 484; total duration: 7 minutes; avg duration: 0 seconds; Lock escalation attempts: 10,496; Actual Escalations: 8. NC indexes on table: 0	[HEAP] 	[RID]	Reads: 179 (179 scan) Writes:103	8,917,533 rows; 1.1GB; 1.0MB LOB; 0.1MB Row Overflow	EXEC dbo.sp_BlitzIndex @DatabaseName='stackoverflow ', @SchemaName='dbo', @TableName='Users';	http://BrentOzar.com/go/AggressiveIndexes	ALTER TABLE [stackoverflow ].[dbo].[Users] REBUILD;
+*/
+
+exec dbautils.dbo.sp_blitzwho 
+/**
+
+-1
+blocking session 
+UPDATE dbo.Users   
+SET LastAccessDate = GETUTCDATE()   
+WHERE Id = @UserId
+
+LastAccessDate causes locking, but no clustered index on user id
+ */
+Create CLUSTERED INDEX CI_ID
+on dbo.users (id)
+
+/*
+--2
+EXEC dbautils.dbo.sp_BlitzIndex @DatabaseName='stackoverflow', @SchemaName='dbo', @TableName='Badges'
+EQUALITY: [Name] INCLUDES: [UserId] 
+EQUALITY: [Name], [UserId] 
+ */
+
+CREATE INDEX [UserId_Name] ON [StackOverflow].[dbo].[Badges]
+ ([UserId], [Name])  
+
+ /*
+ --3
+ Aggressive Indexes: Total lock wait time > 5 minutes (row + page) with short average waits
+ EXEC dbautils.dbo.sp_BlitzIndex @DatabaseName='stackoverflow', @SchemaName='dbo', @TableName='Posts';
+ */
+DROP INDEX [IX_OwnerUserId_Includes] ON [stackoverflow].[dbo].[Posts];
+DROP INDEX [IX_Score] ON [stackoverflow].[dbo].[Posts];
+DROP INDEX [IX_ViewCount_Score_LastActivityDate] ON [stackoverflow].[dbo].[Posts];
+
+/*
+--4
+*/
+DROP INDEX [IX_Score] ON [stackoverflow].[dbo].[Posts];
+
+/*
+--5
+EXEC dbautils.dbo.sp_BlitzIndex @DatabaseName='stackoverflow', @SchemaName='dbo', @TableName='Votes';
+*/
+DROP INDEX [IX_VoteTypeId] ON [stackoverflow].[dbo].[Votes];
+DROP INDEX [IX_UserId] ON [stackoverflow].[dbo].[Votes];
+DROP INDEX [IX_PostId_UserId] ON [stackoverflow].[dbo].[Votes];
+
+--6
+EXEC dbautils.dbo.sp_BlitzIndex @DatabaseName='stackoverflow', @SchemaName='dbo', @TableName='Votes';
+*/
+CREATE INDEX [CreationDate_Includes] 
+ON [StackOverflow].[dbo].[Votes] 
+([CreationDate])  
+INCLUDE ([PostId], [UserId], [VoteTypeId])
+

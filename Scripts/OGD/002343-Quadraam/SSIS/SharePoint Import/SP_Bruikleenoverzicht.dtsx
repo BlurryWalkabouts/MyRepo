@@ -1,0 +1,1269 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/20/2017 2:31:51 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DWH-TEST"
+  DTS:CreatorName="DWH-TEST\OGD_WILLEMS"
+  DTS:DTSID="{0D61F5CB-D209-40C1-856E-66708B564249}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LocaleID="1043"
+  DTS:ObjectName="SP_Bruikleenoverzicht"
+  DTS:PackageType="5"
+  DTS:VersionBuild="45"
+  DTS:VersionGUID="{5A4E605B-38DA-4E0C-BD38-7BE53FB6E615}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SharePoint]"
+      DTS:CreationName="ODATA"
+      DTS:DTSID="{59FBFCD8-7C1A-4CFA-B516-C99422F55F69}"
+      DTS:ObjectName="SharePoint">
+      <DTS:ObjectData>
+        <ODataConnectionManager
+          UserName="serivce-ogd@quadraam.onmicrosoft.com"
+          Url="https://quadraam.sharepoint.com/teams/Bruikleenovereenkomst/_vti_bin/listdata.svc"
+          ConnectionString="Service Document Url=https://quadraam.sharepoint.com/teams/Bruikleenovereenkomst/_vti_bin/listdata.svc;Include Atom Elements=Auto;Include Expanded Entities=False;Integrated Security=False;Cookie=&quot;SPOIDCRL=77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48U1A+VjQsMGguZnxtZW1iZXJzaGlwfDEwMDNiZmZkYTkwNGI2MDZAbGl2ZS5jb20sMCMuZnxtZW1iZXJzaGlwfHNlcml2Y2Utb2dkQHF1YWRyYWFtLm9ubWljcm9zb2Z0LmNvbSwxMzE3MjE2Njc2MDAwMDAwMDAsMTMxNjQ5MDk5ODEwMDAwMDAwLDEzMTcyNTk4NzYxMDgzMjIwNSwwLjAuMC4wLDQsMzNmMjI4NDQtOTRjMi00NTJiLWFlMDktYmVlZTdkZGNhNDcyLCwsODgzYzZjOWUtYzBhMy01MDAwLWMxZDctODY2MzNkNzE2ZmVkLDg4M2M2YzllLWMwYTMtNTAwMC1jMWQ3LTg2NjMzZDcxNmZlZCwsMCwwLDAsS21lMklXbFozeXQyeGl6bkJ2cnRBMEZXdDJJT25xYWluRm9IaFRHU0pWdlIrOHE3UnMvU1B2VGtEZHZSRWwxb24reld1V1l1djRtTXk4ZnlBL1ozcWxMOEZQTi92VjlncHl4RWZsUlpQOVRNdU9NT0hGbS8yZy9JaTFvS1FiYkF0WHhSdzR0Nk9hUldobVNhUEN0cEQ3bURUMUthcElmU3RKVm15SUR3K01rcFhnZkpia0ZNMVlEYUgvZTJTOTF4MXhLOE1VaC9XZENxV1h0SmExdEM4T2trWURhQWlSeU12RitVSTBMZEtNd0hEOFFyN3QzZDRvYThaUjVpcHlXSzRoS2x2ZFFGMThkRHowb2duTndPZjErTjhOdm02Qk9OdllaK2ZpRXpNekkzeGVHWFJpOWFNTUxSTWwzSDlKekUyNWJna3FYQ2R0MXlGN01QWVJBZzJBPT08L1NQPg==&quot;;User ID=serivce-ogd@quadraam.onmicrosoft.com;Persist Security Info=False;Time Out=600;Schema Sample Size=25;Retry Count=5;Retry Sleep=100;Keep Alive=False;Max Received Message Size=4398046511104"
+          MicrosoftOnlineServicesAuth="True"
+          AuthType="MicrosoftOnlineService">
+          <Password
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAL9qnO2og10SLG9jtlN2y7QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACqPcPPa9f3Iw3GtpH4B9YiVU2mYbBqeoEIErnFkzFC7AAAAAAOgAAAAAIAACAAAAD4neLEJEtuyZxamtpwG1ZaYPw12lzmZ0BAKc9ra8r7miAAAACQpoLJdTPOttKLbaqmSCeo5iSPrSo/EFAx+p3QHWYEjEAAAAD49VnW+J+GZT7s9q9Mq+t+foVpNO/PcLRr73xevpBTzKXKAa6647eOYsBsy1WdVVtWU3ihKIgUsDhTuT1IG0Gg</Password>
+        </ODataConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Staging_Quadraam]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5A926B7F-6004-4632-9615-10390755839B}"
+      DTS:ObjectName="Staging_Quadraam">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Staging_Quadraam;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D8D1D4D7-B2BC-4965-959E-7468B762C569}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TargetTable">
+      <DTS:VariableValue
+        DTS:DataType="8">[SharePoint].[Bruikleenoverzicht]</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{CB3B4A22-C897-44EE-91E4-CF0E26407A8A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Telefoonnummer]"
+                      cachedDataType="nText"
+                      cachedName="Telefoonnummer"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Telefoonnummer]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[AccessoiresValue]"
+                      cachedDataType="nText"
+                      cachedName="AccessoiresValue"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[AccessoiresValue]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[IMEI]"
+                      cachedDataType="nText"
+                      cachedName="IMEI"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[IMEI]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Quadraamnummer]"
+                      cachedDataType="nText"
+                      cachedName="Quadraamnummer"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Quadraamnummer]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[ProductkeySoftware]"
+                      cachedDataType="nText"
+                      cachedName="ProductkeySoftware"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[ProductkeySoftware]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Software]"
+                      cachedDataType="nText"
+                      cachedName="Software"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Software]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Serienummer]"
+                      cachedDataType="nText"
+                      cachedName="Serienummer"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Serienummer]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[MerkApparatuurValue]"
+                      cachedDataType="nText"
+                      cachedName="MerkApparatuurValue"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[MerkApparatuurValue]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[TypeDevice]"
+                      cachedDataType="nText"
+                      cachedName="TypeDevice"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[TypeDevice]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Telefoonnummer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Telefoonnummer]"
+                      name="Telefoonnummer"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Telefoonnummer]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[AccessoiresValue]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[AccessoiresValue]"
+                      name="AccessoiresValue"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[AccessoiresValue]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[IMEI]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[IMEI]"
+                      name="IMEI"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[IMEI]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Quadraamnummer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Quadraamnummer]"
+                      name="Quadraamnummer"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Quadraamnummer]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ProductkeySoftware]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ProductkeySoftware]"
+                      name="ProductkeySoftware"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[ProductkeySoftware]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Software]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Software]"
+                      name="Software"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Software]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Serienummer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Serienummer]"
+                      name="Serienummer"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Serienummer]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[MerkApparatuurValue]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[MerkApparatuurValue]"
+                      name="MerkApparatuurValue"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[MerkApparatuurValue]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[TypeDevice]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[TypeDevice]"
+                      name="TypeDevice"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[TypeDevice]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OData Source Bruikleenoverzicht"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="OData Source Component;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Read data from OData services"
+              name="OData Source Bruikleenoverzicht"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Name of the collection to be retrieved from the service."
+                  expressionType="Notify"
+                  name="CollectionName">Bruikleenoverzicht</property>
+                <property
+                  dataType="System.Int32"
+                  description="The default maximum length for a string that has no maxlength specified in the schema."
+                  name="DefaultStringLength">4000</property>
+                <property
+                  dataType="System.String"
+                  description="Query in the url. "
+                  expressionType="Notify"
+                  name="Query"></property>
+                <property
+                  dataType="System.String"
+                  description="Resource path of the collection to be retrieved from the service."
+                  expressionType="Notify"
+                  name="ResourcePath"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="When set to true, use the resource path as requested collection; otherwise, use the collection name."
+                  expressionType="Notify"
+                  name="UseResourcePath">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.OData</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Connections[Connection]"
+                  connectionManagerID="Package.ConnectionManagers[SharePoint]"
+                  connectionManagerRefId="Package.ConnectionManagers[SharePoint]"
+                  description="Connection to OData Service"
+                  name="Connection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[InhoudstypeId]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[InhoudstypeId]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[InhoudstypeId]"
+                      name="InhoudstypeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Titel]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Titel]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Titel]"
+                      name="Titel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[ActivumIdVoorCompliance]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[ActivumIdVoorCompliance]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[ActivumIdVoorCompliance]"
+                      name="ActivumIdVoorCompliance"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[MedewerkerNaamId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[MedewerkerNaamId]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[MedewerkerNaamId]"
+                      name="MedewerkerNaamId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[TypeDevice]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[TypeDevice]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[TypeDevice]"
+                      name="TypeDevice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Quadraamnummer]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Quadraamnummer]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Quadraamnummer]"
+                      name="Quadraamnummer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[MerkApparatuurValue]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[MerkApparatuurValue]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[MerkApparatuurValue]"
+                      name="MerkApparatuurValue"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Serienummer]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Serienummer]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Serienummer]"
+                      name="Serienummer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Telefoonnummer]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Telefoonnummer]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Telefoonnummer]"
+                      name="Telefoonnummer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[IMEI]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[IMEI]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[IMEI]"
+                      name="IMEI"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[DatumIngebruikname]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[DatumIngebruikname]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[DatumIngebruikname]"
+                      name="DatumIngebruikname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[AccessoiresValue]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[AccessoiresValue]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[AccessoiresValue]"
+                      name="AccessoiresValue"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Muis]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Muis]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Muis]"
+                      name="Muis"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Software]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Software]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Software]"
+                      name="Software"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[ProductkeySoftware]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[ProductkeySoftware]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[ProductkeySoftware]"
+                      name="ProductkeySoftware"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[GarantieTot]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[GarantieTot]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[GarantieTot]"
+                      name="GarantieTot"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[StatuswaardeId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[StatuswaardeId]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[StatuswaardeId]"
+                      name="StatuswaardeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[MailadresId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[MailadresId]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[MailadresId]"
+                      name="MailadresId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Id]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Inhoudstype]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Inhoudstype]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Inhoudstype]"
+                      name="Inhoudstype"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Gewijzigd]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Gewijzigd]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Gewijzigd]"
+                      name="Gewijzigd"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Gemaakt]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Gemaakt]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Gemaakt]"
+                      name="Gemaakt"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[GemaaktDoorId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[GemaaktDoorId]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[GemaaktDoorId]"
+                      name="GemaaktDoorId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[GewijzigdDoorId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[GewijzigdDoorId]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[GewijzigdDoorId]"
+                      name="GewijzigdDoorId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Owshiddenversion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Owshiddenversion]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Owshiddenversion]"
+                      name="Owshiddenversion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Versie]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Versie]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Versie]"
+                      name="Versie"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Pad]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Pad]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Pad]"
+                      name="Pad"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[InhoudstypeId]"
+                      dataType="nText"
+                      name="InhoudstypeId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Titel]"
+                      dataType="nText"
+                      name="Titel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[ActivumIdVoorCompliance]"
+                      dataType="nText"
+                      name="ActivumIdVoorCompliance" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[MedewerkerNaamId]"
+                      dataType="i4"
+                      name="MedewerkerNaamId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[TypeDevice]"
+                      dataType="nText"
+                      name="TypeDevice" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Quadraamnummer]"
+                      dataType="nText"
+                      name="Quadraamnummer" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[MerkApparatuurValue]"
+                      dataType="nText"
+                      name="MerkApparatuurValue" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Serienummer]"
+                      dataType="nText"
+                      name="Serienummer" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Telefoonnummer]"
+                      dataType="nText"
+                      name="Telefoonnummer" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[IMEI]"
+                      dataType="nText"
+                      name="IMEI" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[DatumIngebruikname]"
+                      dataType="dbTimeStamp"
+                      name="DatumIngebruikname" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[AccessoiresValue]"
+                      dataType="nText"
+                      name="AccessoiresValue" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Muis]"
+                      dataType="bool"
+                      name="Muis" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Software]"
+                      dataType="nText"
+                      name="Software" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[ProductkeySoftware]"
+                      dataType="nText"
+                      name="ProductkeySoftware" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[GarantieTot]"
+                      dataType="dbTimeStamp"
+                      name="GarantieTot" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[StatuswaardeId]"
+                      dataType="i4"
+                      name="StatuswaardeId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[MailadresId]"
+                      dataType="i4"
+                      name="MailadresId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Inhoudstype]"
+                      dataType="nText"
+                      name="Inhoudstype" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Gewijzigd]"
+                      dataType="dbTimeStamp"
+                      name="Gewijzigd" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Gemaakt]"
+                      dataType="dbTimeStamp"
+                      name="Gemaakt" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[GemaaktDoorId]"
+                      dataType="i4"
+                      name="GemaaktDoorId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[GewijzigdDoorId]"
+                      dataType="i4"
+                      name="GewijzigdDoorId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Owshiddenversion]"
+                      dataType="i4"
+                      name="Owshiddenversion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Versie]"
+                      dataType="nText"
+                      name="Versie" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].ExternalColumns[Pad]"
+                      dataType="nText"
+                      name="Pad" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output]"
+                  isErrorOut="true"
+                  name="Error output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[InhoudstypeId]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[InhoudstypeId]"
+                      name="InhoudstypeId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Titel]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Titel]"
+                      name="Titel" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[ActivumIdVoorCompliance]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[ActivumIdVoorCompliance]"
+                      name="ActivumIdVoorCompliance" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[MedewerkerNaamId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[MedewerkerNaamId]"
+                      name="MedewerkerNaamId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[TypeDevice]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[TypeDevice]"
+                      name="TypeDevice" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Quadraamnummer]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Quadraamnummer]"
+                      name="Quadraamnummer" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[MerkApparatuurValue]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[MerkApparatuurValue]"
+                      name="MerkApparatuurValue" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Serienummer]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Serienummer]"
+                      name="Serienummer" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Telefoonnummer]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Telefoonnummer]"
+                      name="Telefoonnummer" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[IMEI]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[IMEI]"
+                      name="IMEI" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[DatumIngebruikname]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[DatumIngebruikname]"
+                      name="DatumIngebruikname" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[AccessoiresValue]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[AccessoiresValue]"
+                      name="AccessoiresValue" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Muis]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Muis]"
+                      name="Muis" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Software]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Software]"
+                      name="Software" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[ProductkeySoftware]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[ProductkeySoftware]"
+                      name="ProductkeySoftware" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[GarantieTot]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[GarantieTot]"
+                      name="GarantieTot" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[StatuswaardeId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[StatuswaardeId]"
+                      name="StatuswaardeId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[MailadresId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[MailadresId]"
+                      name="MailadresId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Inhoudstype]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Inhoudstype]"
+                      name="Inhoudstype" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Gewijzigd]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Gewijzigd]"
+                      name="Gewijzigd" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Gemaakt]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Gemaakt]"
+                      name="Gemaakt" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[GemaaktDoorId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[GemaaktDoorId]"
+                      name="GemaaktDoorId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[GewijzigdDoorId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[GewijzigdDoorId]"
+                      name="GewijzigdDoorId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Owshiddenversion]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Owshiddenversion]"
+                      name="Owshiddenversion" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Versie]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Versie]"
+                      name="Versie" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Pad]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Error output].Columns[Pad]"
+                      name="Pad" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable">User::TargetTable</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">4</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Staging_Quadraam]"
+                  connectionManagerRefId="Package.ConnectionManagers[Staging_Quadraam]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DatumIngebruikname]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DatumIngebruikname"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Datum]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[DatumIngebruikname]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[GarantieTot]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="GarantieTot"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GarantieTot]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[GarantieTot]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Muis]"
+                      cachedDataType="bool"
+                      cachedName="Muis"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Muis]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Muis]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MedewerkerNaamId]"
+                      cachedDataType="i4"
+                      cachedName="MedewerkerNaamId"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MedewerkerNaam]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[MedewerkerNaamId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MailadresId]"
+                      cachedDataType="i4"
+                      cachedName="MailadresId"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Mailadres]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[MailadresId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StatuswaardeId]"
+                      cachedDataType="i4"
+                      cachedName="StatuswaardeId"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Statuswaarde]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[StatuswaardeId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gewijzigd]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Gewijzigd"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gewijzigd]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Gewijzigd]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gemaakt]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Gemaakt"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gemaakt]"
+                      lineageId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output].Columns[Gemaakt]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TypeDevice]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="TypeDevice"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TypeApparaat]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[TypeDevice]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MerkApparatuurValue]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="MerkApparatuurValue"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Merk]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[MerkApparatuurValue]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AccessoiresValue]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="AccessoiresValue"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Accessoires]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[AccessoiresValue]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IMEI]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="IMEI"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IMEI]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[IMEI]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProductkeySoftware]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="ProductkeySoftware"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ProductkeySoftware]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Quadraamnummer]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Quadraamnummer"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quadraamnummer]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Quadraamnummer]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Serienummer]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Serienummer"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Serienummer]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Serienummer]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Telefoonnummer]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Telefoonnummer"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Telefoonnummer]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Telefoonnummer]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Software]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Software"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Software]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Software]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Merk]"
+                      dataType="wstr"
+                      length="100"
+                      name="Merk" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TypeApparaat]"
+                      dataType="wstr"
+                      length="100"
+                      name="TypeApparaat" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MedewerkerNaam]"
+                      dataType="wstr"
+                      length="100"
+                      name="MedewerkerNaam" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Artikel]"
+                      dataType="wstr"
+                      length="100"
+                      name="Artikel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Accessoires]"
+                      dataType="wstr"
+                      length="100"
+                      name="Accessoires" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Datum]"
+                      dataType="dbTimeStamp"
+                      name="Datum" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GarantieTot]"
+                      dataType="dbTimeStamp"
+                      name="GarantieTot" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IMEI]"
+                      dataType="wstr"
+                      length="100"
+                      name="IMEI" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Muis]"
+                      dataType="bool"
+                      name="Muis" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      dataType="wstr"
+                      length="100"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quadraamnummer]"
+                      dataType="wstr"
+                      length="100"
+                      name="Quadraamnummer" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Serienummer]"
+                      dataType="wstr"
+                      length="100"
+                      name="Serienummer" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Software]"
+                      dataType="wstr"
+                      length="100"
+                      name="Software" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Statuswaarde]"
+                      dataType="wstr"
+                      length="100"
+                      name="Statuswaarde" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Telefoonnummer]"
+                      dataType="wstr"
+                      length="100"
+                      name="Telefoonnummer" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Mailadres]"
+                      dataType="wstr"
+                      length="100"
+                      name="Mailadres" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gemaakt]"
+                      dataType="dbTimeStamp"
+                      name="Gemaakt" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gewijzigd]"
+                      dataType="dbTimeStamp"
+                      name="Gewijzigd" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Output]"
+              endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+              name="Output"
+              startId="Package\Data Flow Task\OData Source Bruikleenoverzicht.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{56CC0BDD-A852-472C-BB80-F38E68F6F2EC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5A926B7F-6004-4632-9615-10390755839B}"
+          SQLTask:SqlStatementSource="DECLARE @SQLString nvarchar(max) = N'TRUNCATE TABLE ' + ?&#xA;EXEC sp_executesql @SQLString" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::TargetTable"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="0" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{A154C354-AD88-4BB3-AFC3-3791B1977833}"
+      DTS:From="Package\Truncate Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

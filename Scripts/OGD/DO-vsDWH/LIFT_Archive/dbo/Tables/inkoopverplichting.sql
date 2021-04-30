@@ -1,0 +1,32 @@
+﻿CREATE TABLE [dbo].[inkoopverplichting] (
+    [unid]                UNIQUEIDENTIFIER                                   NOT NULL,
+    [dataanmk]            DATETIME                                           NULL,
+    [datwijzig]           DATETIME                                           NULL,
+    [uidaanmk]            UNIQUEIDENTIFIER                                   NULL,
+    [uidwijzig]           UNIQUEIDENTIFIER                                   NULL,
+    [status]              INT                                                NULL,
+    [archiefid]           UNIQUEIDENTIFIER                                   NULL,
+    [archiefdatum]        DATETIME                                           NULL,
+    [facturabel]          BIT                                                NULL,
+    [factuurdatum]        DATETIME                                           NULL,
+    [fprijs]              MONEY                                              NULL,
+    [faantal]             INT                                                NULL,
+    [amount]              MONEY                                              NULL,
+    [grootboekid]         UNIQUEIDENTIFIER                                   NULL,
+    [btwid]               UNIQUEIDENTIFIER                                   NULL,
+    [projectid]           UNIQUEIDENTIFIER                                   NULL,
+    [naam]                NVARCHAR (60)                                      NULL,
+    [zit_in_projectprijs] BIT                                                NULL,
+    [kostprijs]           MONEY                                              NULL,
+    [verkoopprijs]        MONEY                                              NULL,
+    [inknr]               NVARCHAR (9)                                       NULL,
+    [inkoopid]            UNIQUEIDENTIFIER                                   NULL,
+    [budget_lineid]       UNIQUEIDENTIFIER                                   NULL,
+    [AuditDWKey]      INT                                                NULL,
+    [ValidFrom]           DATETIME2 (0) GENERATED ALWAYS AS ROW START HIDDEN CONSTRAINT [DF_dboinkoopverplichtingSysStart] DEFAULT (CONVERT([datetime2](0),'0000-01-01 00:00:00')) NOT NULL,
+    [ValidTo]             DATETIME2 (0) GENERATED ALWAYS AS ROW END HIDDEN   CONSTRAINT [DF_dboinkoopverplichtingSysEnd] DEFAULT (CONVERT([datetime2](0),'9999-12-31 23:59:59')) NOT NULL,
+    CONSTRAINT [pk_dboinkoopverplichting ] PRIMARY KEY CLUSTERED ([unid] ASC) WITH (DATA_COMPRESSION = PAGE),
+    PERIOD FOR SYSTEM_TIME ([ValidFrom], [ValidTo])
+)
+WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE=[History].[inkoopverplichting], DATA_CONSISTENCY_CHECK=ON));
+

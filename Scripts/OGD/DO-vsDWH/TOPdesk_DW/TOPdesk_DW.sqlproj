@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>TOPdesk_DW</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{def08d4f-03e8-4dc5-92b2-c9562543015c}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>TOPdesk_DW</RootNamespace>
+    <AssemblyName>TOPdesk_DW</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <AnsiNulls>True</AnsiNulls>
+    <QuotedIdentifier>True</QuotedIdentifier>
+    <QueryStoreCaptureMode>All</QueryStoreCaptureMode>
+    <QueryStoreDesiredState>ReadWrite</QueryStoreDesiredState>
+    <QueryStoreFlushInterval>900</QueryStoreFlushInterval>
+    <QueryStoreStatsInterval>60</QueryStoreStatsInterval>
+    <QueryStoreMaxPlansPerQuery>200</QueryStoreMaxPlansPerQuery>
+    <QueryStoreStaleQueryThreshold>367</QueryStoreStaleQueryThreshold>
+    <QueryStoreMaxStorageSize>100</QueryStoreMaxStorageSize>
+    <DbScopedConfigLegacyCardinalityEstimation>Off</DbScopedConfigLegacyCardinalityEstimation>
+    <DbScopedConfigMaxDOP>0</DbScopedConfigMaxDOP>
+    <DbScopedConfigParameterSniffing>On</DbScopedConfigParameterSniffing>
+    <DbScopedConfigOptimizerHotfixes>Off</DbScopedConfigOptimizerHotfixes>
+    <DelayedDurability>DISABLED</DelayedDurability>
+    <AutoCreateStatisticsIncremental>False</AutoCreateStatisticsIncremental>
+    <MemoryOptimizedElevateToSnapshot>False</MemoryOptimizedElevateToSnapshot>
+    <Containment>None</Containment>
+    <IsNestedTriggersOn>True</IsNestedTriggersOn>
+    <IsTransformNoiseWordsOn>False</IsTransformNoiseWordsOn>
+    <TwoDigitYearCutoff>2049</TwoDigitYearCutoff>
+    <NonTransactedFileStreamAccess>OFF</NonTransactedFileStreamAccess>
+    <TargetRecoveryTimePeriod>0</TargetRecoveryTimePeriod>
+    <TargetRecoveryTimeUnit>SECONDS</TargetRecoveryTimeUnit>
+    <IsChangeTrackingOn>False</IsChangeTrackingOn>
+    <IsChangeTrackingAutoCleanupOn>True</IsChangeTrackingAutoCleanupOn>
+    <ChangeTrackingRetentionPeriod>2</ChangeTrackingRetentionPeriod>
+    <ChangeTrackingRetentionUnit>Days</ChangeTrackingRetentionUnit>
+    <IsEncryptionOn>False</IsEncryptionOn>
+    <IsBrokerPriorityHonored>False</IsBrokerPriorityHonored>
+    <Trustworthy>False</Trustworthy>
+    <AutoUpdateStatisticsAsynchronously>False</AutoUpdateStatisticsAsynchronously>
+    <PageVerify>CHECKSUM</PageVerify>
+    <ServiceBrokerOption>DisableBroker</ServiceBrokerOption>
+    <DateCorrelationOptimizationOn>False</DateCorrelationOptimizationOn>
+    <Parameterization>SIMPLE</Parameterization>
+    <AllowSnapshotIsolation>False</AllowSnapshotIsolation>
+    <ReadCommittedSnapshot>True</ReadCommittedSnapshot>
+    <VardecimalStorageFormatOn>True</VardecimalStorageFormatOn>
+    <SupplementalLoggingOn>False</SupplementalLoggingOn>
+    <CompatibilityMode>130</CompatibilityMode>
+    <AnsiNullDefault>False</AnsiNullDefault>
+    <AnsiPadding>False</AnsiPadding>
+    <AnsiWarnings>False</AnsiWarnings>
+    <ArithAbort>False</ArithAbort>
+    <ConcatNullYieldsNull>False</ConcatNullYieldsNull>
+    <NumericRoundAbort>False</NumericRoundAbort>
+    <RecursiveTriggersEnabled>False</RecursiveTriggersEnabled>
+    <DatabaseChaining>False</DatabaseChaining>
+    <DatabaseState>ONLINE</DatabaseState>
+    <CloseCursorOnCommitEnabled>False</CloseCursorOnCommitEnabled>
+    <DefaultCursor>GLOBAL</DefaultCursor>
+    <AutoClose>False</AutoClose>
+    <AutoCreateStatistics>True</AutoCreateStatistics>
+    <AutoShrink>False</AutoShrink>
+    <AutoUpdateStatistics>True</AutoUpdateStatistics>
+    <TornPageDetection>False</TornPageDetection>
+    <DatabaseAccess>MULTI_USER</DatabaseAccess>
+    <Recovery>SIMPLE</Recovery>
+    <EnableFullTextSearch>True</EnableFullTextSearch>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <CreateProjectFromDatabaseCompleted>True</CreateProjectFromDatabaseCompleted>
+    <GenerateCreateScript>True</GenerateCreateScript>
+    <ValidateCasingOnIdentifiers>True</ValidateCasingOnIdentifiers>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Dim\" />
+    <Folder Include="Dim\Tables\" />
+    <Folder Include="Fact\" />
+    <Folder Include="Fact\Tables\" />
+    <Folder Include="Fact\Views\" />
+    <Folder Include="Security\" />
+    <Folder Include="Dim\Views" />
+    <Folder Include="dbo" />
+    <Folder Include="dbo\Functions" />
+    <Folder Include="_reportserver" />
+    <Folder Include="_reportserver\Stored Procedures" />
+    <Folder Include="_reportserver\Views" />
+    <Folder Include="_reportserver\Functions" />
+    <Folder Include="log" />
+    <Folder Include="log\Tables" />
+    <Folder Include="syn" />
+    <Folder Include="Security\Schemas" />
+    <Folder Include="Security\Tables" />
+    <Folder Include="Security\Functions" />
+    <Folder Include="Security\Views" />
+    <Folder Include="Security\Stored Procedures" />
+    <Folder Include="syn\Synonyms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Dim\Tables\Customer.sql" />
+    <Build Include="Dim\Tables\Caller.sql" />
+    <Build Include="Dim\Tables\CallResponseSLA.sql" />
+    <Build Include="Dim\Tables\OperatorGroup.sql" />
+    <Build Include="Dim\Tables\Object.sql" />
+    <Build Include="Dim\Tables\ColourSchema.sql" />
+    <Build Include="Dim\Tables\Languages.sql" />
+    <Build Include="Dim\Tables\SLA.sql" />
+    <Build Include="Dim\Tables\Users.sql" />
+    <Build Include="Dim\Tables\ReportInfo.sql" />
+    <Build Include="Dim\Tables\ReportLabels.sql" />
+    <Build Include="Dim\Tables\ReportBins.sql" />
+    <Build Include="Fact\Tables\SupportWindowPerHalfHour.sql" />
+    <Build Include="Fact\Tables\WorkforceResourcesPerDay.sql" />
+    <Build Include="Fact\Tables\Telefoniestoringen.sql" />
+    <Build Include="Fact\Tables\SupportPerHalfHour.sql" />
+    <Build Include="Dim\Tables\Date.sql" />
+    <Build Include="Fact\Tables\Change.sql" />
+    <Build Include="Fact\Tables\Incident.sql" />
+    <Build Include="Dim\Tables\Time.sql" />
+    <Build Include="Dim\Views\vwDateTimeHalfHours.sql" />
+    <Build Include="Fact\Tables\Problem.sql" />
+    <Build Include="Fact\Tables\ChangeActivity.sql" />
+    <Build Include="Fact\Tables\Call.sql" />
+    <Build Include="dbo\Functions\ReportStartDate.sql" />
+    <Build Include="dbo\Functions\ReportEndDate.sql" />
+    <Build Include="dbo\Functions\TimeSpan.sql" />
+    <Build Include="Fact\Tables\ProbleemVermoeden.sql" />
+    <Build Include="Fact\Tables\ProcesFeedback.sql" />
+    <Build Include="dbo\Functions\DateDiffDays.sql" />
+    <Build Include="Dim\Tables\IncidentTypeSTD.sql" />
+    <Build Include="Dim\Tables\PrioritySTD.sql" />
+    <Build Include="Dim\Tables\StatusSTD.sql" />
+    <Build Include="Dim\Views\vwTimeMin.sql" />
+    <Build Include="Dim\Views\vwDateTime.sql" />
+    <Build Include="_reportserver\Views\vwWorkforceResourcesPerDay.sql" />
+    <Build Include="_reportserver\Views\AgentName_Email.sql" />
+    <Build Include="_reportserver\Views\Dim.vwUser.sql" />
+    <Build Include="_reportserver\Views\vwDateTimeMovedtoMetadata.sql" />
+    <Build Include="_reportserver\Views\vwExtWinLookup.sql" />
+    <Build Include="_reportserver\Views\vwIncidentTypeSTD.sql" />
+    <Build Include="_reportserver\Views\vwPrioritySTD.sql" />
+    <Build Include="_reportserver\Views\vwSLA.sql" />
+    <Build Include="_reportserver\Views\vwStatusSTD.sql" />
+    <Build Include="_reportserver\Views\vwTelefoniestoringen.sql" />
+    <Build Include="_reportserver\Stored Procedures\ColourSchema.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_Aantal_per_Age_v01.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_Aantal_per_Halfuur_met_Tijdfilter_v01.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_Aantal_per_Interval_en_Cat_Subcategory_Top_v01.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_Aantal_per_Interval_en_Cat_Subcategory_v01.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_Aantal_per_Interval_en_EntryType_v02.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_Aantal_per_Interval_en_IncidentType_v02.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_Aantal_per_Interval_en_OperatorGroup_v01.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_Aantal_per_Interval_en_Priority_v01.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_Aantal_per_Interval_en_Subcategory_v01.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_Aantal_per_Interval_met_Tijdfilter_v01.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_Aantal_per_Interval_v03.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_Age_per_Interval_v02.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_Aging_Mailresponse_per_Incident_v01.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_Aging_per_Incident_v01.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_CurrentOpen_per_Incident_v01.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_en_Cha_Aantal_per_Interval_v01.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_FirstLineFix_per_Interval_Interfood_v01.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_FirstLineFix_per_Interval_v03.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_Objecten_en_SO_per_Interval_v01.sql" />
+    <Build Include="_reportserver\Stored Procedures\Inc_Oplossnelheid_per_Interval_v02.sql" />
+    <Build Include="_reportserver\Stored Procedures\ReportBins.sql" />
+    <Build Include="_reportserver\Stored Procedures\ReportInfo.sql" />
+    <Build Include="_reportserver\Stored Procedures\ReportLabels.sql" />
+    <Build Include="Dim\Tables\NiceReply.sql" />
+    <Build Include="_reportserver\Functions\tvf_FilteredIncidents.sql" />
+    <Build Include="_reportserver\Functions\fn_CSVToTable.sql" />
+    <Build Include="Dim\Views\vwDate.sql" />
+    <Build Include="log\Tables\LastLoad.sql" />
+    <Build Include="Fact\Views\vwExtChange.sql" />
+    <Build Include="Fact\Views\vwExtChangeActivity.sql" />
+    <Build Include="Fact\Views\vwChangeCountsPerDay.sql" />
+    <Build Include="Fact\Views\vwChangeActivityCountsPerDay.sql" />
+    <Build Include="Dim\Views\vwCustomer.sql" />
+    <Build Include="Security\Schemas\Dim.sql" />
+    <Build Include="Security\Schemas\Fact.sql" />
+    <Build Include="Security\Schemas\log.sql" />
+    <Build Include="Security\Schemas\syn.sql" />
+    <Build Include="Security\Tables\AzureGroupMapping.sql" />
+    <Build Include="Security\Tables\UserPrincipalName.sql" />
+    <Build Include="Security\Tables\AzureGroup.sql" />
+    <Build Include="Security\Tables\UserPrincipalNameMapping.sql" />
+    <Build Include="Security\Schemas\Security.sql" />
+    <Build Include="Security\Tables\UserPrincipalNameSuffix.sql" />
+    <Build Include="Security\Tables\UserPrincipalNameSuffixMapping.sql" />
+    <Build Include="Security\Functions\fn_rlsCustomerSecurityPredicate.sql" />
+    <Build Include="Security\Stored Procedures\GenerateGroupMapping.sql" />
+    <Build Include="Security\Views\ADtoOperatorGroupMappings.sql" />
+    <Build Include="Security\Stored Procedures\GenerateUserPrinciplanNameMapping.sql" />
+    <Build Include="Security\Stored Procedures\GenerateSuffixMapping.sql" />
+    <Build Include="Security\Views\cpToSuffix.sql">
+      <SuppressTSqlWarnings>71558</SuppressTSqlWarnings>
+    </Build>
+    <Build Include="syn\Synonyms\lift_dw_dim_customer.sql" />
+    <None Include="syn\Synonyms\dim_customer.sql" />
+    <None Include="syn\Synonyms\dim_operatorgroup.sql" />
+    <None Include="syn\Synonyms\fact_incident.sql" />
+    <Build Include="syn\Synonyms\lift_dw_dim_contactperson.sql" />
+    <Build Include="Fact\Tables\OperationalActivity.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TOPdesk_DW.publish.xml" />
+    <None Include="PRPL01-Prod.publish.xml" />
+    <None Include="PRPL01-Acc.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="LIFTDW">
+      <DefaultValue>DWHPROD01_LIFT_DW</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LIFT_DW\LIFT_DW.sqlproj">
+      <Name>LIFT_DW</Name>
+      <Project>{a2d8b14e-834b-4faf-93c6-0e29d1672fcc}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseSqlCmdVariable>LIFTDW</DatabaseSqlCmdVariable>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

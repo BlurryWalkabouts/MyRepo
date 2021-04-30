@@ -1,0 +1,27 @@
+﻿CREATE TABLE [Fact].[InvoiceDetail]
+(
+	[InvoiceDetailInvoiceKey]			INT					NULL,
+	[InvoiceDetailNumber]				NVARCHAR (20)		NOT NULL,	
+	[InvoiceDetailSourceId]				UNIQUEIDENTIFIER	NULL,
+	[InvoiceDetailProjectKey]			INT					NOT NULL,
+	[InvoiceDetailDateDocumentBooked]	DATE				NOT NULL,
+	[InvoiceDetailAmountExVAT]			DECIMAL(19, 2)		NOT NULL,	
+	[InvoiceDetailVAT]					DECIMAL(19, 2)		NOT NULL,	
+	[InvoiceDetailAmountIncVat]			DECIMAL(19, 2)		NOT NULL,	
+	[InvoiceDetailDateDocumentCreated]	DATE				NOT NULL,
+	[InvoiceDetailDatePeriodStarted]	DATE				NOT NULL,
+	[InvoiceDetailDatePeriodEnded]		DATE				NOT NULL,
+	[InvoiceDetailDueTermInDays]		INT					NOT NULL,
+	[InvoiceDetailCustomerKey]			INT					NOT NULL,
+	[InvoiceDetailLedgerKey]			INT					NOT NULL,
+	[InvoiceDetailType]					NVARCHAR (20)		NOT NULL,
+	[InvoiceDetailDocumentId]			UNIQUEIDENTIFIER	NULL,
+	CONSTRAINT [FK_InvoiceDetail_InvoiceKey]			FOREIGN KEY ([InvoiceDetailInvoiceKey])			REFERENCES [Dim].[Invoice]	([InvoiceKey]),
+	CONSTRAINT [FK_InvoiceDetail_ProjectKey]			FOREIGN KEY ([InvoiceDetailProjectKey])			REFERENCES [Dim].[Project]	([ProjectKey]),
+	CONSTRAINT [FK_InvoiceDetail_CustomerKey]			FOREIGN KEY ([InvoiceDetailCustomerKey])		REFERENCES [Dim].[Customer] ([CustomerKey]),
+	CONSTRAINT [FK_InvoiceDetail_LedgerKey]				FOREIGN KEY ([InvoiceDetailLedgerKey])			REFERENCES [Dim].[Ledger]	([LedgerKey]),
+	CONSTRAINT [FK_InvoiceDetail_DateDocumentBooked]	FOREIGN KEY ([InvoiceDetailDateDocumentBooked])	REFERENCES [Dim].[Date]		([Date]),
+	CONSTRAINT [FK_InvoiceDetail_DateDocumentCreated]   FOREIGN KEY ([InvoiceDetailDateDocumentCreated])REFERENCES [Dim].[Date]		([Date]),
+	CONSTRAINT [FK_InvoiceDetail_DatePeriodStarted]		FOREIGN KEY ([InvoiceDetailDatePeriodStarted])	REFERENCES [Dim].[Date]		([Date]),
+	CONSTRAINT [FK_InvoiceDetail_DatePeriodEnded]		FOREIGN KEY ([InvoiceDetailDatePeriodEnded])	REFERENCES [Dim].[Date]		([Date])
+)

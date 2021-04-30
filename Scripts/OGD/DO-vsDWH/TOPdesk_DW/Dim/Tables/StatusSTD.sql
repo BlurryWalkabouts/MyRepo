@@ -1,0 +1,6 @@
+﻿CREATE TABLE [Dim].[StatusSTD]
+(
+	[StatusSTDKey] INT            IDENTITY (1,1) NOT FOR REPLICATION,
+	[Name]         NVARCHAR (100) NULL,
+	CONSTRAINT [PK_StatusSTD] PRIMARY KEY CLUSTERED ([StatusSTDKey] ASC)
+)

@@ -1,0 +1,4 @@
+﻿CREATE TABLE [log].[LastLoad]
+(
+	[LoadDate] DATETIME2 (0) DEFAULT SYSDATETIME() NULL
+)

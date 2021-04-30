@@ -1,0 +1,13 @@
+﻿CREATE VIEW [monitoring].[StagingJobs]
+AS
+
+SELECT
+	AuditDWKey
+	, DWDateCreated
+FROM
+	[log].[Audit]
+WHERE 1=1
+	AND DAY(DWDateCreated) = DAY(CURRENT_TIMESTAMP)
+	AND MONTH(DWDateCreated) = MONTH(CURRENT_TIMESTAMP)
+	AND YEAR(DWDateCreated) = YEAR(CURRENT_TIMESTAMP)
+	AND AMDateImported IS NULL

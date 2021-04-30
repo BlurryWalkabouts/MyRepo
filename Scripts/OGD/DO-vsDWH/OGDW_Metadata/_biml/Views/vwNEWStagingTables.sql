@@ -1,0 +1,21 @@
+﻿CREATE VIEW [setup].[vwNEWStagingTables]
+AS
+
+WITH cte AS
+(
+SELECT TABLE_NAME = TD_SourceTableName
+FROM setup.DWColumnDefinition
+WHERE TD_DWSchema = 'TOPdesk' AND Import = 1
+UNION
+SELECT TABLE_NAME = TD_JoinForeignTable
+FROM setup.DWColumnDefinition
+WHERE TD_DWSchema = 'TOPdesk' AND Import = 1
+)
+
+SELECT
+	TableName = TABLE_NAME
+FROM
+	cte
+WHERE 1=1
+	AND TABLE_NAME IS NOT NULL
+	AND NOT EXISTS (SELECT TABLE_NAME FROM [$(OGDW_Staging)].INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'TOPdesk' AND TABLE_NAME = cte.TABLE_NAME)

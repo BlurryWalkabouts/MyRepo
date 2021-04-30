@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>OGDW_Archive</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{73837d4e-aa6c-4856-b9d2-273ecf2ca402}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>OGDW_Archive</RootNamespace>
+    <AssemblyName>OGDW_Archive</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <AnsiNulls>True</AnsiNulls>
+    <QuotedIdentifier>True</QuotedIdentifier>
+    <QueryStoreCaptureMode>All</QueryStoreCaptureMode>
+    <QueryStoreDesiredState>ReadWrite</QueryStoreDesiredState>
+    <QueryStoreFlushInterval>900</QueryStoreFlushInterval>
+    <QueryStoreStatsInterval>60</QueryStoreStatsInterval>
+    <QueryStoreMaxPlansPerQuery>200</QueryStoreMaxPlansPerQuery>
+    <QueryStoreStaleQueryThreshold>367</QueryStoreStaleQueryThreshold>
+    <QueryStoreMaxStorageSize>100</QueryStoreMaxStorageSize>
+    <DbScopedConfigLegacyCardinalityEstimation>Off</DbScopedConfigLegacyCardinalityEstimation>
+    <DbScopedConfigMaxDOP>0</DbScopedConfigMaxDOP>
+    <DbScopedConfigParameterSniffing>On</DbScopedConfigParameterSniffing>
+    <DbScopedConfigOptimizerHotfixes>Off</DbScopedConfigOptimizerHotfixes>
+    <DelayedDurability>DISABLED</DelayedDurability>
+    <AutoCreateStatisticsIncremental>False</AutoCreateStatisticsIncremental>
+    <MemoryOptimizedElevateToSnapshot>False</MemoryOptimizedElevateToSnapshot>
+    <Containment>None</Containment>
+    <IsNestedTriggersOn>True</IsNestedTriggersOn>
+    <IsTransformNoiseWordsOn>False</IsTransformNoiseWordsOn>
+    <TwoDigitYearCutoff>2049</TwoDigitYearCutoff>
+    <NonTransactedFileStreamAccess>OFF</NonTransactedFileStreamAccess>
+    <TargetRecoveryTimePeriod>0</TargetRecoveryTimePeriod>
+    <TargetRecoveryTimeUnit>SECONDS</TargetRecoveryTimeUnit>
+    <IsChangeTrackingOn>False</IsChangeTrackingOn>
+    <IsChangeTrackingAutoCleanupOn>True</IsChangeTrackingAutoCleanupOn>
+    <ChangeTrackingRetentionPeriod>2</ChangeTrackingRetentionPeriod>
+    <ChangeTrackingRetentionUnit>Days</ChangeTrackingRetentionUnit>
+    <IsEncryptionOn>False</IsEncryptionOn>
+    <IsBrokerPriorityHonored>False</IsBrokerPriorityHonored>
+    <Trustworthy>False</Trustworthy>
+    <AutoUpdateStatisticsAsynchronously>False</AutoUpdateStatisticsAsynchronously>
+    <PageVerify>CHECKSUM</PageVerify>
+    <ServiceBrokerOption>DisableBroker</ServiceBrokerOption>
+    <DateCorrelationOptimizationOn>False</DateCorrelationOptimizationOn>
+    <Parameterization>SIMPLE</Parameterization>
+    <AllowSnapshotIsolation>False</AllowSnapshotIsolation>
+    <ReadCommittedSnapshot>True</ReadCommittedSnapshot>
+    <VardecimalStorageFormatOn>True</VardecimalStorageFormatOn>
+    <SupplementalLoggingOn>False</SupplementalLoggingOn>
+    <CompatibilityMode>130</CompatibilityMode>
+    <AnsiNullDefault>False</AnsiNullDefault>
+    <AnsiPadding>False</AnsiPadding>
+    <AnsiWarnings>False</AnsiWarnings>
+    <ArithAbort>False</ArithAbort>
+    <ConcatNullYieldsNull>False</ConcatNullYieldsNull>
+    <NumericRoundAbort>False</NumericRoundAbort>
+    <RecursiveTriggersEnabled>False</RecursiveTriggersEnabled>
+    <DatabaseChaining>False</DatabaseChaining>
+    <DatabaseState>ONLINE</DatabaseState>
+    <CloseCursorOnCommitEnabled>False</CloseCursorOnCommitEnabled>
+    <DefaultCursor>GLOBAL</DefaultCursor>
+    <AutoClose>False</AutoClose>
+    <AutoCreateStatistics>True</AutoCreateStatistics>
+    <AutoShrink>False</AutoShrink>
+    <AutoUpdateStatistics>True</AutoUpdateStatistics>
+    <TornPageDetection>False</TornPageDetection>
+    <DatabaseAccess>MULTI_USER</DatabaseAccess>
+    <Recovery>SIMPLE</Recovery>
+    <EnableFullTextSearch>True</EnableFullTextSearch>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <CreateProjectFromDatabaseCompleted>True</CreateProjectFromDatabaseCompleted>
+    <GenerateCreateScript>True</GenerateCreateScript>
+    <ValidateCasingOnIdentifiers>True</ValidateCasingOnIdentifiers>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Local|AnyCPU' ">
+    <OutputPath>bin\Local\</OutputPath>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="history\" />
+    <Folder Include="history\Tables\" />
+    <Folder Include="TOPdesk\" />
+    <Folder Include="TOPdesk\Tables\" />
+    <Folder Include="FileImport" />
+    <Folder Include="FileImport\Tables" />
+    <Folder Include="TOPdesk\Views\" />
+    <Folder Include="Security\" />
+    <Folder Include="etl" />
+    <Folder Include="etl\Views" />
+    <Folder Include="etl\Functions" />
+    <Folder Include="monitoring" />
+    <Folder Include="monitoring\Tables" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="history\Tables\doorlooptijd.sql" />
+    <Build Include="history\Tables\wijziging_impact.sql" />
+    <Build Include="TOPdesk\Tables\doorlooptijd.sql" />
+    <Build Include="history\Tables\change_priority.sql" />
+    <Build Include="TOPdesk\Tables\wijziging_impact.sql" />
+    <Build Include="TOPdesk\Tables\change_priority.sql" />
+    <Build Include="history\Tables\gebruiker.sql" />
+    <Build Include="TOPdesk\Tables\gebruiker.sql" />
+    <Build Include="history\Tables\wijzigingstatus.sql" />
+    <Build Include="history\Tables\classificatie.sql" />
+    <Build Include="TOPdesk\Tables\wijzigingstatus.sql" />
+    <Build Include="TOPdesk\Tables\classificatie.sql" />
+    <Build Include="history\Tables\object.sql" />
+    <Build Include="TOPdesk\Tables\object.sql" />
+    <Build Include="history\Tables\leverancier.sql" />
+    <Build Include="TOPdesk\Tables\leverancier.sql" />
+    <Build Include="history\Tables\oplossingen.sql" />
+    <Build Include="TOPdesk\Tables\oplossingen.sql" />
+    <Build Include="history\Tables\Changes.sql" />
+    <Build Include="history\Tables\licentiesoort.sql" />
+    <Build Include="fileimport\Tables\Changes.sql" />
+    <Build Include="TOPdesk\Tables\licentiesoort.sql" />
+    <Build Include="history\Tables\persoon.sql" />
+    <Build Include="TOPdesk\Tables\persoon.sql" />
+    <Build Include="history\Tables\change_template.sql" />
+    <Build Include="TOPdesk\Tables\change_template.sql" />
+    <Build Include="history\Tables\object_backup20160126.sql" />
+    <Build Include="TOPdesk\Tables\object_backup20160126.sql" />
+    <Build Include="history\Tables\change_act_templ_dependency.sql" />
+    <Build Include="TOPdesk\Tables\change_act_templ_dependency.sql" />
+    <Build Include="history\Tables\object_zonder_dubbele_regels.sql" />
+    <Build Include="TOPdesk\Tables\object_zonder_dubbele_regels.sql" />
+    <Build Include="history\Tables\vestiging.sql" />
+    <Build Include="TOPdesk\Tables\vestiging.sql" />
+    <Build Include="history\Tables\objectstatus.sql" />
+    <Build Include="TOPdesk\Tables\objectstatus.sql" />
+    <Build Include="history\Tables\afdeling.sql" />
+    <Build Include="TOPdesk\Tables\afdeling.sql" />
+    <Build Include="history\Tables\afhandelingstatus.sql" />
+    <Build Include="history\Tables\persoongroep.sql" />
+    <Build Include="TOPdesk\Tables\afhandelingstatus.sql" />
+    <Build Include="TOPdesk\Tables\persoongroep.sql" />
+    <Build Include="history\Tables\Incidents.sql" />
+    <Build Include="fileimport\Tables\Incidents.sql" />
+    <Build Include="history\Tables\archiefreden.sql" />
+    <Build Include="history\Tables\priority.sql" />
+    <Build Include="TOPdesk\Tables\archiefreden.sql" />
+    <Build Include="TOPdesk\Tables\priority.sql" />
+    <Build Include="history\Tables\attentie.sql" />
+    <Build Include="TOPdesk\Tables\attentie.sql" />
+    <Build Include="history\Tables\budgethouder.sql" />
+    <Build Include="history\Tables\probleem_categorie.sql" />
+    <Build Include="TOPdesk\Tables\budgethouder.sql" />
+    <Build Include="TOPdesk\Tables\probleem_categorie.sql" />
+    <Build Include="history\Tables\probleem_doorlooptijd.sql" />
+    <Build Include="TOPdesk\Tables\probleem_doorlooptijd.sql" />
+    <Build Include="history\Tables\incident__memogeschiedenis.sql" />
+    <Build Include="TOPdesk\Tables\incident__memogeschiedenis.sql" />
+    <Build Include="history\Tables\probleem_impact.sql" />
+    <Build Include="TOPdesk\Tables\probleem_impact.sql" />
+    <Build Include="history\Tables\actiedoorlink.sql" />
+    <Build Include="TOPdesk\Tables\actiedoorlink.sql" />
+    <Build Include="history\Tables\probleem_oorzaak.sql" />
+    <Build Include="history\Tables\version.sql" />
+    <Build Include="TOPdesk\Tables\probleem_oorzaak.sql" />
+    <Build Include="history\Tables\change_activitytemplate.sql" />
+    <Build Include="TOPdesk\Tables\version.sql" />
+    <Build Include="history\Tables\locatie.sql" />
+    <Build Include="TOPdesk\Tables\change_activitytemplate.sql" />
+    <Build Include="TOPdesk\Tables\locatie.sql" />
+    <Build Include="history\Tables\probleem_status.sql" />
+    <Build Include="TOPdesk\Tables\probleem_status.sql" />
+    <Build Include="history\Tables\change.sql" />
+    <Build Include="history\Tables\mutatie_incident.sql" />
+    <Build Include="TOPdesk\Tables\change.sql" />
+    <Build Include="TOPdesk\Tables\mutatie_incident.sql" />
+    <Build Include="history\Tables\problem_priority.sql" />
+    <Build Include="TOPdesk\Tables\problem_priority.sql" />
+    <Build Include="history\Tables\changeactivity.sql" />
+    <Build Include="TOPdesk\Tables\changeactivity.sql" />
+    <Build Include="history\Tables\problem_urgency.sql" />
+    <Build Include="TOPdesk\Tables\problem_urgency.sql" />
+    <Build Include="history\Tables\changeactivity_status.sql" />
+    <Build Include="history\Tables\servicewindow.sql" />
+    <Build Include="TOPdesk\Tables\changeactivity_status.sql" />
+    <Build Include="history\Tables\incident.sql" />
+    <Build Include="TOPdesk\Tables\servicewindow.sql" />
+    <Build Include="TOPdesk\Tables\incident.sql" />
+    <Build Include="history\Tables\soortbinnenkomst.sql" />
+    <Build Include="TOPdesk\Tables\soortbinnenkomst.sql" />
+    <Build Include="history\Tables\configuratie.sql" />
+    <Build Include="TOPdesk\Tables\configuratie.sql" />
+    <Build Include="history\Tables\vrijeopzoekvelden.sql" />
+    <Build Include="TOPdesk\Tables\vrijeopzoekvelden.sql" />
+    <Build Include="history\Tables\dnocontract.sql" />
+    <Build Include="TOPdesk\Tables\dnocontract.sql" />
+    <Build Include="history\Tables\dnolink.sql" />
+    <Build Include="TOPdesk\Tables\dnolink.sql" />
+    <Build Include="history\Tables\actiedoor.sql" />
+    <Build Include="TOPdesk\Tables\actiedoor.sql" />
+    <Build Include="history\Tables\dnoniveau.sql" />
+    <Build Include="history\Tables\wbaanvraagtype.sql" />
+    <Build Include="TOPdesk\Tables\dnoniveau.sql" />
+    <Build Include="history\Tables\probleem.sql" />
+    <Build Include="TOPdesk\Tables\wbaanvraagtype.sql" />
+    <Build Include="TOPdesk\Tables\probleem.sql" />
+    <Build Include="TOPdesk\Views\vwChange.sql" />
+    <Build Include="TOPdesk\Views\vwIncident.sql" />
+    <Build Include="Security\FileImport.sql" />
+    <Build Include="Security\history.sql" />
+    <Build Include="Security\TOPdesk.sql" />
+    <Build Include="TOPdesk\Tables\soortmelding.sql" />
+    <Build Include="TOPdesk\Tables\probleemincidentlink.sql" />
+    <Build Include="TOPdesk\Tables\obj_problem_link.sql" />
+    <Build Include="TOPdesk\Tables\impact.sql" />
+    <Build Include="TOPdesk\Tables\change_problem_link.sql" />
+    <Build Include="TOPdesk\Tables\change_problem_causedby_link.sql" />
+    <Build Include="history\Tables\soortmelding.sql" />
+    <Build Include="history\Tables\probleemincidentlink.sql" />
+    <Build Include="history\Tables\obj_problem_link.sql" />
+    <Build Include="history\Tables\impact.sql" />
+    <Build Include="history\Tables\change_problem_link.sql" />
+    <Build Include="history\Tables\change_problem_causedby_link.sql" />
+    <Build Include="TOPdesk\Tables\settings.sql" />
+    <Build Include="history\Tables\settings.sql" />
+    <Build Include="Security\etl.sql" />
+    <Build Include="etl\Functions\Point_Incident.sql" />
+    <Build Include="etl\Functions\Point_Change.sql" />
+    <Build Include="etl\Functions\Point_Caller.sql" />
+    <Build Include="etl\Functions\Point_ChangeActivity.sql" />
+    <Build Include="etl\Functions\Point_Problem.sql" />
+    <Build Include="TOPdesk\Tables\changeactivity___dependency.sql" />
+    <Build Include="history\Tables\changeactivity__dependency.sql" />
+    <Build Include="TOPdesk\Tables\herhaling.sql" />
+    <Build Include="TOPdesk\Tables\om_activiteit.sql" />
+    <Build Include="TOPdesk\Tables\om_reeks.sql" />
+    <Build Include="TOPdesk\Tables\om_schema.sql" />
+    <Build Include="TOPdesk\Tables\planning.sql" />
+    <Build Include="history\Tables\herhaling.sql" />
+    <Build Include="history\Tables\om_activiteit.sql" />
+    <Build Include="history\Tables\om_reeks.sql" />
+    <Build Include="history\Tables\om_schema.sql" />
+    <Build Include="history\Tables\planning.sql" />
+    <Build Include="monitoring\Tables\CircularReferences.sql" />
+    <Build Include="Security\monitoring.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OGDW_Archive.publish.xml" />
+    <None Include="PRPL01-Prod.publish.xml" />
+    <None Include="PRPL01-Acc.publish.xml" />
+  </ItemGroup>
+</Project>

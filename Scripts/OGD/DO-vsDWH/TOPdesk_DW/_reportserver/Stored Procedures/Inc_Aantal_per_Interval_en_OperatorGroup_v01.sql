@@ -1,0 +1,241 @@
+﻿
+CREATE PROCEDURE [dbo].[Inc_Aantal_per_Interval_en_OperatorGroup_v01] 
+@Customer AS nvarchar(max)
+, @SourceDatabase AS nvarchar(max)
+, @IncSlaAchievedFlag AS nvarchar(max)
+, @IncIsMajor AS nvarchar(max)
+, @IncHandledByOgdFlag AS nvarchar(max)
+, @IncCategory AS nvarchar(max)
+, @IncEntryType AS nvarchar(max)
+, @IncEntryTypeSTD AS nvarchar(max)
+, @IncImpact AS nvarchar(max)
+, @IncLine AS nvarchar(max)
+, @ObjID AS nvarchar(max)
+, @IncPriority AS nvarchar(max)
+, @IncPrioritySTD AS nvarchar(max)
+, @IncSLA AS nvarchar(max)
+, @CustomerSLA AS nvarchar(max)
+, @IncStandardSolution AS nvarchar(max)
+, @IncStatus AS nvarchar(max)
+, @IncStatusSTD AS nvarchar(max)
+, @IncSubcategory AS nvarchar(max)
+, @IncSupplier AS nvarchar(max)
+, @IncType AS nvarchar(max)
+, @IncTypeSTD AS nvarchar(max)
+, @CustomerGroup AS nvarchar(max)
+, @EndUserService AS nvarchar(max)
+, @SysAdminService AS nvarchar(max)
+, @OperatorGroup AS nvarchar(max)
+, @OperatorGroupSTD AS nvarchar(max)
+, @EntryOperatorGroup AS nvarchar(max)
+, @EntryOperatorGroupSTD AS nvarchar(max)
+, @CallerBranch AS nvarchar(max)
+, @CallerCity AS nvarchar(max)
+, @CallerDepartment AS nvarchar(max)
+
+, @ReportDate AS date
+, @ReportInterval AS nvarchar(50)
+, @ReportPeriod AS int
+AS
+
+BEGIN
+
+/* Query om het aantal openstaande meldingen te bepalen per behandelaarsgroep over de gekozen periode 
+
+	Geschreven door Mark Krijtenberg */
+
+/* Variabelen */
+DECLARE @ReportStartDate AS datetime =	dbo.ReportStartDate(@ReportDate,@ReportPeriod,@ReportInterval)
+DECLARE @ReportEndDate AS datetime = DATEADD(MI,-1,DATEADD(day,1,CAST(@ReportDate AS smalldatetime)))
+-- Dit zorgt er voor dat de periode incl de gekozen rapport datum wordt ipv tot het begin van die dag. De periode loopt dus t/m 23:59 van de gekozen dag
+
+/* Gefilterde meldingen */
+SELECT
+	Incident_Id
+	, OperatorGroup
+	, OperatorGroupSTD
+	, IncidentDate
+	, CreationDate
+	, CompletionDate
+	, ClosureDate
+	, Category
+INTO
+	#FilteredIncidents
+FROM
+	dbo.tvf_FilteredIncidents (@Customer,@SourceDatabase,@IncIsMajor,@IncSlaAchievedFlag,@IncHandledByOgdFlag,@IncCategory,@IncEntryType,@IncEntryTypeSTD,@IncImpact,@IncLine,@ObjID,@IncPriority,@IncPrioritySTD,@IncSLA,@IncStandardSolution,@IncStatus,@IncStatusSTD,@IncSubcategory,@IncSupplier,@IncType,@IncTypeSTD,@CustomerGroup,@EndUserService,@SysAdminService,@CustomerSLA,@CallerBranch,@CallerCity,@CallerDepartment,@OperatorGroup,@OperatorGroupSTD,@EntryOperatorGroup,@EntryOperatorGroupSTD,@ReportDate,@ReportInterval,@ReportPeriod)
+WHERE 1=1
+--	AND (OperatorGroupSTD IN(@OperatorGroup) OR 'Servicedesk' IN(@OperatorGroup)) -- !!!NAAR DEZE CONDITIE MOET NOG GEKEKEN WORDEN!!!
+	AND (ClosureDate >= @ReportStartDate OR ClosureDate IS NULL)
+	AND IncidentDate <= @ReportEndDate
+
+--SELECT * FROM #FilteredIncidents
+
+/* Alle mogelijke behandelaarsgroepen */
+SELECT DISTINCT
+	OperatorGroup 
+INTO
+	#OperatorGroup
+FROM
+	#FilteredIncidents
+/*
+	Dim.OperatorGroup O
+	LEFT OUTER JOIN Fact.Incident I ON O.OperatorGroupKey = I.OperatorGroupKey 
+	LEFT OUTER JOIN Dim.Customer C ON C.CustomerKey = I.CustomerKey 
+WHERE 1=1
+	AND (C.CustomerGroup IN(@CustomerGroup) OR 'All' IN(@CustomerGroup))
+	AND I.CustomerKey IN(@Customer)
+	AND (I.Category IN(@IncCategory) OR 'All' IN(@IncCategory))
+	AND (O.OperatorGroupSTD IN(@OperatorGroupSTD) OR 'All' IN(@OperatorGroupSTD))
+*/
+--SELECT * FROM #OperatorGroup ORDER BY OperatorGroup
+
+/* Aantal openstaande meldingen */
+;WITH IncOpen AS
+(
+SELECT
+	D.[Date]
+	, OperatorGroup
+	, AantalOpen = COUNT(I.Incident_Id)
+FROM
+	Dim.[Date] D
+	LEFT OUTER JOIN #FilteredIncidents I ON I.IncidentDate <= D.[Date] AND (I.CompletionDate > D.[Date] OR I.CompletionDate IS NULL)
+WHERE 1=1
+	AND D.[Date] BETWEEN @ReportStartDate AND @ReportEndDate
+GROUP BY
+	D.[Date]
+	, OperatorGroup
+)
+ 
+--SELECT * FROM IncCreated ORDER BY IncidentDate
+
+/* Alles samenvoegen tot een tabel, van het aantal openstaande meldingen wordt het aantal gereedgemelde meldingen afgetrokken */
+, CountsPerDay AS
+(
+SELECT
+	D.CalendarYear
+	, WeekYear
+	, D.DWMonthNumber
+	, D.DWWeekNumber
+	, D.DateKey
+	, D.MonthOfYear AS [Month]
+	, D.Weeknumber AS [Week]
+	, D.[Date]
+	, D.NL_MonthShort
+
+	, OperatorGroup = LOWER(OG.OperatorGroup)
+
+	, [Open] = ISNULL(AantalOpen,0)
+	, OpenEndofInterval = FIRST_VALUE(AantalOpen) OVER (PARTITION BY CASE @ReportInterval
+													WHEN 'Month' THEN D.DWMonthNumber
+													WHEN 'Week' THEN D.DWWeekNumber
+													WHEN 'Day' THEN D.DateKey
+												END
+												, OG.OperatorGroup
+												ORDER BY D.[Date] DESC)
+FROM
+	Dim.[Date] D
+	CROSS JOIN #OperatorGroup OG
+	LEFT OUTER JOIN IncOpen O ON D.[Date] = O.[Date] AND O.OperatorGroup = OG.OperatorGroup
+WHERE 1=1
+	AND D.[Date] BETWEEN @ReportStartDate AND @ReportEndDate
+)
+
+--SELECT * FROM CountsPerDay ORDER BY Date, OperatorGroup
+
+, EndResult AS
+(
+SELECT
+	DWInterval = CASE @ReportInterval
+			WHEN 'Month' THEN DWMonthNumber
+			WHEN 'Week' THEN DWWeekNumber
+			WHEN 'Day' THEN DateKey
+		END
+	, Jaar = CASE @ReportInterval
+			WHEN 'Week' THEN WeekYear
+			ELSE CalendarYear
+		END
+	, Interval = CASE @ReportInterval
+			WHEN 'Month' THEN CAST([Month] AS nvarchar(12))
+			WHEN 'Week' THEN CAST([Week] AS nvarchar(12))
+			WHEN 'Day' THEN CONVERT(nvarchar(12),[Date],5)
+		END
+	, IntervalString = CASE @ReportInterval
+			WHEN 'Month' THEN NL_MonthShort
+			WHEN 'Week' THEN 'Week ' + CAST([Week] AS nvarchar(12))
+			WHEN 'Day' THEN CONVERT(nvarchar(12),[Date],5)
+		END
+	, OperatorGroup
+	, [Open] = MAX(ISNULL(OpenEndofInterval,0))
+FROM
+	CountsPerDay
+GROUP BY
+	CASE @ReportInterval
+			WHEN 'Week' THEN WeekYear
+			ELSE CalendarYear
+		END
+	, CASE @ReportInterval
+			WHEN 'Month' THEN DWMonthNumber
+			WHEN 'Week' THEN DWWeekNumber
+			WHEN 'Day' THEN DateKey
+		END
+	, CASE @ReportInterval
+			WHEN 'Month' THEN CAST([Month] AS nvarchar(12))
+			WHEN 'Week' THEN CAST([Week] AS nvarchar(12))
+			WHEN 'Day' THEN CONVERT(nvarchar(12),[Date],5)
+		END
+	, CASE @ReportInterval
+			WHEN 'Month' THEN NL_MonthShort
+			WHEN 'Week' THEN 'Week ' + CAST([Week] AS nvarchar(12))
+			WHEN 'Day' THEN CONVERT(nvarchar(12),[Date],5)
+		END
+	, OperatorGroup
+)
+
+SELECT
+	*
+FROM
+	EndResult
+ORDER BY
+	DWInterval
+
+END
+
+/*
+EXEC [dbo].[Inc_Aantal_per_Interval_en_OperatorGroup_v01]
+@Customer = '44'
+, @SourceDatabase = '-99'
+, @IncSlaAchievedFlag = 1
+, @IncIsMajor = 1
+, @IncHandledByOgdFlag = 1
+, @IncCategory = 'All'
+, @IncEntryType = 'All'
+, @IncEntryTypeSTD = 'All'
+, @IncImpact = 'All'
+, @IncLine = 'All'
+, @ObjID = 'All'
+, @IncPriority = 'All'
+, @IncPrioritySTD = 'All'
+, @IncSLA = 'All'
+, @CustomerSLA = 'All'
+, @IncStandardSolution = 'All'
+, @IncStatus = 'All'
+, @IncStatusSTD = 'All'
+, @IncSubcategory = 'All'
+, @IncSupplier = 'All'
+, @IncType = 'All'
+, @IncTypeSTD = 'All'
+, @CustomerGroup = 'All'
+, @EndUserService = 'All'
+, @SysAdminService = 'All'
+, @OperatorGroup = 'All'
+, @OperatorGroupSTD = 'All'
+, @EntryOperatorGroup = 'All'
+, @EntryOperatorGroupSTD = 'All'
+, @CallerBranch = 'All'
+, @CallerCity = 'All'
+, @CallerDepartment = 'All'
+
+, @ReportDate = '20150731'
+, @ReportInterval = 'month'
+, @ReportPeriod = 13
+*/

@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [Capisci]
+	AUTHORIZATION [dbo]

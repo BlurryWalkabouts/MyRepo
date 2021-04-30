@@ -1,0 +1,250 @@
+{
+  "name": "import-from-source",
+  "properties": {
+    "activities": [
+      {
+        "name": "get run id",
+        "type": "Lookup",
+        "policy": {
+          "timeout": "0:01:00",
+          "retry": 3,
+          "retryIntervalInSeconds": 120,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "SqlSource",
+            "sqlReaderStoredProcedureName": "[log].[LogImportStart]"
+          },
+          "dataset": {
+            "referenceName": "ArchiveStagingTable",
+            "type": "DatasetReference",
+            "parameters": {
+              "TableName": {
+                "value": "@pipeline().Pipeline",
+                "type": "Expression"
+              }
+            }
+          }
+        }
+      },
+      {
+        "name": "log run completion",
+        "type": "SqlServerStoredProcedure",
+        "dependsOn": [
+          {
+            "activity": "iterate tables",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0:01:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "storedProcedureName": "[log].[LogImportFinish]",
+          "storedProcedureParameters": {
+            "AuditDWKey": {
+              "value": {
+                "value": "@activity('get run id').output.firstRow.AuditDWKey",
+                "type": "Expression"
+              },
+              "type": "Int32"
+            }
+          }
+        },
+        "linkedServiceName": {
+          "referenceName": "ArchiveDatabase",
+          "type": "LinkedServiceReference"
+        }
+      },
+      {
+        "name": "get source tables",
+        "type": "Lookup",
+        "policy": {
+          "timeout": "0:05:00",
+          "retry": 3,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "SqlSource",
+            "sqlReaderQuery": "SELECT name FROM sys.views WHERE schema_id = (SELECT schema_id FROM sys.schemas WHERE name='dwh');"
+          },
+          "dataset": {
+            "referenceName": "SourceDataTable",
+            "type": "DatasetReference"
+          },
+          "firstRowOnly": false
+        }
+      },
+      {
+        "name": "iterate tables",
+        "type": "ForEach",
+        "dependsOn": [
+          {
+            "activity": "get source tables",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "get run id",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "typeProperties": {
+          "items": {
+            "value": "@activity('get source tables').output.value",
+            "type": "Expression"
+          },
+          "isSequential": false,
+          "activities": [
+            {
+              "name": "copy source table to staging",
+              "type": "Copy",
+              "policy": {
+                "timeout": "4:00:00",
+                "retry": 1,
+                "retryIntervalInSeconds": 300,
+                "secureOutput": false,
+                "secureInput": false
+              },
+              "typeProperties": {
+                "source": {
+                  "type": "SqlSource",
+                  "sqlReaderQuery": {
+                    "value": "SELECT *, @{activity('get run id').output.firstRow.AuditDWKey} AS [AuditDWKey] FROM [dwh].[@{item().name}];",
+                    "type": "Expression"
+                  }
+                },
+                "sink": {
+                  "type": "SqlSink",
+                  "writeBatchSize": 10000,
+                  "preCopyScript": {
+                    "value": "DELETE FROM [staging].[@{item().name}];",
+                    "type": "Expression"
+                  }
+                },
+                "enableStaging": false,
+                "dataIntegrationUnits": 0
+              },
+              "inputs": [
+                {
+                  "referenceName": "SourceDataTable",
+                  "type": "DatasetReference"
+                }
+              ],
+              "outputs": [
+                {
+                  "referenceName": "ArchiveStagingTable",
+                  "type": "DatasetReference",
+                  "parameters": {
+                    "TableName": {
+                      "value": "@item().name",
+                      "type": "Expression"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "name": "load table to archive",
+              "type": "SqlServerStoredProcedure",
+              "dependsOn": [
+                {
+                  "activity": "copy source table to staging",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ],
+              "policy": {
+                "timeout": "4:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureOutput": false,
+                "secureInput": false
+              },
+              "typeProperties": {
+                "storedProcedureName": "[Load].[LoadLiftTemporalTable]",
+                "storedProcedureParameters": {
+                  "archive_schema": {
+                    "value": "dbo",
+                    "type": "String"
+                  },
+                  "AuditDWKey": {
+                    "value": {
+                      "value": "@activity('get run id').output.firstRow.AuditDWKey",
+                      "type": "Expression"
+                    },
+                    "type": "Int32"
+                  },
+                  "debug": {
+                    "value": "false",
+                    "type": "Boolean"
+                  },
+                  "pkfield1": {
+                    "value": "unid",
+                    "type": "String"
+                  },
+                  "staging_schema": {
+                    "value": "staging",
+                    "type": "String"
+                  },
+                  "table": {
+                    "value": {
+                      "value": "@item().name",
+                      "type": "Expression"
+                    },
+                    "type": "String"
+                  }
+                }
+              },
+              "linkedServiceName": {
+                "referenceName": "ArchiveDatabase",
+                "type": "LinkedServiceReference"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "load datamart",
+        "type": "SqlServerStoredProcedure",
+        "dependsOn": [
+          {
+            "activity": "iterate tables",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "08:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "storedProcedureName": "[Load].[LoadLiftDW]"
+        },
+        "linkedServiceName": {
+          "referenceName": "DatamartDatabase",
+          "type": "LinkedServiceReference"
+        }
+      }
+    ]
+  }
+}

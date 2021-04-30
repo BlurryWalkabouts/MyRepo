@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>03 - Datamart</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{a2d8b14e-834b-4faf-93c6-0e29d1672fcc}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Datamart</RootNamespace>
+    <AssemblyName>Datamart</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <AnsiNulls>True</AnsiNulls>
+    <QuotedIdentifier>True</QuotedIdentifier>
+    <QueryStoreCaptureMode>All</QueryStoreCaptureMode>
+    <QueryStoreDesiredState>ReadWrite</QueryStoreDesiredState>
+    <QueryStoreFlushInterval>900</QueryStoreFlushInterval>
+    <QueryStoreStatsInterval>60</QueryStoreStatsInterval>
+    <QueryStoreMaxPlansPerQuery>200</QueryStoreMaxPlansPerQuery>
+    <QueryStoreStaleQueryThreshold>367</QueryStoreStaleQueryThreshold>
+    <QueryStoreMaxStorageSize>100</QueryStoreMaxStorageSize>
+    <DbScopedConfigLegacyCardinalityEstimation>Off</DbScopedConfigLegacyCardinalityEstimation>
+    <DbScopedConfigMaxDOP>0</DbScopedConfigMaxDOP>
+    <DbScopedConfigParameterSniffing>On</DbScopedConfigParameterSniffing>
+    <DbScopedConfigOptimizerHotfixes>Off</DbScopedConfigOptimizerHotfixes>
+    <DelayedDurability>DISABLED</DelayedDurability>
+    <AutoCreateStatisticsIncremental>False</AutoCreateStatisticsIncremental>
+    <MemoryOptimizedElevateToSnapshot>False</MemoryOptimizedElevateToSnapshot>
+    <Containment>None</Containment>
+    <IsNestedTriggersOn>True</IsNestedTriggersOn>
+    <IsTransformNoiseWordsOn>False</IsTransformNoiseWordsOn>
+    <TwoDigitYearCutoff>2049</TwoDigitYearCutoff>
+    <NonTransactedFileStreamAccess>OFF</NonTransactedFileStreamAccess>
+    <TargetRecoveryTimePeriod>0</TargetRecoveryTimePeriod>
+    <TargetRecoveryTimeUnit>SECONDS</TargetRecoveryTimeUnit>
+    <IsChangeTrackingOn>False</IsChangeTrackingOn>
+    <IsChangeTrackingAutoCleanupOn>True</IsChangeTrackingAutoCleanupOn>
+    <ChangeTrackingRetentionPeriod>2</ChangeTrackingRetentionPeriod>
+    <ChangeTrackingRetentionUnit>Days</ChangeTrackingRetentionUnit>
+    <IsEncryptionOn>True</IsEncryptionOn>
+    <IsBrokerPriorityHonored>False</IsBrokerPriorityHonored>
+    <Trustworthy>False</Trustworthy>
+    <AutoUpdateStatisticsAsynchronously>False</AutoUpdateStatisticsAsynchronously>
+    <PageVerify>CHECKSUM</PageVerify>
+    <ServiceBrokerOption>DisableBroker</ServiceBrokerOption>
+    <DateCorrelationOptimizationOn>False</DateCorrelationOptimizationOn>
+    <Parameterization>SIMPLE</Parameterization>
+    <AllowSnapshotIsolation>False</AllowSnapshotIsolation>
+    <ReadCommittedSnapshot>False</ReadCommittedSnapshot>
+    <VardecimalStorageFormatOn>True</VardecimalStorageFormatOn>
+    <SupplementalLoggingOn>False</SupplementalLoggingOn>
+    <CompatibilityMode>140</CompatibilityMode>
+    <AnsiNullDefault>False</AnsiNullDefault>
+    <AnsiPadding>False</AnsiPadding>
+    <AnsiWarnings>False</AnsiWarnings>
+    <ArithAbort>False</ArithAbort>
+    <ConcatNullYieldsNull>False</ConcatNullYieldsNull>
+    <NumericRoundAbort>False</NumericRoundAbort>
+    <RecursiveTriggersEnabled>False</RecursiveTriggersEnabled>
+    <DatabaseChaining>False</DatabaseChaining>
+    <DatabaseState>ONLINE</DatabaseState>
+    <CloseCursorOnCommitEnabled>False</CloseCursorOnCommitEnabled>
+    <DefaultCursor>GLOBAL</DefaultCursor>
+    <AutoClose>False</AutoClose>
+    <AutoCreateStatistics>True</AutoCreateStatistics>
+    <AutoShrink>False</AutoShrink>
+    <AutoUpdateStatistics>True</AutoUpdateStatistics>
+    <TornPageDetection>False</TornPageDetection>
+    <DatabaseAccess>MULTI_USER</DatabaseAccess>
+    <Recovery>SIMPLE</Recovery>
+    <EnableFullTextSearch>False</EnableFullTextSearch>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <CreateProjectFromDatabaseCompleted>True</CreateProjectFromDatabaseCompleted>
+    <GenerateCreateScript>True</GenerateCreateScript>
+    <ValidateCasingOnIdentifiers>True</ValidateCasingOnIdentifiers>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Dim\" />
+    <Folder Include="Dim\Tables\" />
+    <Folder Include="Fact\" />
+    <Folder Include="Fact\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="Log" />
+    <Folder Include="Log\Tables" />
+    <Folder Include="Dim\Views" />
+    <Folder Include="App" />
+    <Folder Include="App\Views" />
+    <Folder Include="Load" />
+    <Folder Include="Load\Stored Procedures" />
+    <Folder Include="Log\Stored Procedures" />
+    <Folder Include="Monitoring" />
+    <Folder Include="Monitoring\Stored Procedures" />
+    <Folder Include="Monitoring\Views" />
+    <Folder Include="Load\Stored Procedures\ToggleForeignKeys" />
+    <Folder Include="Load\Tables" />
+    <Folder Include="Load\Stored Procedures\LoadDims" />
+    <Folder Include="Load\Stored Procedures\LoadFacts" />
+    <Folder Include="Load\Functions" />
+    <Folder Include="Load\Views" />
+    <Folder Include="Load\Stored Procedures\AssignRolePermissions" />
+    <Folder Include="Security\Schemas" />
+    <Folder Include="External Data Sources" />
+    <Folder Include="archive" />
+    <Folder Include="archive\External Tables" />
+    <Folder Include="mdm" />
+    <Folder Include="mdm\External Tables" />
+    <Folder Include="Credentials" />
+    <Folder Include="Roles" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Dim\Tables\Date.sql" />
+    <Build Include="Dim\Tables\AccountManager.sql" />
+    <Build Include="Dim\Tables\Customer.sql" />
+    <Build Include="Dim\Tables\Employee.sql" />
+    <Build Include="Dim\Tables\Project.sql" />
+    <Build Include="Dim\Tables\ContactPerson.sql" />
+    <Build Include="Fact\Tables\Hour.sql" />
+    <Build Include="Fact\Tables\Planning.sql" />
+    <Build Include="Dim\Tables\HourType.sql" />
+    <Build Include="Dim\Tables\Service.sql" />
+    <Build Include="log\Tables\LastLoad.sql" />
+    <Build Include="Dim\Views\vwDate.sql" />
+    <Build Include="Fact\Tables\PlanningHistory.sql" />
+    <Build Include="Dim\Tables\Nomination.sql" />
+    <Build Include="Dim\Views\vwSharePointCustomerOverview.sql" />
+    <Build Include="App\Views\vwBillableHours1ICT.sql" />
+    <Build Include="Dim\Tables\Course.sql" />
+    <Build Include="Dim\Tables\Diploma.sql" />
+    <Build Include="Fact\Tables\EmployeeDiploma.sql" />
+    <Build Include="Dim\Tables\Ledger.sql" />
+    <Build Include="Dim\Tables\Task.sql" />
+    <Build Include="Dim\Tables\Request.sql" />
+    <Build Include="Fact\Tables\Appointment.sql" />
+    <Build Include="Load\Stored Procedures\LoadLiftDW.sql" />
+    <Build Include="Load\Stored Procedures\PreLoadDatamart.sql" />
+    <Build Include="Load\Stored Procedures\PostLoadDatamart.sql" />
+    <Build Include="Log\Tables\ProcedureLog.sql" />
+    <Build Include="Log\Stored Procedures\NewProcLogRecord.sql" />
+    <Build Include="Log\Stored Procedures\UpdateProcLogRecord.sql" />
+    <Build Include="Monitoring\Stored Procedures\CheckFailedSprocs.sql" />
+    <Build Include="Monitoring\Views\FailedSprocs.sql" />
+    <Build Include="Load\Stored Procedures\ToggleForeignKeys\ToggleForeignKeys.sql" />
+    <Build Include="Load\Stored Procedures\ToggleForeignKeys\EnableForeignKeys.sql" />
+    <Build Include="Load\Stored Procedures\ToggleForeignKeys\EnableForeignKey.sql" />
+    <Build Include="Load\Stored Procedures\ToggleForeignKeys\DisableForeignKeys.sql" />
+    <Build Include="Load\Stored Procedures\ToggleForeignKeys\DisableForeignKey.sql" />
+    <Build Include="Load\Tables\ForeignKeys.sql" />
+    <Build Include="Monitoring\Stored Procedures\CheckDisabledForeignKeys.sql" />
+    <Build Include="Load\Stored Procedures\LoadDims\LoadDimAccountmanager.sql" />
+    <Build Include="Load\Stored Procedures\LoadDims\LoadDimContactPerson.sql" />
+    <Build Include="Load\Stored Procedures\LoadDims\LoadDimCourse.sql" />
+    <Build Include="Load\Stored Procedures\LoadDims\LoadDimCustomer.sql" />
+    <Build Include="Load\Stored Procedures\LoadDims\LoadDimDiploma.sql" />
+    <Build Include="Load\Stored Procedures\LoadDims\LoadDimEmployee.sql" />
+    <Build Include="Load\Stored Procedures\LoadDims\LoadDimHourType.sql" />
+    <Build Include="Load\Stored Procedures\LoadDims\LoadDimLedger.sql" />
+    <Build Include="Load\Stored Procedures\LoadDims\LoadDimNomination.sql" />
+    <Build Include="Load\Stored Procedures\LoadDims\LoadDimProject.sql" />
+    <Build Include="Load\Stored Procedures\LoadDims\LoadDimRequest.sql" />
+    <Build Include="Load\Stored Procedures\LoadDims\LoadDimService.sql" />
+    <Build Include="Load\Stored Procedures\LoadDims\LoadDimTask.sql" />
+    <Build Include="Load\Stored Procedures\LoadFacts\LoadFactAppointment.sql" />
+    <Build Include="Load\Stored Procedures\LoadFacts\LoadFactEmployeeDiploma.sql" />
+    <Build Include="Load\Stored Procedures\LoadFacts\LoadFactHour.sql" />
+    <Build Include="Load\Stored Procedures\LoadFacts\LoadFactPlanning.sql" />
+    <Build Include="Load\Stored Procedures\LoadFacts\LoadFactPlanningHistory.sql" />
+    <Build Include="Load\Functions\tvfDates.sql" />
+    <None Include="Load\Stored Procedures\LoadDims\LoadDimTime.sql" />
+    <Build Include="Load\Stored Procedures\LoadDims\LoadDimDate.sql" />
+    <Build Include="Load\Tables\RolePermissions.sql" />
+    <Build Include="Load\Views\vwRolePermissions.sql" />
+    <Build Include="Load\Stored Procedures\AssignRolePermissions\AssignRolePermissions.sql" />
+    <Build Include="Load\Stored Procedures\AssignRolePermissions\LoadRolePermissions.sql" />
+    <Build Include="Security\Schemas\App.sql" />
+    <Build Include="Security\Schemas\Dim.sql" />
+    <Build Include="Security\Schemas\Fact.sql" />
+    <Build Include="Security\Schemas\Load.sql" />
+    <Build Include="Security\Schemas\Log.sql" />
+    <Build Include="Security\Schemas\Monitoring.sql" />
+    <Build Include="Dim\Tables\ActivityGroup.sql" />
+    <Build Include="Load\Stored Procedures\LoadDims\LoadDimActivityGroup.sql" />
+    <Build Include="Fact\Tables\ActivityGroupMembership.sql" />
+    <Build Include="Load\Stored Procedures\LoadFacts\LoadFactActivityGroupMembership.sql" />
+    <Build Include="Fact\Tables\EmployeeContract.sql" />
+    <Build Include="Load\Stored Procedures\LoadFacts\LoadFactEmployeeContract.sql" />
+    <Build Include="Fact\Tables\SickLeave.sql" />
+    <Build Include="Load\Stored Procedures\LoadFacts\LoadFactSickLeave.sql" />
+    <Build Include="Load\Stored Procedures\LoadFacts\LoadFactTurnover.sql" />
+    <Build Include="Fact\Tables\Turnover.sql" />
+    <Build Include="Fact\Tables\CertificatePerBusinessUnit.sql" />
+    <Build Include="Load\Stored Procedures\LoadFacts\LoadFactCertificatePerBusinessUnit.sql" />
+    <Build Include="Fact\Tables\TurnoverForecast.sql" />
+    <Build Include="Load\Stored Procedures\LoadFacts\LoadFactTurnoverForecast.sql" />
+    <Build Include="Fact\Tables\ContactNote.sql" />
+    <Build Include="Load\Stored Procedures\LoadFacts\LoadFactContactNote.sql" />
+    <Build Include="Fact\Tables\InvoiceDetail.sql" />
+    <Build Include="Load\Stored Procedures\LoadFacts\LoadFactInvoiceDetail.sql" />
+    <Build Include="Dim\Tables\Invoice.sql" />
+    <Build Include="Load\Stored Procedures\LoadDims\LoadDimInvoice.sql" />
+    <Build Include="External Data Sources\lift-archive.sql" />
+    <Build Include="External Data Sources\mds-source.sql" />
+    <Build Include="Security\Schemas\archive.sql" />
+    <Build Include="archive\External Tables\aanvraag.sql" />
+    <Build Include="archive\External Tables\accountmanager.sql" />
+    <Build Include="archive\External Tables\activiteitgroep.sql" />
+    <Build Include="archive\External Tables\activiteitgroep_voordracht.sql" />
+    <Build Include="archive\External Tables\activiteitgroep_voordracht_planning.sql" />
+    <Build Include="archive\External Tables\appointmentcustomer.sql" />
+    <Build Include="archive\External Tables\appointmentcustomercontact.sql" />
+    <Build Include="archive\External Tables\appointmentproject.sql" />
+    <Build Include="archive\External Tables\appointmentrequest.sql" />
+    <Build Include="archive\External Tables\assignment_hour.sql" />
+    <Build Include="archive\External Tables\behandelaar.sql" />
+    <Build Include="archive\External Tables\budgethouder.sql" />
+    <Build Include="archive\External Tables\contactpersoon.sql" />
+    <Build Include="archive\External Tables\cursus.sql" />
+    <Build Include="archive\External Tables\dienst.sql" />
+    <Build Include="archive\External Tables\diploma.sql" />
+    <Build Include="archive\External Tables\gebruiker.sql" />
+    <Build Include="archive\External Tables\grootboekrekening.sql" />
+    <Build Include="archive\External Tables\klant.sql" />
+    <Build Include="archive\External Tables\planning_assignment.sql" />
+    <Build Include="archive\External Tables\planning_task_assignment.sql" />
+    <Build Include="archive\External Tables\project.sql" />
+    <Build Include="archive\External Tables\projectgroep.sql" />
+    <Build Include="archive\External Tables\taak.sql" />
+    <Build Include="archive\External Tables\taakvoordracht.sql" />
+    <Build Include="archive\External Tables\task_assignment_hour.sql" />
+    <Build Include="archive\External Tables\task_hour.sql" />
+    <Build Include="archive\External Tables\uurtype.sql" />
+    <Build Include="archive\External Tables\verantwoording.sql" />
+    <Build Include="archive\External Tables\voordracht.sql" />
+    <Build Include="archive\External Tables\wcontract.sql" />
+    <Build Include="archive\External Tables\werknemer.sql" />
+    <Build Include="archive\External Tables\werknemer_activiteitgroep_link.sql" />
+    <Build Include="archive\External Tables\werknemerdiploma.sql" />
+    <Build Include="archive\External Tables\invoice.sql" />
+    <Build Include="archive\External Tables\betalingsconditie.sql" />
+    <Build Include="archive\External Tables\invoice_document_link.sql" />
+    <Build Include="archive\External Tables\contactnotecustomer.sql" />
+    <Build Include="archive\External Tables\contactnotecustomercontact.sql" />
+    <Build Include="archive\External Tables\invoiced_employee_hour.sql" />
+    <Build Include="archive\External Tables\invoiced_fixed_price.sql" />
+    <Build Include="archive\External Tables\invoiced_invoiceplanning.sql" />
+    <Build Include="archive\External Tables\activiteitgroep_voordracht_planning.sql" />
+    <Build Include="archive\External Tables\vestiging.sql" />
+    <Build Include="Security\Schemas\mdm.sql" />
+    <Build Include="mdm\External Tables\DimDate.sql" />
+    <Build Include="Credentials\archive-credential.sql" />
+    <Build Include="Credentials\mds-credential.sql" />
+    <Build Include="Credentials\master key.sql" />
+    <Build Include="Security\etl_writer.sql" />
+    <Build Include="Roles\etl_writer.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DEV.publish.xml" />
+    <None Include="PRPL01-Prod.publish.xml" />
+    <None Include="PRPL01-Acc.publish.xml" />
+    <None Include="DTST01.publish.xml" />
+    <None Include="DEV-azure.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="ArchiveServer">
+      <DefaultValue>ogdw</DefaultValue>
+      <Value>$(SqlCmdVar__5)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="Archive">
+      <DefaultValue>DWHPROD01_LIFT_Archive</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="MDS">
+      <DefaultValue>MasterData</DefaultValue>
+      <Value>$(SqlCmdVar__3)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="MDSServer">
+      <DefaultValue>ogdw</DefaultValue>
+      <Value>$(SqlCmdVar__4)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\AzureV12\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\AzureV12\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="Script.PreDeploymentDropTurnoverColumns.sql" />
+  </ItemGroup>
+</Project>

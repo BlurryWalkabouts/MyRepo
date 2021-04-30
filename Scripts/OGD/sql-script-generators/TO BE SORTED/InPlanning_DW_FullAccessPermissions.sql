@@ -1,0 +1,9 @@
+CREATE ROLE [FullAccess];
+GO
+GRANT SELECT ON SCHEMA::DIM TO [FullAccess];
+GRANT SELECT ON SCHEMA::FACT TO [FullAccess];
+GRANT SELECT ON SCHEMA::LOG to [FullAccess];
+GO
+CREATE USER [Resource-DWH-PRD-SQL-InPlanning_DW-FullAccess] FROM EXTERNAL PROVIDER;
+GO
+ALTER ROLE [FullAccess] ADD MEMBER [Resource-DWH-PRD-SQL-InPlanning_DW-FullAccess];

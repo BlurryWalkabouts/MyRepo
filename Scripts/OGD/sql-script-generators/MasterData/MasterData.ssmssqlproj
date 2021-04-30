@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="MasterData">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="euw-bir-prpl01:OGD\sys_gert-jans">
+          <Created>2018-12-04T10:09:41.6185313+01:00</Created>
+          <Type>SQL</Type>
+          <Server>euw-bir-prpl01</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="ogd-replica-001013.database.windows.net:sys_gert-jans@ogd.nl">
+          <Created>2018-11-28T23:44:05.1571391+01:00</Created>
+          <Type>SQL</Type>
+          <Server>ogd-replica-001013.database.windows.net</Server>
+          <UserName>sys_gert-jans@ogd.nl</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB>lift</InitialDB>
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="ogdw.database.windows.net:sys_gert-jans@ogd.nl">
+          <Created>2018-11-28T23:43:28.6750453+01:00</Created>
+          <Type>SQL</Type>
+          <Server>ogdw.database.windows.net</Server>
+          <UserName>sys_gert-jans@ogd.nl</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB>MasterData</InitialDB>
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="ActiveDirectoryManager.MasterData.Procedures.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ogdw.database.windows.net:False:sys_gert-jans@ogd.nl</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ogdw.database.windows.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>sys_gert-jans@ogd.nl</AssociatedConnUserName>
+          <FullPath>ActiveDirectoryManager.MasterData.Procedures.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ADAM.DisableAccount.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ogd-replica-001013.database.windows.net:False:sys_gert-jans@ogd.nl</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ogd-replica-001013.database.windows.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>sys_gert-jans@ogd.nl</AssociatedConnUserName>
+          <FullPath>ADAM.DisableAccount.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Generator_ExternalTable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ogdw.database.windows.net:False:sys_gert-jans@ogd.nl</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ogdw.database.windows.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>sys_gert-jans@ogd.nl</AssociatedConnUserName>
+          <FullPath>Generator_ExternalTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="MasterData.InvalidCombination_BUTeam.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>MasterData.InvalidCombination_BUTeam.sql</FullPath>
+        </FileNode>
+        <FileNode Name="MasterData_ExternalTables.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>MasterData_ExternalTables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Werknemer.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:euw-bir-prpl01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>euw-bir-prpl01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Werknemer.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

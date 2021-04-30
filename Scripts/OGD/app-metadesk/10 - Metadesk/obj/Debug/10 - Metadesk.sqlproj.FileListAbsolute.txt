@@ -1,0 +1,8 @@
+C:\git\single-customer-topdesk\10 - Metadesk\bin\Debug\10 - Metadesk.dacpac
+C:\git\single-customer-topdesk\10 - Metadesk\obj\Debug\10 - Metadesk.sqlprojAssemblyReference.cache
+C:\git\single-customer-topdesk\10 - Metadesk\obj\Debug\Model.xml
+C:\git\single-customer-topdesk\10 - Metadesk\obj\Debug\refactor.xml
+C:\git\single-customer-topdesk\10 - Metadesk\obj\Debug\postdeploy.sql
+C:\git\single-customer-topdesk\10 - Metadesk\obj\Debug\predeploy.sql
+C:\git\single-customer-topdesk\10 - Metadesk\obj\Debug\Metadesk.dll
+C:\git\single-customer-topdesk\10 - Metadesk\obj\Debug\Metadesk.pdb

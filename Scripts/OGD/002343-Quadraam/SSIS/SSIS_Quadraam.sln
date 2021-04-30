@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SharePoint Import", "SharePoint Import\SharePoint Import.dtproj", "{384B99FF-65D7-44E4-8AFB-B59C3276BC74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{384B99FF-65D7-44E4-8AFB-B59C3276BC74}.Debug|Any CPU.ActiveCfg = Development
+		{384B99FF-65D7-44E4-8AFB-B59C3276BC74}.Debug|Any CPU.Build.0 = Development
+		{384B99FF-65D7-44E4-8AFB-B59C3276BC74}.Release|Any CPU.ActiveCfg = Development
+		{384B99FF-65D7-44E4-8AFB-B59C3276BC74}.Release|Any CPU.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

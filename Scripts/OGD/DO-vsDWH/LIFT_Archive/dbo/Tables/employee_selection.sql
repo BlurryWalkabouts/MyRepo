@@ -1,0 +1,32 @@
+﻿CREATE TABLE [dbo].[employee_selection] (
+    [unid]                            UNIQUEIDENTIFIER                                   NOT NULL,
+    [dataanmk]                        DATETIME                                           NULL,
+    [datwijzig]                       DATETIME                                           NULL,
+    [uidaanmk]                        UNIQUEIDENTIFIER                                   NULL,
+    [uidwijzig]                       UNIQUEIDENTIFIER                                   NULL,
+    [status]                          INT                                                NULL,
+    [title]                           NVARCHAR (125)                                     NULL,
+    [selection]                       NVARCHAR (MAX)                                     NULL,
+    [gebruikerid]                     UNIQUEIDENTIFIER                                   NULL,
+    [aanvraagid]                      UNIQUEIDENTIFIER                                   NULL,
+    [show_in_employee_portal]         BIT                                                NULL,
+    [show_in_project_employee_portal] BIT                                                NULL,
+    [show_on_website]                 BIT                                                NULL,
+    [ticketid]                        UNIQUEIDENTIFIER                                   NULL,
+    [straat]                          NVARCHAR (50)                                      NULL,
+    [nummer]                          NVARCHAR (20)                                      NULL,
+    [postcode]                        NVARCHAR (15)                                      NULL,
+    [plaats]                          NVARCHAR (30)                                      NULL,
+    [geocode_lat]                     FLOAT (53)                                         NULL,
+    [geocode_lon]                     FLOAT (53)                                         NULL,
+    [landid]                          UNIQUEIDENTIFIER                                   NULL,
+    [projectid]                       UNIQUEIDENTIFIER                                   NULL,
+    [geocode_state]                   INT                                                NULL,
+    [AuditDWKey]                  INT                                                NULL,
+    [ValidFrom]                       DATETIME2 (0) GENERATED ALWAYS AS ROW START HIDDEN CONSTRAINT [DF_dboemployee_selectionSysStart] DEFAULT (CONVERT([datetime2](0),'0000-01-01 00:00:00')) NOT NULL,
+    [ValidTo]                         DATETIME2 (0) GENERATED ALWAYS AS ROW END HIDDEN   CONSTRAINT [DF_dboemployee_selectionSysEnd] DEFAULT (CONVERT([datetime2](0),'9999-12-31 23:59:59')) NOT NULL,
+    CONSTRAINT [pk_dboemployee_selection ] PRIMARY KEY CLUSTERED ([unid] ASC) WITH (DATA_COMPRESSION = PAGE),
+    PERIOD FOR SYSTEM_TIME ([ValidFrom], [ValidTo])
+)
+WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE=[History].[employee_selection], DATA_CONSISTENCY_CHECK=ON));
+

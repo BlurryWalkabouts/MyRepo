@@ -1,0 +1,26 @@
+﻿CREATE TABLE [DUO].[leerlingen_bo_sbo_leerjaar_geslacht] (
+    [BevoegdGezagNummer]       NVARCHAR (5)  NULL,
+    [BrinNummer]               NVARCHAR (4)  NULL,
+    [DenominatieVestiging]     NVARCHAR (24) NULL,
+    [Gemeentenaam]             NVARCHAR (20) NULL,
+    [Gemeentenummer]           NVARCHAR (4)  NULL,
+    [Geslacht]                 NVARCHAR (1)  NULL,
+    [InstellingsnaamVestiging] NVARCHAR (30) NULL,
+    [Leerjaar1]                NVARCHAR (3)  NULL,
+    [Leerjaar2]                NVARCHAR (2)  NULL,
+    [Leerjaar3]                NVARCHAR (2)  NULL,
+    [Leerjaar4]                NVARCHAR (2)  NULL,
+    [Leerjaar5]                NVARCHAR (3)  NULL,
+    [Leerjaar6]                NVARCHAR (2)  NULL,
+    [Leerjaar7]                NVARCHAR (2)  NULL,
+    [Leerjaar8]                NVARCHAR (3)  NULL,
+    [Peildatum]                NVARCHAR (8)  NULL,
+    [Plaatsnaam]               NVARCHAR (20) NULL,
+    [PostcodeVestiging]        NVARCHAR (6)  NULL,
+    [Provincie]                NVARCHAR (13) NULL,
+    [SoortPo]                  NVARCHAR (3)  NULL,
+    [Totaal]                   NVARCHAR (3)  NULL,
+    [Vestigingsnummer]         NVARCHAR (2)  NULL,
+    [Jaar]                     VARCHAR (9)   NULL
+);
+

@@ -1,0 +1,22 @@
+{
+  "name": "ArchiveStagingTable",
+  "properties": {
+    "linkedServiceName": {
+      "referenceName": "ArchiveDatabase",
+      "type": "LinkedServiceReference"
+    },
+    "parameters": {
+      "TableName": {
+        "type": "String"
+      }
+    },
+    "type": "AzureSqlTable",
+    "typeProperties": {
+      "tableName": {
+        "value": "[staging].@{dataset().TableName}",
+        "type": "Expression"
+      }
+    }
+  },
+  "type": "Microsoft.DataFactory/factories/datasets"
+}

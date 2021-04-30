@@ -1,0 +1,26 @@
+USE StackOverflow;
+GO
+DROP TABLE IF EXISTS [dbo].[Votes_columnstore];
+GO
+CREATE TABLE [dbo].[Votes_columnstore](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PostId] [int] NOT NULL,
+	[UserId] [int] NULL,
+	[BountyAmount] [int] NULL,
+	[VoteTypeId] [int] NOT NULL,
+	[CreationDate] [datetime] NOT NULL,
+	INDEX CCI CLUSTERED (PostId)
+);
+GO
+SET IDENTITY_INSERT dbo.Votes_columnstore ON;
+GO
+INSERT INTO dbo.Votes_columnstore 
+	(Id, PostId, UserId, BountyAmount, VoteTypeId, CreationDate)
+	SELECT Id, PostId, UserId, BountyAmount, VoteTypeId, CreationDate
+	FROM dbo.Votes;
+GO
+SET IDENTITY_INSERT dbo.Votes_columnstore OFF;
+GO
+CREATE CLUSTERED COLUMNSTORE INDEX CCI ON dbo.Votes_columnstore
+	WITH (DROP_EXISTING = ON);
+GO

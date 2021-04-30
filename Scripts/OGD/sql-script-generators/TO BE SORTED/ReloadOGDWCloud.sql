@@ -1,0 +1,6 @@
+TRUNCATE TABLE Fact.Incident
+TRUNCATE TABLE Fact.Problem
+TRUNCATE TABLE Fact.Change
+TRUNCATE TABLE DIM.NiceReply
+TRUNCATE TABLE DIM.OperatorGroup
+TRUNCATE TABLE Fact.ChangeActivity

@@ -1,0 +1,22 @@
+﻿CREATE TABLE [Staging].[gebruiker] (
+    [dataanmk]                  DATETIME         NULL,
+    [datwijzig]                 DATETIME         NULL,
+    [email]                     NVARCHAR (70)    NULL,
+    [employeeid]                UNIQUEIDENTIFIER NULL,
+    [inlognaam]                 NVARCHAR (70)    NULL,
+    [is_template]               BIT              NULL,
+    [license_key]               INT              NULL,
+    [naam]                      NVARCHAR (40)    NULL,
+    [status]                    INT              NULL,
+    [sv]                        BIT              NULL,
+    [uidaanmk]                  UNIQUEIDENTIFIER NULL,
+    [uidwijzig]                 UNIQUEIDENTIFIER NULL,
+    [unid]                      UNIQUEIDENTIFIER NULL,
+    [support_account]           INT              NULL,
+    [mergefield_jobdescription] NVARCHAR (60)    NULL,
+    [mergefield_availablility]  NVARCHAR (120)   NULL,
+    [mergefield_footer]         NVARCHAR (250)   NULL,
+    [mergefield_phonenumber]    NVARCHAR (65)    NULL,
+    [pass_last_set]             DATETIME         NULL,
+    [AuditDWKey]                INT              NULL
+);

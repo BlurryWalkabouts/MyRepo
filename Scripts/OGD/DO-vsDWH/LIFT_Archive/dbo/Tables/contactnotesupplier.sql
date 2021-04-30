@@ -1,0 +1,18 @@
+﻿CREATE TABLE [dbo].[contactnotesupplier] (
+    [unid]               UNIQUEIDENTIFIER                                   NOT NULL,
+    [dataanmk]           DATETIME                                           NULL,
+    [datwijzig]          DATETIME                                           NULL,
+    [uidaanmk]           UNIQUEIDENTIFIER                                   NULL,
+    [uidwijzig]          UNIQUEIDENTIFIER                                   NULL,
+    [contactnote_typeid] UNIQUEIDENTIFIER                                   NULL,
+    [categorieid]        UNIQUEIDENTIFIER                                   NULL,
+    [acquisition_goalid] UNIQUEIDENTIFIER                                   NULL,
+    [supplierid]         UNIQUEIDENTIFIER                                   NULL,
+    [AuditDWKey]     INT                                                NULL,
+    [ValidFrom]          DATETIME2 (0) GENERATED ALWAYS AS ROW START HIDDEN CONSTRAINT [DF_dbocontactnotesupplierSysStart] DEFAULT (CONVERT([datetime2](0),'0000-01-01 00:00:00')) NOT NULL,
+    [ValidTo]            DATETIME2 (0) GENERATED ALWAYS AS ROW END HIDDEN   CONSTRAINT [DF_dbocontactnotesupplierSysEnd] DEFAULT (CONVERT([datetime2](0),'9999-12-31 23:59:59')) NOT NULL,
+    CONSTRAINT [pk_dbocontactnotesupplier ] PRIMARY KEY CLUSTERED ([unid] ASC) WITH (DATA_COMPRESSION = PAGE),
+    PERIOD FOR SYSTEM_TIME ([ValidFrom], [ValidTo])
+)
+WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE=[History].[contactnotesupplier], DATA_CONSISTENCY_CHECK=ON));
+

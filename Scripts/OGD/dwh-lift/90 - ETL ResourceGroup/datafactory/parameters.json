@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "keyvaultName": {
+      "value": "ogd-dataoffice-etlvault"
+    },
+    "location": {
+      "value": "westeurope"
+    },
+    "environment": {
+      "value": "DEV"
+    },
+    "archiveDatabaseServer": {
+      "value": "ogdw.database.windows.net"
+    },
+    "datamartDatabaseServer": {
+      "value": "ogdw.database.windows.net"
+    }
+  }
+}

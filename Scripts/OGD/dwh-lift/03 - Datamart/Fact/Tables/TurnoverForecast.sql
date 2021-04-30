@@ -1,0 +1,25 @@
+﻿CREATE TABLE [Fact].[TurnoverForecast]
+(
+    [RequestKey]        INT              NOT NULL DEFAULT -1,
+    [ProjectKey]        INT              NOT NULL DEFAULT -1,
+    [CustomerKey]       INT              NOT NULL DEFAULT -1,
+    [NominationKey]     INT              NOT NULL DEFAULT -1,
+    [LedgerKey]         INT              NOT NULL DEFAULT -1,
+	[LedgerNumber]      NVARCHAR(10)     NULL,
+	[Ledger]            NVARCHAR(30)     NULL,
+    [ForecastDate]      DATE             NOT NULL DEFAULT '1753-01-01',
+    [ProductGroup]      NVARCHAR(30)     NULL,
+    [Product]           NVARCHAR(60)     NULL,
+	[Office]            NVARCHAR(40)     NULL,
+    [BusinessUnit]      NVARCHAR(60)     NULL,
+    [ForecastType]      NVARCHAR (100)   NOT NULL,
+    [TurnoverForecast]  DECIMAL(19, 4)  NOT NULL,
+    [ValidFrom]         DATE             NOT NULL,
+    [ValidTo]           DATE             NOT NULL,
+	CONSTRAINT [FK_TurnoverForecast_RequestKey]     FOREIGN KEY ([RequestKey])      REFERENCES [Dim].[Request] ([RequestKey]),
+	CONSTRAINT [FK_TurnoverForecast_ProjectKey]     FOREIGN KEY ([ProjectKey])      REFERENCES [Dim].[Project] ([ProjectKey]),
+	CONSTRAINT [FK_TurnoverForecast_CustomerKey]    FOREIGN KEY ([CustomerKey])     REFERENCES [Dim].[Customer] ([CustomerKey]),
+	CONSTRAINT [FK_TurnoverForecast_NominationKey]  FOREIGN KEY ([NominationKey])   REFERENCES [Dim].[Nomination] ([NominationKey]),
+	CONSTRAINT [FK_TurnoverForecast_LedgerKey]      FOREIGN KEY ([LedgerKey])       REFERENCES [Dim].[Ledger] ([LedgerKey]),
+	CONSTRAINT [FK_TurnoverForecast_ForecastDate]   FOREIGN KEY ([ForecastDate])    REFERENCES [Dim].[Date]   ([Date])
+)

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>10 - Metadesk</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{a9d2021e-21f6-434a-85a5-c311934631c6}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Metadesk</RootNamespace>
+    <AssemblyName>Metadesk</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <TargetDatabase>10 - Metadesk</TargetDatabase>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Security" />
+    <Folder Include="Security\Tables" />
+    <Folder Include="Security\Schemas" />
+    <Folder Include="Security\Roles" />
+    <Folder Include="Security\Functions" />
+    <Folder Include="Security\PostDeploy" />
+    <Folder Include="Security\Policies" />
+    <Folder Include="Security\Views" />
+    <Folder Include="Metadesk" />
+    <Folder Include="Metadesk\Views" />
+    <Folder Include="Dim" />
+    <Folder Include="Fact" />
+    <Folder Include="Dim\Views" />
+    <Folder Include="Dim\Tables" />
+    <Folder Include="Fact\Tables" />
+    <Folder Include="Dim\Procedures" />
+    <Folder Include="Fact\Procedures" />
+    <Folder Include="Security\Stored Procedures" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Security\Schemas\Dim.sql" />
+    <Build Include="Security\Schemas\Fact.sql" />
+    <Build Include="Security\Schemas\Metadesk.sql" />
+    <Build Include="Security\Schemas\Security.sql" />
+    <Build Include="Security\Roles\Metadesk.sql" />
+    <Build Include="Security\Roles\sbs.sql" />
+    <Build Include="Security\Functions\fn_rlsProblemSecurityPredicate.sql" />
+    <Build Include="Security\Functions\fn_rlsGeneralSecurityPredicate.sql" />
+    <Build Include="Security\Functions\fn_rlsChangeSecurityPredicate.sql" />
+    <Build Include="Security\Policies\problemFilterPolicy.sql" />
+    <Build Include="Security\Policies\generalFilterPolicy.sql" />
+    <Build Include="Security\Policies\changeFilterPolicy.sql" />
+    <Build Include="Metadesk\Views\vwProblem.sql" />
+    <Build Include="Metadesk\Views\vwIncident.sql" />
+    <Build Include="Metadesk\Views\vwChange.sql" />
+    <Build Include="Metadesk\Views\vwChangeActivity.sql" />
+    <Build Include="Metadesk\Views\vwOperationalActivity.sql" />
+    <Build Include="Dim\Views\vwStatistics.sql" />
+    <Build Include="Metadesk\Views\vwOverview.sql" />
+    <Build Include="Fact\Procedures\usp_mergeProblemsForCustomer.sql" />
+    <Build Include="Fact\Procedures\usp_mergeIncidentsForCustomer.sql" />
+    <Build Include="Fact\Procedures\usp_mergeChangesForCustomer.sql" />
+    <Build Include="Fact\Procedures\usp_mergeChangeActivitiesForCustomer.sql" />
+    <Build Include="Fact\Procedures\usp_fetchLastModifiedForCustomer.sql" />
+    <Build Include="Fact\Procedures\usp_mergeOperationalActivtiesForCustomer.sql" />
+    <Build Include="Dim\Procedures\usp_mergeOperatorGroupsForCustomer.sql" />
+    <Build Include="Dim\Tables\Customer.sql" />
+    <Build Include="Dim\Tables\OperatorGroup.sql" />
+    <Build Include="Fact\Tables\Change.sql" />
+    <Build Include="Fact\Tables\ChangeActivity.sql" />
+    <Build Include="Fact\Tables\Incident.sql" />
+    <Build Include="Fact\Tables\OperationalActivity.sql" />
+    <Build Include="Fact\Tables\Problem.sql" />
+    <Build Include="Security\Tables\AzureGroup.sql" />
+    <Build Include="Security\Tables\AzureGroupMapping.sql" />
+    <Build Include="Security\Tables\UserPrincipalName.sql" />
+    <Build Include="Security\Tables\UserPrincipalNameMapping.sql" />
+    <Build Include="Security\Tables\UserPrincipalNameSuffix.sql" />
+    <Build Include="Security\Tables\UserPrincipalNameSuffixMapping.sql" />
+    <Build Include="Security\Stored Procedures\usp_VerifyResourceGroups.sql" />
+    <Build Include="Security\Stored Procedures\usp_AddResourceGroupUser.sql" />
+    <Build Include="Security\Stored Procedures\usp_AddResourceGroupRoleToMetadesk.sql" />
+    <Build Include="Security\Stored Procedures\usp_AddResourceGroupRole.sql" />
+    <Build Include="Security\Stored Procedures\usp_AddResourceGroup.sql" />
+    <Build Include="Security\Stored Procedures\usp_AddGroupMapping.sql" />
+    <Build Include="Security\Views\vwMappingOverview.sql" />
+    <Build Include="Security\Views\vwRoleMembership.sql" />
+    <Build Include="Metadesk\Views\vwLookupType.sql" />
+    <Build Include="Metadesk\Views\vwLookupTicketType.sql" />
+    <Build Include="Metadesk\Views\vwLookupStatus.sql" />
+    <Build Include="Metadesk\Views\vwLookupOperatorGroup.sql" />
+    <Build Include="Metadesk\Views\vwLookupOperator.sql" />
+    <Build Include="Metadesk\Views\vwLookupCustomer.sql" />
+    <Build Include="Fact\Procedures\usp_CleanUp.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Security\PostDeploy\Metadesk.Permissions.PostDeployment.sql" />
+    <None Include="Security\PostDeploy\sbs.Permissions.PostDeployment.sql" />
+  </ItemGroup>
+</Project>

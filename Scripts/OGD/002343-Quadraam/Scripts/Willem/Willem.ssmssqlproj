@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Willem">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="DWH-TEST:DWH-TEST\OGD_WILLEMS">
+          <Created>2017-09-18T10:55:32.4474579+02:00</Created>
+          <Type>SQL</Type>
+          <Server>DWH-TEST</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="01. bkjrcode.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>01. bkjrcode.sql</FullPath>
+        </FileNode>
+        <FileNode Name="02. TransactieTypes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>02. TransactieTypes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="03. Source.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>03. Source.sql</FullPath>
+        </FileNode>
+        <FileNode Name="04. TransTypes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>04. TransTypes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="05. Kostenplaatsen-dragers.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>05. Kostenplaatsen-dragers.sql</FullPath>
+        </FileNode>
+        <FileNode Name="06. JSON.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>06. JSON.sql</FullPath>
+        </FileNode>
+        <FileNode Name="07. EnableCmdShell.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>07. EnableCmdShell.sql</FullPath>
+        </FileNode>
+        <FileNode Name="08. Datums.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>08. Datums.sql</FullPath>
+        </FileNode>
+        <FileNode Name="09. LoadDataIntoStagingAfasTest.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>09. LoadDataIntoStagingAfasTest.sql</FullPath>
+        </FileNode>
+        <FileNode Name="10. LoadMetadataAfasTest.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>10. LoadMetadataAfasTest.sql</FullPath>
+        </FileNode>
+        <FileNode Name="11. LoadDataIntoStagingAfas.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>11. LoadDataIntoStagingAfas.sql</FullPath>
+        </FileNode>
+        <FileNode Name="12. vwExcelMaandrapportage.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>12. vwExcelMaandrapportage.sql</FullPath>
+        </FileNode>
+        <FileNode Name="13. Dienstverbanden.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>13. Dienstverbanden.sql</FullPath>
+        </FileNode>
+        <FileNode Name="14. CreateArchive.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>14. CreateArchive.sql</FullPath>
+        </FileNode>
+        <FileNode Name="15. DataObjects.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>15. DataObjects.sql</FullPath>
+        </FileNode>
+        <FileNode Name="16. LoadMetadataDUO.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>16. LoadMetadataDUO.sql</FullPath>
+        </FileNode>
+        <FileNode Name="17. LoadDataDUO.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>17. LoadDataDUO.sql</FullPath>
+        </FileNode>
+        <FileNode Name="18. BRIN.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>18. BRIN.sql</FullPath>
+        </FileNode>
+        <FileNode Name="19. PATINDEX.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>19. PATINDEX.sql</FullPath>
+        </FileNode>
+        <FileNode Name="20. RollbackBatchTempTable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>20. RollbackBatchTempTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="21. Cube.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>21. Cube.sql</FullPath>
+        </FileNode>
+        <FileNode Name="22. GebrokenFactorTest.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>22. GebrokenFactorTest.sql</FullPath>
+        </FileNode>
+        <FileNode Name="23. ETL Test.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>23. ETL Test.sql</FullPath>
+        </FileNode>
+        <FileNode Name="24. Gebieden.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>24. Gebieden.sql</FullPath>
+        </FileNode>
+        <FileNode Name="25. SQL Server Log.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>25. SQL Server Log.sql</FullPath>
+        </FileNode>
+        <FileNode Name="26. Dynamic SQL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>26. Dynamic SQL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="27. ETL Test 2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>27. ETL Test 2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="28. Single User Mode.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>28. Single User Mode.sql</FullPath>
+        </FileNode>
+        <FileNode Name="29. Magister Leerlinggegevens.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>29. Magister Leerlinggegevens.sql</FullPath>
+        </FileNode>
+        <FileNode Name="30. CBS Metadata.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>30. CBS Metadata.sql</FullPath>
+        </FileNode>
+        <FileNode Name="31. CBS Metadata Test.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>31. CBS Metadata Test.sql</FullPath>
+        </FileNode>
+        <FileNode Name="32. IO Virtual File Stats.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>32. IO Virtual File Stats.sql</FullPath>
+        </FileNode>
+        <FileNode Name="33. CustomMetadata.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DWH-TEST:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DWH-TEST</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>33. CustomMetadata.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

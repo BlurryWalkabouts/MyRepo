@@ -1,0 +1,27 @@
+﻿CREATE TABLE [FileImport_Jira].[CWC|meldingen(cwc)] (
+    [Created]                      NVARCHAR (MAX) NULL,
+    [Resolved]                     NVARCHAR (MAX) NULL,
+    [Assignee]                     NVARCHAR (MAX) NULL,
+    [Updated]                      NVARCHAR (MAX) NULL,
+    [Issue Type]                   NVARCHAR (MAX) NULL,
+    [Reporter]                     NVARCHAR (MAX) NULL,
+    [Issue key]                    NVARCHAR (MAX) NULL,
+    [Issue id]                     REAL           NULL,
+    [Summary]                      NVARCHAR (MAX) NULL,
+    [Custom field (Account)]       NVARCHAR (MAX) NULL,
+    [Custom field (Assignee)]      NVARCHAR (MAX) NULL,
+    [Custom field (Caller)]        NVARCHAR (MAX) NULL,
+    [Custom field (Category)]      NVARCHAR (MAX) NULL,
+    [Creator]                      NVARCHAR (MAX) NULL,
+    [Custom field (Customer)]      NVARCHAR (MAX) NULL,
+    [Description]                  NVARCHAR (MAX) NULL,
+    [Due Date]                     DATETIME       NULL,
+    [Custom field (Email address)] NVARCHAR (MAX) NULL,
+    [Custom field (Phone Number)]  NVARCHAR (MAX) NULL,
+    [Priority]                     NVARCHAR (MAX) NULL,
+    [Resolution]                   NVARCHAR (MAX) NULL,
+    [Custom field (Solution)]      NVARCHAR (MAX) NULL,
+    [Status]                       NVARCHAR (MAX) NULL,
+    [Time Spent]                   NVARCHAR (MAX) NULL
+);
+

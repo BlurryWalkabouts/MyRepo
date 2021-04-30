@@ -1,0 +1,33 @@
+﻿CREATE TABLE [dbo].[aanvraag] (
+    [unid]                  UNIQUEIDENTIFIER                                   NOT NULL,
+    [dataanmk]              DATETIME                                           NULL,
+    [datwijzig]             DATETIME                                           NULL,
+    [uidaanmk]              UNIQUEIDENTIFIER                                   NULL,
+    [uidwijzig]             UNIQUEIDENTIFIER                                   NULL,
+    [status]                INT                                                NULL,
+    [archiefid]             UNIQUEIDENTIFIER                                   NULL,
+    [archiefdatum]          DATETIME                                           NULL,
+    [attentieid]            UNIQUEIDENTIFIER                                   NULL,
+    [attentiemelding]       NVARCHAR (200)                                     NULL,
+    [projectid]             UNIQUEIDENTIFIER                                   NULL,
+    [aanpak]                NVARCHAR (MAX)                                     NULL,
+    [aanvraagnr]            NVARCHAR (20)                                      NULL,
+    [slagingspercentage]    INT                                                NULL,
+    [interessecijferid]     UNIQUEIDENTIFIER                                   NULL,
+    [interessefaseid]       UNIQUEIDENTIFIER                                   NULL,
+    [bewaakttot]            DATETIME                                           NULL,
+    [afkorting]             NVARCHAR (10)                                      NULL,
+    [projectleadid]         UNIQUEIDENTIFIER                                   NULL,
+    [amount_quoted]         MONEY                                              NULL,
+    [datacceptatie]         DATETIME                                           NULL,
+    [is_additional_request] BIT                                                NULL,
+    [AuditDWKey]        INT                                                NULL,
+    [ValidFrom]             DATETIME2 (0) GENERATED ALWAYS AS ROW START HIDDEN CONSTRAINT [DF_dboaanvraagSysStart] DEFAULT (CONVERT([datetime2](0),'0000-01-01 00:00:00')) NOT NULL,
+    [ValidTo]               DATETIME2 (0) GENERATED ALWAYS AS ROW END HIDDEN   CONSTRAINT [DF_dboaanvraagSysEnd] DEFAULT (CONVERT([datetime2](0),'9999-12-31 23:59:59')) NOT NULL,
+    CONSTRAINT [pk_dboaanvraag ] PRIMARY KEY CLUSTERED ([unid] ASC) WITH (DATA_COMPRESSION = PAGE),
+    PERIOD FOR SYSTEM_TIME ([ValidFrom], [ValidTo])
+)
+WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE=[History].[aanvraag], DATA_CONSISTENCY_CHECK=ON));
+
+
+

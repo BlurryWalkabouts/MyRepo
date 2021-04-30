@@ -1,0 +1,22 @@
+﻿CREATE TABLE [Fact].[Appointment]
+(
+	[unid]                    UNIQUEIDENTIFIER NULL,
+	[OperatorKey]             INT              NOT NULL,
+	[CustomerKey]             INT              NOT NULL,
+	[ContactPersonKey]        INT              NOT NULL, 
+	[ProjectKey]              INT              NOT NULL,
+	[RequestKey]              INT              NOT NULL, 
+	[Status]                  INT              NULL,
+	[AppointmentDate]         DATETIME         NULL,
+	[AppointmentCreationDate] DATETIME         NULL,
+	[Result]                  NVARCHAR (25)    NULL,
+	[Category]                NVARCHAR (25)    NULL,
+	[AcquisitionGoal]         NVARCHAR (30)    NULL,
+	[AppointmentType]         NVARCHAR (25)    NULL,
+	[Subject]                 NVARCHAR (80)    NULL,
+	CONSTRAINT [FK_Appointment_OperatorKey] FOREIGN KEY ([OperatorKey]) REFERENCES [Dim].[AccountManager] ([AccountManagerKey]),
+	CONSTRAINT [FK_Appointment_CustomerKey] FOREIGN KEY ([CustomerKey]) REFERENCES [Dim].[Customer] ([CustomerKey]),
+	CONSTRAINT [FK_Appointment_ContactPersonKey] FOREIGN KEY ([ContactPersonKey]) REFERENCES [Dim].[ContactPerson] ([ContactPersonKey]),
+	CONSTRAINT [FK_Appointment_ProjectKey] FOREIGN KEY ([ProjectKey]) REFERENCES [Dim].[Project] ([ProjectKey]),
+	CONSTRAINT [FK_Appointment_RequestKey] FOREIGN KEY ([RequestKey]) REFERENCES [Dim].[Request] ([RequestKey]),
+)

@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Staging_Quadraam</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{1b938dfb-f8d2-4de1-94ce-229feb2566c1}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Staging_Quadraam</RootNamespace>
+    <AssemblyName>Staging_Quadraam</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <Recovery>SIMPLE</Recovery>
+    <DefaultCollation>Latin1_General_CI_AS</DefaultCollation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Security" />
+    <Folder Include="setup" />
+    <Folder Include="setup\Tables" />
+    <Folder Include="Afas\" />
+    <Folder Include="Afas\Tables\" />
+    <Folder Include="DUO\" />
+    <Folder Include="DUO\Tables\" />
+    <Folder Include="Capisci\" />
+    <Folder Include="Capisci\Tables\" />
+    <Folder Include="Magister\" />
+    <Folder Include="Magister\Tables\" />
+    <Folder Include="Inspectie\" />
+    <Folder Include="Inspectie\Tables\" />
+    <Folder Include="SharePoint\" />
+    <Folder Include="SharePoint\Tables\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Security\setup.sql" />
+    <Build Include="Afas\Tables\DWH_FIN_Valuta.sql" />
+    <Build Include="Afas\Tables\DWH_FIN_Projecten.sql" />
+    <Build Include="Afas\Tables\DWH_FIN_Periodes.sql" />
+    <Build Include="Afas\Tables\DWH_FIN_Kostenplaatsen.sql" />
+    <Build Include="Afas\Tables\DWH_FIN_Kostendragers.sql" />
+    <Build Include="Afas\Tables\DWH_FIN_Kosten.sql" />
+    <Build Include="Afas\Tables\DWH_FIN_Grootboek.sql" />
+    <Build Include="Afas\Tables\DWH_FIN_Dimensies_3.sql" />
+    <Build Include="Afas\Tables\DWH_FIN_Dimensies_2.sql" />
+    <Build Include="Afas\Tables\DWH_FIN_Dimensies.sql" />
+    <Build Include="Afas\Tables\DWH_FIN_Dagboeken.sql" />
+    <Build Include="Afas\Tables\DWH_FIN_Crediteuren.sql" />
+    <Build Include="Afas\Tables\DWH_FIN_BTWcode.sql" />
+    <Build Include="Afas\Tables\DWH_FIN_Administraties.sql" />
+    <Build Include="Security\Afas.sql" />
+    <Build Include="Afas\Tables\DWH_HR_Ziekteverzuim.sql" />
+    <Build Include="Afas\Tables\DWH_HR_Werkgeverskosten.sql" />
+    <Build Include="Afas\Tables\DWH_HR_Verlof_parameter.sql" />
+    <Build Include="Afas\Tables\DWH_HR_Salarissen.sql" />
+    <Build Include="Afas\Tables\DWH_HR_Rooster.sql" />
+    <Build Include="Afas\Tables\DWH_HR_Organigram_incl_historie.sql" />
+    <Build Include="Afas\Tables\DWH_HR_Organigram.sql" />
+    <Build Include="Afas\Tables\DWH_HR_Opleidingen_bevoegdheden.sql" />
+    <Build Include="Afas\Tables\DWH_HR_Opleidingen.sql" />
+    <Build Include="Afas\Tables\DWH_HR_Medewerkers.sql" />
+    <Build Include="Afas\Tables\DWH_HR_Medewerker_journaalpost.sql" />
+    <Build Include="Afas\Tables\DWH_HR_Loopbaanhistorie.sql" />
+    <Build Include="Afas\Tables\DWH_HR_Gebrokenfactor.sql" />
+    <Build Include="Afas\Tables\DWH_HR_Functie.sql" />
+    <Build Include="Afas\Tables\DWH_HR_Formatieverdeling.sql" />
+    <Build Include="Afas\Tables\DWH_HR_Dienstverbanden.sql" />
+    <Build Include="Afas\Tables\DWH_HR_Berekende_looncomponenten.sql" />
+    <Build Include="Afas\Tables\DWH_FIN_Mutaties.sql" />
+    <Build Include="Afas\Tables\DWH_FIN_Budget.sql" />
+    <Build Include="setup\Tables\DataObjects.sql" />
+    <Build Include="DUO\Tables\leerlingen_po_per_gemeente_schoolgaand_in_en_buiten_de_gemeente.sql" />
+    <Build Include="DUO\Tables\leerlingen_bo_gewicht_leeftijd.sql" />
+    <Build Include="DUO\Tables\leerlingen_bo_sbo_leerjaar_geslacht.sql" />
+    <Build Include="DUO\Tables\leerlingen_po_totaaloverzicht.sql" />
+    <Build Include="DUO\Tables\leerlingen_bo_referentieniveaus.sql" />
+    <Build Include="DUO\Tables\leerlingen_bo_zittenblijven.sql" />
+    <Build Include="DUO\Tables\leerlingen_bo_swv_vestiging_gewicht_impulsgebied_schoolgewicht.sql" />
+    <Build Include="DUO\Tables\leerlingen_bo_sbo_swv_vestiging_leerjaar_geslacht.sql" />
+    <Build Include="DUO\Tables\leerlingen_po_soort_po_cluster_leeftijd.sql" />
+    <Build Include="DUO\Tables\leerlingen_bo_sbo_swv_vestiging_swv_woonachtig.sql" />
+    <Build Include="DUO\Tables\alle_vestigingen_vo.sql" />
+    <Build Include="DUO\Tables\hoofdvestigingen_vo.sql" />
+    <Build Include="DUO\Tables\alle_vestigingen_basisonderwijs.sql" />
+    <Build Include="DUO\Tables\hoofdvestigingen_basisonderwijs.sql" />
+    <Build Include="DUO\Tables\alle_vestigingen_speciaal_basisonderwijs.sql" />
+    <Build Include="DUO\Tables\hoofdvestigingen_speciaal_basisonderwijs.sql" />
+    <Build Include="DUO\Tables\vo_personen_owtype_bestuur_brin_functie.sql" />
+    <Build Include="DUO\Tables\po_personen_owtype_bestuur_brin_functie.sql" />
+    <Build Include="DUO\Tables\vo_fte_owtype_bestuur_brin_functie.sql" />
+    <Build Include="DUO\Tables\po_fte_owtype_bestuur_brin_functie.sql" />
+    <Build Include="DUO\Tables\gemiddelde_afstand_tussen_woonadres_leerling_en_schoolvestiging.sql" />
+    <Build Include="DUO\Tables\geslaagden_gezakten_en_cijfers.sql" />
+    <Build Include="DUO\Tables\leerlingen_vo_per_vestiging_naar_onderwijstype.sql" />
+    <Build Include="DUO\Tables\leerlingen_bo_sbo_schooladviezen.sql" />
+    <Build Include="DUO\Tables\adviezen_inclusief_herziening.sql" />
+    <Build Include="DUO\Tables\leerlingenprognoses_vo.sql" />
+    <Build Include="DUO\Tables\leerlingen_bo_en_sbo_leerlingenprognoses.sql" />
+    <Build Include="DUO\Tables\bevoegde_gezagen_speciaal_basisonderwijs.sql" />
+    <Build Include="DUO\Tables\bevoegde_gezagen_basisonderwijs_en_speciaal_basisonderwijs.sql" />
+    <Build Include="DUO\Tables\bevoegde_gezagen_basisonderwijs.sql" />
+    <Build Include="DUO\Tables\bevoegde_gezagen_vo.sql" />
+    <Build Include="DUO\Tables\leerlingen_per_bestuur_en_denominatie_vavo_apart.sql" />
+    <Build Include="DUO\Tables\leerlingen_vo_per_vestiging_en_bestuur_vavo_apart.sql" />
+    <Build Include="DUO\Tables\examenkandidaten_havo_en_examencijfers.sql" />
+    <Build Include="DUO\Tables\examenkandidaten_vmbo_en_examencijfers.sql" />
+    <Build Include="DUO\Tables\examenkandidaten_vwo_en_examencijfers.sql" />
+    <Build Include="DUO\Tables\zittenblijven_vo_landelijk.sql" />
+    <Build Include="DUO\Tables\zittenblijven_vo_provincie.sql" />
+    <Build Include="DUO\Tables\zittenblijven_vo_brinvest.sql" />
+    <Build Include="DUO\Tables\gemiddelde_eindscores_bo_sbo.sql" />
+    <Build Include="DUO\Tables\leerlingen_per_vestiging_naar_postcode_en_leerjaar.sql" />
+    <Build Include="DUO\Tables\examenkandidaten_en_geslaagden.sql" />
+    <Build Include="Capisci\Tables\Rekeningschema.sql" />
+    <Build Include="Capisci\Tables\Realisatie.sql" />
+    <Build Include="Capisci\Tables\Organisatieschema.sql" />
+    <Build Include="Capisci\Tables\Leerlingaantallen.sql" />
+    <Build Include="Capisci\Tables\Begroting.sql" />
+    <Build Include="Capisci\Tables\Begroting_formatie.sql" />
+    <Build Include="Security\DUO.sql" />
+    <Build Include="Security\Capisci.sql" />
+    <Build Include="Capisci\Tables\Toelichtingen_Begroting.sql" />
+    <Build Include="Magister\Tables\leerlinggegevens.sql" />
+    <Build Include="Inspectie\Tables\TA_2017_PO_SO_VO.sql" />
+    <Build Include="Inspectie\Tables\TA_2016_VO.sql" />
+    <Build Include="Inspectie\Tables\TA_2015_VO.sql" />
+    <Build Include="Inspectie\Tables\TA_2014_VO.sql" />
+    <Build Include="Inspectie\Tables\TA_2013_VO.sql" />
+    <Build Include="Inspectie\Tables\TA_2012_VO.sql" />
+    <Build Include="Security\Magister.sql" />
+    <Build Include="Security\Inspectie.sql" />
+    <Build Include="Security\SharePoint.sql" />
+    <Build Include="SharePoint\Tables\Forecast.sql" />
+    <Build Include="SharePoint\Tables\Tevredenheid.sql" />
+    <Build Include="SharePoint\Tables\Leerlingaantallen.sql" />
+    <Build Include="SharePoint\Tables\CapisciMedewerkers.sql" />
+    <Build Include="SharePoint\Tables\Statuswaarden.sql" />
+    <Build Include="SharePoint\Tables\Contactgegevens.sql" />
+    <Build Include="SharePoint\Tables\Bruikleenoverzicht.sql" />
+    <Build Include="SharePoint\Tables\Artikelen.sql" />
+    <Build Include="SharePoint\Tables\Accessoires.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Staging_Quadraam.publish.xml" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,79 @@
+﻿CREATE PROCEDURE [etl].[DropAndSaveFK]
+(
+	@db varchar(32) = '[$(OGDW)]'
+)
+AS
+BEGIN
+
+SET NOCOUNT ON
+
+BEGIN TRY
+
+-- Declare variables for logging
+DECLARE @newLogID int
+DECLARE @newSessionID int = @@SPID
+DECLARE @newObjectID int = @@PROCID
+DECLARE @newMessage nvarchar(max) = 'Dropping in progress...'
+DECLARE @newRowCount int
+
+-- Start logging
+EXEC [log].NewProcLogRecord
+	@LogID = @newLogID OUTPUT
+	, @SessionID = @newSessionID
+	, @ObjectID = @newObjectID
+	, @Message = @newMessage
+
+BEGIN TRANSACTION
+
+/* Generate DROP string and execute */
+DECLARE @SQLString nvarchar(max)
+SET @SQLString = ''
+
+IF @db IN ('[$(OGDW)]')
+	BEGIN
+	SELECT
+		@SQLString = @SQLString + 'ALTER TABLE ' + @db + '.' + QUOTENAME(RC.CONSTRAINT_SCHEMA) + '.' + QUOTENAME(KCU1.TABLE_NAME) +
+			' DROP CONSTRAINT ' + QUOTENAME(RC.CONSTRAINT_NAME) + '; '
+	FROM [$(OGDW)].INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS RC
+		INNER JOIN [$(OGDW)].INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU1
+			ON KCU1.CONSTRAINT_CATALOG = RC.CONSTRAINT_CATALOG
+			AND KCU1.CONSTRAINT_SCHEMA = RC.CONSTRAINT_SCHEMA
+			AND KCU1.CONSTRAINT_NAME = RC.CONSTRAINT_NAME
+	END
+/*
+ELSE
+	BEGIN
+	SELECT
+		@sqlDrop = @sqlDrop + 'ALTER TABLE ' + 'LIFTDW.' + QUOTENAME(RC.CONSTRAINT_SCHEMA) + '.' + QUOTENAME(KCU1.TABLE_NAME) +
+			' DROP CONSTRAINT ' + QUOTENAME(RC.CONSTRAINT_NAME) + '; '
+	FROM
+		LIFTDW.INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS RC
+		INNER JOIN LIFTDW.INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU1
+			ON KCU1.CONSTRAINT_CATALOG = RC.CONSTRAINT_CATALOG
+			AND KCU1.CONSTRAINT_SCHEMA = RC.CONSTRAINT_SCHEMA
+			AND KCU1.CONSTRAINT_NAME = RC.CONSTRAINT_NAME
+	END
+*/
+EXECUTE (@SQLString)
+
+SET @newRowCount = @@ROWCOUNT
+COMMIT TRANSACTION
+
+-- Logging of success
+SET @newMessage = 'Dropping successful...'
+EXEC [log].UpdateProcLogRecord @LogID = @newLogID, @Message = @newMessage, @Success = 1, @RowCount = @newRowCount
+
+END TRY
+
+BEGIN CATCH
+ROLLBACK TRANSACTION
+
+PRINT ERROR_MESSAGE()
+
+-- Logging of failure
+SET @newMessage = 'Dropping FAILED...'
+EXEC [log].UpdateProcLogRecord @LogID = @newLogID, @Message = @newMessage
+
+END CATCH
+
+END

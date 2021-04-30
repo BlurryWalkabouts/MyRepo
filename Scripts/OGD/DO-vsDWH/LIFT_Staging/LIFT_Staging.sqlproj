@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>LIFT_Staging</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{90b0ea25-75f6-4127-8fa2-c995d33c315a}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>LIFT_Staging</RootNamespace>
+    <AssemblyName>LIFT_Staging</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <AnsiNulls>True</AnsiNulls>
+    <QuotedIdentifier>True</QuotedIdentifier>
+    <QueryStoreCaptureMode>All</QueryStoreCaptureMode>
+    <QueryStoreDesiredState>Off</QueryStoreDesiredState>
+    <QueryStoreFlushInterval>900</QueryStoreFlushInterval>
+    <QueryStoreStatsInterval>60</QueryStoreStatsInterval>
+    <QueryStoreMaxPlansPerQuery>200</QueryStoreMaxPlansPerQuery>
+    <QueryStoreStaleQueryThreshold>367</QueryStoreStaleQueryThreshold>
+    <QueryStoreMaxStorageSize>100</QueryStoreMaxStorageSize>
+    <DbScopedConfigLegacyCardinalityEstimation>Off</DbScopedConfigLegacyCardinalityEstimation>
+    <DbScopedConfigMaxDOP>0</DbScopedConfigMaxDOP>
+    <DbScopedConfigParameterSniffing>On</DbScopedConfigParameterSniffing>
+    <DbScopedConfigOptimizerHotfixes>Off</DbScopedConfigOptimizerHotfixes>
+    <DelayedDurability>DISABLED</DelayedDurability>
+    <AutoCreateStatisticsIncremental>False</AutoCreateStatisticsIncremental>
+    <MemoryOptimizedElevateToSnapshot>False</MemoryOptimizedElevateToSnapshot>
+    <Containment>None</Containment>
+    <IsNestedTriggersOn>True</IsNestedTriggersOn>
+    <IsTransformNoiseWordsOn>False</IsTransformNoiseWordsOn>
+    <TwoDigitYearCutoff>2049</TwoDigitYearCutoff>
+    <NonTransactedFileStreamAccess>OFF</NonTransactedFileStreamAccess>
+    <TargetRecoveryTimePeriod>0</TargetRecoveryTimePeriod>
+    <TargetRecoveryTimeUnit>SECONDS</TargetRecoveryTimeUnit>
+    <IsChangeTrackingOn>False</IsChangeTrackingOn>
+    <IsChangeTrackingAutoCleanupOn>True</IsChangeTrackingAutoCleanupOn>
+    <ChangeTrackingRetentionPeriod>2</ChangeTrackingRetentionPeriod>
+    <ChangeTrackingRetentionUnit>Days</ChangeTrackingRetentionUnit>
+    <IsEncryptionOn>False</IsEncryptionOn>
+    <IsBrokerPriorityHonored>False</IsBrokerPriorityHonored>
+    <Trustworthy>False</Trustworthy>
+    <AutoUpdateStatisticsAsynchronously>False</AutoUpdateStatisticsAsynchronously>
+    <PageVerify>CHECKSUM</PageVerify>
+    <ServiceBrokerOption>DisableBroker</ServiceBrokerOption>
+    <DateCorrelationOptimizationOn>False</DateCorrelationOptimizationOn>
+    <Parameterization>SIMPLE</Parameterization>
+    <AllowSnapshotIsolation>False</AllowSnapshotIsolation>
+    <ReadCommittedSnapshot>True</ReadCommittedSnapshot>
+    <VardecimalStorageFormatOn>True</VardecimalStorageFormatOn>
+    <SupplementalLoggingOn>False</SupplementalLoggingOn>
+    <CompatibilityMode>130</CompatibilityMode>
+    <AnsiNullDefault>False</AnsiNullDefault>
+    <AnsiPadding>False</AnsiPadding>
+    <AnsiWarnings>False</AnsiWarnings>
+    <ArithAbort>False</ArithAbort>
+    <ConcatNullYieldsNull>False</ConcatNullYieldsNull>
+    <NumericRoundAbort>False</NumericRoundAbort>
+    <RecursiveTriggersEnabled>False</RecursiveTriggersEnabled>
+    <DatabaseChaining>False</DatabaseChaining>
+    <DatabaseState>ONLINE</DatabaseState>
+    <CloseCursorOnCommitEnabled>False</CloseCursorOnCommitEnabled>
+    <DefaultCursor>GLOBAL</DefaultCursor>
+    <AutoClose>False</AutoClose>
+    <AutoCreateStatistics>True</AutoCreateStatistics>
+    <AutoShrink>False</AutoShrink>
+    <AutoUpdateStatistics>True</AutoUpdateStatistics>
+    <TornPageDetection>False</TornPageDetection>
+    <DatabaseAccess>MULTI_USER</DatabaseAccess>
+    <Recovery>SIMPLE</Recovery>
+    <EnableFullTextSearch>True</EnableFullTextSearch>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <CreateProjectFromDatabaseCompleted>True</CreateProjectFromDatabaseCompleted>
+    <GenerateCreateScript>True</GenerateCreateScript>
+    <ValidateCasingOnIdentifiers>True</ValidateCasingOnIdentifiers>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="setup\" />
+    <Folder Include="setup\Tables\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="log\" />
+    <Folder Include="log\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="Lift313" />
+    <Folder Include="Lift313\Tables" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="setup\Tables\DWTables.sql">
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="setup\Tables\DWDatabases.sql">
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="setup\Tables\DWColumns.sql">
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <None Include="log\Tables\RecordCount.sql">
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </None>
+    <None Include="log\Tables\StagingRecordCount.sql">
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </None>
+    <None Include="dbo\Tables\RecordCount.sql">
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </None>
+    <Build Include="Security\log.sql" />
+    <Build Include="Security\setup.sql" />
+    <Build Include="setup\Tables\RecordCount.sql" />
+    <Build Include="Lift313\Tables\contactnotesuppliercontact.sql" />
+    <Build Include="Lift313\Tables\vestiging.sql" />
+    <Build Include="Lift313\Tables\contactnotesupplier.sql" />
+    <Build Include="Lift313\Tables\verantwoording.sql" />
+    <Build Include="Lift313\Tables\contactnoterequest.sql" />
+    <Build Include="Lift313\Tables\uurtype.sql" />
+    <Build Include="Lift313\Tables\contactnoteprojectlead.sql" />
+    <Build Include="Lift313\Tables\uurlasten.sql" />
+    <Build Include="Lift313\Tables\contactnoteproject.sql" />
+    <Build Include="Lift313\Tables\urenmanager.sql" />
+    <Build Include="Lift313\Tables\contactnotecustomercontact.sql" />
+    <Build Include="Lift313\Tables\typering.sql" />
+    <Build Include="Lift313\Tables\contactnotecustomer.sql" />
+    <Build Include="Lift313\Tables\turnover_transfer_project.sql" />
+    <Build Include="Lift313\Tables\contactnoteassignment.sql" />
+    <Build Include="Lift313\Tables\turnover_transfer.sql" />
+    <Build Include="Lift313\Tables\trefwoorden.sql" />
+    <Build Include="Lift313\Tables\company_logo.sql" />
+    <Build Include="Lift313\Tables\task_hour.sql" />
+    <Build Include="Lift313\Tables\task_assignment_hour.sql" />
+    <Build Include="Lift313\Tables\column_set_user_role_link.sql" />
+    <Build Include="Lift313\Tables\taakvoordracht.sql" />
+    <Build Include="Lift313\Tables\column_set.sql" />
+    <Build Include="Lift313\Tables\ChecklistEmployeeLink.sql" />
+    <Build Include="Lift313\Tables\subproces.sql" />
+    <Build Include="Lift313\Tables\ChecklistEmployee.sql" />
+    <Build Include="Lift313\Tables\studiestatus.sql" />
+    <Build Include="Lift313\Tables\ChecklistCustomerLink.sql" />
+    <Build Include="Lift313\Tables\stduurtype.sql" />
+    <Build Include="Lift313\Tables\ChecklistCustomerContactLink.sql" />
+    <Build Include="Lift313\Tables\stdlast.sql" />
+    <Build Include="Lift313\Tables\ChecklistCustomerContact.sql" />
+    <Build Include="Lift313\Tables\stationery.sql" />
+    <Build Include="Lift313\Tables\ChecklistCustomer.sql" />
+    <Build Include="Lift313\Tables\sollicitatie_aanleiding.sql" />
+    <Build Include="Lift313\Tables\campaign_progress.sql" />
+    <Build Include="Lift313\Tables\selvast.sql" />
+    <Build Include="Lift313\Tables\campaign_klant_link.sql" />
+    <Build Include="Lift313\Tables\campaign_contactpersoon_link.sql" />
+    <Build Include="Lift313\Tables\selgroep.sql" />
+    <Build Include="Lift313\Tables\campaign.sql" />
+    <Build Include="Lift313\Tables\rol.sql" />
+    <Build Include="Lift313\Tables\budgethouder.sql" />
+    <Build Include="Lift313\Tables\richting.sql" />
+    <Build Include="Lift313\Tables\btwtype.sql" />
+    <Build Include="Lift313\Tables\report_schedule.sql" />
+    <Build Include="Lift313\Tables\report_log.sql" />
+    <Build Include="Lift313\Tables\betalingsconditie.sql" />
+    <Build Include="Lift313\Tables\report_custom_data.sql" />
+    <Build Include="Lift313\Tables\behandelaar.sql" />
+    <Build Include="Lift313\Tables\report_configuration.sql" />
+    <Build Include="Lift313\Tables\bedrijfsoort.sql" />
+    <Build Include="Lift313\Tables\registration_employee_log.sql" />
+    <Build Include="Lift313\Tables\bedrijfgrootte.sql" />
+    <Build Include="Lift313\Tables\registration_assignment_log.sql" />
+    <Build Include="Lift313\Tables\bedrijf.sql" />
+    <Build Include="Lift313\Tables\rechtsvorm.sql" />
+    <Build Include="Lift313\Tables\assignment_hourtype_link.sql" />
+    <Build Include="Lift313\Tables\projectlead.sql" />
+    <Build Include="Lift313\Tables\assignment_hour.sql" />
+    <Build Include="Lift313\Tables\projectgroep.sql" />
+    <Build Include="Lift313\Tables\assignment_declaration_link.sql" />
+    <Build Include="Lift313\Tables\project_invoice_emailaddress.sql" />
+    <Build Include="Lift313\Tables\assignment_declaration.sql" />
+    <Build Include="Lift313\Tables\project.sql" />
+    <Build Include="Lift313\Tables\artikel.sql" />
+    <Build Include="Lift313\Tables\proeftijd.sql" />
+    <Build Include="Lift313\Tables\appointmentsuppliercontact.sql" />
+    <Build Include="Lift313\Tables\appointmentrequest.sql" />
+    <Build Include="Lift313\Tables\productcp.sql" />
+    <Build Include="Lift313\Tables\appointmentprojectlead.sql" />
+    <Build Include="Lift313\Tables\proces.sql" />
+    <Build Include="Lift313\Tables\appointmentproject.sql" />
+    <Build Include="Lift313\Tables\prioriteit.sql" />
+    <Build Include="Lift313\Tables\appointmentemployee.sql" />
+    <Build Include="Lift313\Tables\appointmentcustomercontact.sql" />
+    <Build Include="Lift313\Tables\person.sql" />
+    <Build Include="Lift313\Tables\appointmentcustomer.sql" />
+    <Build Include="Lift313\Tables\periode.sql" />
+    <Build Include="Lift313\Tables\afspraak_resultaat.sql" />
+    <Build Include="Lift313\Tables\ovkaart.sql" />
+    <Build Include="Lift313\Tables\activiteitgroep_voordracht_uurtype_link.sql" />
+    <Build Include="Lift313\Tables\overigerelatie.sql" />
+    <Build Include="Lift313\Tables\activiteitgroep_voordracht_uurlasten_link.sql" />
+    <Build Include="Lift313\Tables\ortype.sql" />
+    <Build Include="Lift313\Tables\activiteitgroep_voordracht_planning.sql" />
+    <Build Include="Lift313\Tables\orcp.sql" />
+    <Build Include="Lift313\Tables\activiteitgroep_voordracht.sql" />
+    <Build Include="Lift313\Tables\opzegtermijn.sql" />
+    <Build Include="Lift313\Tables\activiteitgroep.sql" />
+    <Build Include="Lift313\Tables\opleiding.sql" />
+    <Build Include="Lift313\Tables\acquisition_goal_klant_link.sql" />
+    <Build Include="Lift313\Tables\ondertekenaar.sql" />
+    <Build Include="Lift313\Tables\acquisition_goal_contactpersoon_link.sql" />
+    <Build Include="Lift313\Tables\object_auto_fuel_type.sql" />
+    <Build Include="Lift313\Tables\acquisition_goal.sql" />
+    <Build Include="Lift313\Tables\newsitem.sql" />
+    <Build Include="Lift313\Tables\accountmanager.sql" />
+    <Build Include="Lift313\Tables\aanvraag.sql" />
+    <Build Include="Lift313\Tables\lift4_report_configuration_permission.sql" />
+    <Build Include="Lift313\Tables\license_time.sql" />
+    <Build Include="Lift313\Tables\license_key_license_category_link.sql" />
+    <Build Include="Lift313\Tables\license_category.sql" />
+    <Build Include="Lift313\Tables\leveranciercp.sql" />
+    <Build Include="Lift313\Tables\leverancier.sql" />
+    <Build Include="Lift313\Tables\land.sql" />
+    <Build Include="Lift313\Tables\klant.sql" />
+    <Build Include="Lift313\Tables\kennisitemdeluxe.sql" />
+    <Build Include="Lift313\Tables\invoiced_purchase.sql" />
+    <Build Include="Lift313\Tables\invoiced_invoiceplanning.sql" />
+    <Build Include="Lift313\Tables\invoiced_fixed_price.sql" />
+    <Build Include="Lift313\Tables\invoiced_employee_hour.sql" />
+    <Build Include="Lift313\Tables\invoiced_employee_declaration.sql" />
+    <Build Include="Lift313\Tables\invoice_reminder_plan.sql" />
+    <Build Include="Lift313\Tables\invoice_export.sql" />
+    <Build Include="Lift313\Tables\invoice_document_link.sql" />
+    <Build Include="Lift313\Tables\invoice.sql" />
+    <Build Include="Lift313\Tables\interessememo.sql" />
+    <Build Include="Lift313\Tables\interessefase.sql" />
+    <Build Include="Lift313\Tables\interessecijfer.sql" />
+    <Build Include="Lift313\Tables\interesse.sql" />
+    <Build Include="Lift313\Tables\inkoopverplichting.sql" />
+    <Build Include="Lift313\Tables\inkoop.sql" />
+    <Build Include="Lift313\Tables\incomplete_registration_reminder.sql" />
+    <Build Include="Lift313\Tables\holiday_trading.sql" />
+    <Build Include="Lift313\Tables\grootboekrekening.sql" />
+    <Build Include="Lift313\Tables\gespreksnotitie_categorie.sql" />
+    <Build Include="Lift313\Tables\gebruikersinstellingen.sql" />
+    <Build Include="Lift313\Tables\gebruiker.sql" />
+    <Build Include="Lift313\Tables\functie.sql" />
+    <Build Include="Lift313\Tables\factuurregel.sql" />
+    <Build Include="Lift313\Tables\factuurplanning.sql" />
+    <Build Include="Lift313\Tables\factuurgegevens.sql" />
+    <Build Include="Lift313\Tables\factuur_doorschuiven.sql" />
+    <Build Include="Lift313\Tables\factuur.sql" />
+    <Build Include="Lift313\Tables\external_registration_hour.sql" />
+    <Build Include="Lift313\Tables\external_registration.sql" />
+    <Build Include="Lift313\Tables\expected_task_registration_state_log.sql" />
+    <Build Include="Lift313\Tables\event_sociallogaction_link.sql" />
+    <Build Include="Lift313\Tables\werknemer.sql" />
+    <Build Include="Lift313\Tables\employee_selection.sql" />
+    <Build Include="Lift313\Tables\taak.sql" />
+    <Build Include="Lift313\Tables\emailsuppliercontact.sql" />
+    <Build Include="Lift313\Tables\emailsupplier.sql" />
+    <Build Include="Lift313\Tables\emailprojectlead.sql" />
+    <Build Include="Lift313\Tables\emailproject_request.sql" />
+    <Build Include="Lift313\Tables\emailproject.sql" />
+    <Build Include="Lift313\Tables\emailparticipant.sql" />
+    <Build Include="Lift313\Tables\emailemployeecontract.sql" />
+    <Build Include="Lift313\Tables\emailemployee_selection_assessment.sql" />
+    <Build Include="Lift313\Tables\emailemployee_selection.sql" />
+    <Build Include="Lift313\Tables\emailemployee.sql" />
+    <Build Include="Lift313\Tables\emailcustomercontact.sql" />
+    <Build Include="Lift313\Tables\workflowrequest_seenby.sql" />
+    <Build Include="Lift313\Tables\emailcustomer.sql" />
+    <Build Include="Lift313\Tables\workflowrequest.sql" />
+    <Build Include="Lift313\Tables\emailbusinessrelationcontact.sql" />
+    <Build Include="Lift313\Tables\workflowprojectlead.sql" />
+    <Build Include="Lift313\Tables\emailbusinessrelation.sql" />
+    <Build Include="Lift313\Tables\workflowproject_seenby.sql" />
+    <Build Include="Lift313\Tables\emailassignment.sql" />
+    <Build Include="Lift313\Tables\workflowproject.sql" />
+    <Build Include="Lift313\Tables\email_template_attachment_link.sql" />
+    <Build Include="Lift313\Tables\workflowemployeecontract.sql" />
+    <Build Include="Lift313\Tables\email_template.sql" />
+    <Build Include="Lift313\Tables\workflowemployee_seenby.sql" />
+    <Build Include="Lift313\Tables\email_invoice_link.sql" />
+    <Build Include="Lift313\Tables\workflowemployee.sql" />
+    <Build Include="Lift313\Tables\email_addressbook.sql" />
+    <Build Include="Lift313\Tables\workflowcustomercontact.sql" />
+    <Build Include="Lift313\Tables\email.sql" />
+    <Build Include="Lift313\Tables\workflowcustomer_seenby.sql" />
+    <Build Include="Lift313\Tables\documenttype.sql" />
+    <Build Include="Lift313\Tables\workflowcustomer.sql" />
+    <Build Include="Lift313\Tables\documentsupplier.sql" />
+    <Build Include="Lift313\Tables\workflowassignment.sql" />
+    <Build Include="Lift313\Tables\documentrequest.sql" />
+    <Build Include="Lift313\Tables\workflow_seenby.sql" />
+    <Build Include="Lift313\Tables\documentproject.sql" />
+    <Build Include="Lift313\Tables\workflow.sql" />
+    <Build Include="Lift313\Tables\documentemployee.sql" />
+    <Build Include="Lift313\Tables\wnkennisniveau.sql" />
+    <Build Include="Lift313\Tables\documentcustomercontact.sql" />
+    <Build Include="Lift313\Tables\winst_verliesneming.sql" />
+    <Build Include="Lift313\Tables\documentcustomer.sql" />
+    <Build Include="Lift313\Tables\wfcategorie.sql" />
+    <Build Include="Lift313\Tables\documentcategory.sql" />
+    <Build Include="Lift313\Tables\employeetype.sql" />
+    <Build Include="Lift313\Tables\documentbusinessrelation.sql" />
+    <Build Include="Lift313\Tables\werknemerdiploma.sql" />
+    <Build Include="Lift313\Tables\document.sql" />
+    <Build Include="Lift313\Tables\werknemer_activiteitgroep_link.sql" />
+    <Build Include="Lift313\Tables\doc_trefwoorden.sql" />
+    <Build Include="Lift313\Tables\diploma.sql" />
+    <Build Include="Lift313\Tables\wcontract_vestiging_link.sql" />
+    <Build Include="Lift313\Tables\dienst.sql" />
+    <Build Include="Lift313\Tables\wcontract.sql" />
+    <Build Include="Lift313\Tables\cursus.sql" />
+    <Build Include="Lift313\Tables\vrijopzoek.sql" />
+    <Build Include="Lift313\Tables\contractstatus.sql" />
+    <Build Include="Lift313\Tables\voordracht.sql" />
+    <Build Include="Lift313\Tables\contractsoort.sql" />
+    <Build Include="Lift313\Tables\voertaal.sql" />
+    <Build Include="Lift313\Tables\contactpersoon.sql" />
+    <Build Include="Security\Lift313.sql" />
+    <Build Include="Lift313\Tables\signature_attachment_link.sql" />
+    <Build Include="Lift313\Tables\planning_task_assignment.sql" />
+    <Build Include="Lift313\Tables\planning_coworker_availability.sql" />
+    <Build Include="Lift313\Tables\planning_assignment.sql" />
+    <Build Include="Lift313\Tables\regio.sql" />
+    <Build Include="setup\Tables\DWTables_Azure.sql" />
+    <Build Include="setup\Tables\DWColumns_Azure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LIFT_Staging.publish.xml" />
+    <None Include="PRPL01-Prod.publish.xml" />
+    <None Include="PRPL01-Acc.publish.xml" />
+  </ItemGroup>
+</Project>

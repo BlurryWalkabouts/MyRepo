@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [monitoring]
+	AUTHORIZATION [dbo]

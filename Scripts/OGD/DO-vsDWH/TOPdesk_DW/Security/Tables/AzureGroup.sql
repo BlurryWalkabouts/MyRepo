@@ -1,0 +1,9 @@
+﻿CREATE TABLE [Security].[AzureGroup]
+(
+	[ID]       INT              IDENTITY (1, 1),
+	[Guid]     UNIQUEIDENTIFIER NULL,
+	[Name]     NVARCHAR (255)   NOT NULL,
+	[IsMember] AS               IS_MEMBER([Name]),
+	CONSTRAINT [PK_AzureGroup] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO

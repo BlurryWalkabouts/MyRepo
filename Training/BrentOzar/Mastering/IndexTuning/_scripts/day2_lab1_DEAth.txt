@@ -1,0 +1,97 @@
+-- Exec DbaUtils.dbo.sp_BlitzIndex @databasename = 'stackoverflow' 
+-- Exec DbaUtils.dbo.sp_BlitzCache @databasename = 'stackoverflow' 
+
+/*
+EXEC DbaUtils.dbo.sp_BlitzIndex @DatabaseName='stackoverflow', @SchemaName='dbo', @TableName='Posts';
+EQUALITY: [PostId], [UserId], [VoteTypeId] 
+EQUALITY: [PostId] INEQUALITY: [VoteTypeId] INCLUDES: [CreationDate] 
+EQUALITY: [VoteTypeId] INCLUDES: [PostId] 
+
+--2nd interation
+EQUALITY: [ClosedDate],  [PostTypeId] INCLUDES: [OwnerUserId], [Score] 
+EQUALITY: [AcceptedAnswerId] INCLUDES: [OwnerUserId] 
+INEQUALITY: [OwnerUserId] INCLUDES: [AcceptedAnswerId] 
+EQUALITY: [AcceptedAnswerId] 
+
+-- 3rd 
+EQUALITY: [ClosedDate], [CommunityOwnedDate], [PostTypeId] INCLUDES: [OwnerUserId], [Score] 
+EQUALITY: [AcceptedAnswerId] INCLUDES: [OwnerUserId] 
+EQUALITY: [AcceptedAnswerId] 
+*/
+
+CREATE INDEX [OwnerUserId_PostTypeId_Includes] 
+ON [StackOverflow].[dbo].[Posts]
+([OwnerUserId], [PostTypeId])  
+INCLUDE ([Parentid], [Score]) 
+
+CREATE INDEX [OwnerUserId_AcceptedAnswerId_ClosedDate_CommunityOwnedDate]
+ON [StackOverflow].[dbo].[Posts] 
+([OwnerUserId], [AcceptedAnswerId], [ClosedDate], [CommunityOwnedDate]) 
+INCLUDE ([CreationDate], [Score] )
+
+CREATE INDEX [AcceptedAnswerId_PostTypeId_ClosedDate_CommunityOwnedDate]
+ON [StackOverflow].[dbo].[Posts] 
+([AcceptedAnswerId], [PostTypeId], [ClosedDate], [CommunityOwnedDate] ) 
+INCLUDE ([OwnerUserId], [Score] )
+
+/*
+EXEC DbaUtils.dbo.sp_BlitzIndex @DatabaseName='stackoverflow', @SchemaName='dbo', @TableName='Comments'
+*/
+CREATE INDEX [UserId_CreationDate_Includes] 
+ON [StackOverflow].[dbo].[Comments] 
+([UserId],[CreationDate])  
+INCLUDE ([PostId],[Score]) 
+
+/*
+EXEC DbaUtils.dbo.sp_BlitzIndex @DatabaseName='stackoverflow', @SchemaName='dbo', @TableName='Badges';
+*/
+CREATE INDEX [Name_Date_Includes] 
+ON [StackOverflow].[dbo].[Badges]
+([Name], [Date])  
+INCLUDE ([UserId])
+
+/*
+EXEC DbaUtils.dbo.sp_BlitzIndex @DatabaseName='stackoverflow', @SchemaName='dbo', @TableName='Votes';	
+
+*/
+
+CREATE INDEX [PostId_UserId_VoteTypeId] 
+ON [StackOverflow].[dbo].[Votes] 
+([PostId], [UserId], [VoteTypeId]) 
+INCLUDE ([CreationDate])
+
+
+/*
+EXEC DbaUtils.dbo.sp_BlitzIndex @DatabaseName='stackoverflow', @SchemaName='dbo', @TableName='Users';	
+INEQUALITY: [Reputation] 
+EQUALITY: [UpVotes] INEQUALITY: [Location] INCLUDES: [CreationDate], [DisplayName] 
+EQUALITY: [UpVotes] INEQUALITY: [Location] INCLUDES: [DisplayName], [LastAccessDate] 
+EQUALITY: [UpVotes] INEQUALITY: [DisplayName] INCLUDES: [CreationDate], [Location] 
+EQUALITY: [UpVotes] INEQUALITY: [DisplayName] INCLUDES: [LastAccessDate], [Location] 
+EQUALITY: [DownVotes], [Reputation] INCLUDES: [DisplayName], [LastAccessDate], [Location] 
+INEQUALITY: [Reputation], [UpVotes] 
+INEQUALITY: [Reputation], [UpVotes] INCLUDES: [DownVotes] 
+INEQUALITY: [LastAccessDate], [WebsiteUrl] INCLUDES: [DisplayName], [Location], [Reputation] 
+INEQUALITY: [LastAccessDate], [WebsiteUrl] INCLUDES: [DisplayName], [Location] 
+
+
+*/
+CREATE INDEX [Location_UpVotes_Includes] 
+ON [StackOverflow].[dbo].[Users]
+( [Location], [UpVotes])  
+INCLUDE ([DisplayName], [LastAccessDate]) 
+
+CREATE INDEX [DisplayName_UpVotes_Includes] 
+ON [StackOverflow].[dbo].[Users]
+( [DisplayName], [UpVotes])  
+INCLUDE ([CreationDate], [Location] ) 
+
+CREATE INDEX [Reputation_UpVotes_Includes]
+ON [StackOverflow].[dbo].[Users]
+([Reputation], [UpVotes])  
+INCLUDE ([DownVotes]) 
+
+CREATE INDEX [WebsiteUrlIncludes] 
+ON [StackOverflow].[dbo].[Users] 
+([WebsiteUrl],[LastAccessDate])  
+INCLUDE ([DisplayName], [Location], [Reputation]) 

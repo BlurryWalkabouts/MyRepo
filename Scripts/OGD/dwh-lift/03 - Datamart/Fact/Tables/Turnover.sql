@@ -1,0 +1,26 @@
+﻿CREATE TABLE [Fact].[Turnover] 
+(
+    [RequestKey]        INT                 NOT NULL DEFAULT -1,
+    [ProjectKey]        INT                 NOT NULL DEFAULT -1,
+    [CustomerKey]       INT                 NOT NULL DEFAULT -1,
+    [NominationKey]     INT                 NOT NULL DEFAULT -1,
+    [LedgerKey]         INT                 NOT NULL DEFAULT -1,
+	[LedgerNumber]      NVARCHAR(10)        NULL,
+	[Ledger]            NVARCHAR(30)        NULL,
+	[Date]              DATE                NOT NULL DEFAULT '1753-01-01',	
+	[ProductGroup]      NVARCHAR(30)        NULL,
+    [Product]           NVARCHAR(60)        NULL,
+	[Office]            NVARCHAR(40)        NULL,
+    [BusinessUnit]      NVARCHAR(60)        NULL,
+	[EmpCount]          SMALLINT            NOT NULL,
+	[HoursWritten]      DECIMAL(19, 2)      NOT NULL,
+	[AvgHoursWritten]   DECIMAL(19, 2)      NOT NULL,
+	[Turnover]          DECIMAL(19, 4)      NOT NULL,
+	[AvgTurnover]       DECIMAL(19, 4)      NOT NULL,
+	CONSTRAINT [FK_Turnover_RequestKey]     FOREIGN KEY ([RequestKey])      REFERENCES [Dim].[Request] ([RequestKey]),
+	CONSTRAINT [FK_Turnover_ProjectKey]     FOREIGN KEY ([ProjectKey])      REFERENCES [Dim].[Project] ([ProjectKey]),
+	CONSTRAINT [FK_Turnover_CustomerKey]    FOREIGN KEY ([CustomerKey])     REFERENCES [Dim].[Customer] ([CustomerKey]),
+	CONSTRAINT [FK_Turnover_NominationKey]  FOREIGN KEY ([NominationKey])   REFERENCES [Dim].[Nomination] ([NominationKey]),
+	CONSTRAINT [FK_Turnover_LedgerKey]      FOREIGN KEY ([LedgerKey])       REFERENCES [Dim].[Ledger] ([LedgerKey]),
+	CONSTRAINT [FK_Turnover_Date]           FOREIGN KEY ([Date])            REFERENCES [Dim].[Date]   ([Date])
+)

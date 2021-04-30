@@ -1,0 +1,7 @@
+﻿CREATE TABLE [Security].[UserPrincipalNameSuffix]
+(
+	[ID]   INT            IDENTITY (1, 1),
+	[Name] NVARCHAR (255) NOT NULL,
+	CONSTRAINT [PK_UserPrincipalNameSuffix] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO

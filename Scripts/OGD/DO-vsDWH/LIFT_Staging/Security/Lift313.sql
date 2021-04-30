@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [Lift313]
+    AUTHORIZATION [dbo];
+

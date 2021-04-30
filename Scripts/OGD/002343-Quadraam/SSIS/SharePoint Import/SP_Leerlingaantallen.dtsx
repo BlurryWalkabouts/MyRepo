@@ -1,0 +1,2882 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/20/2017 2:31:51 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DWH-TEST"
+  DTS:CreatorName="DWH-TEST\OGD_WILLEMS"
+  DTS:DTSID="{65651A25-9351-4E39-9492-705892A3FF40}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LocaleID="1043"
+  DTS:ObjectName="SP_Leerlingaantallen"
+  DTS:PackageType="5"
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{FF1A8D0C-1068-4B81-BE90-3F9D711AF38D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SharePoint]"
+      DTS:CreationName="ODATA"
+      DTS:DTSID="{965FE5E4-7CAE-416A-A916-686A6E3B5A25}"
+      DTS:ObjectName="SharePoint">
+      <DTS:ObjectData>
+        <ODataConnectionManager
+          UserName="serivce-ogd@quadraam.onmicrosoft.com"
+          Url="https://quadraam.sharepoint.com/teams/projecten/dwh_beheer/_vti_bin/listdata.svc"
+          ConnectionString="Service Document Url=https://quadraam.sharepoint.com/teams/projecten/dwh_beheer/_vti_bin/listdata.svc;Include Atom Elements=Auto;Include Expanded Entities=False;Integrated Security=False;Cookie=&quot;SPOIDCRL=77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48U1A+VjQsMGguZnxtZW1iZXJzaGlwfDEwMDNiZmZkYTkwNGI2MDZAbGl2ZS5jb20sMCMuZnxtZW1iZXJzaGlwfHNlcml2Y2Utb2dkQHF1YWRyYWFtLm9ubWljcm9zb2Z0LmNvbSwxMzE3MjU5Mjg4OTAwMDAwMDAsMTMxNjQ5MDk5ODEwMDAwMDAwLDEzMTczMDI0ODg5NjQ0NTM4NiwwLjAuMC4wLDQsMzNmMjI4NDQtOTRjMi00NTJiLWFlMDktYmVlZTdkZGNhNDcyLCwsZWJkMjZkOWUtZTBlYy01MDAwLWZhNGItNjJlZDYyNmM1MzVlLGViZDI2ZDllLWUwZWMtNTAwMC1mYTRiLTYyZWQ2MjZjNTM1ZSwsMCwwLDAsSGIyWXdMWmFDUGludXllSzdmKy9QakR5MmpKMFd1MlR2bkRvbGtsWHRxazlOaGdXMTRONlp6NHRPSzRHTWNVWFV1N1o0NmN1TFhZV3BVK0hoaElrK1Bya2hsczYxWmQrRjFyeTZqM2ZvdVUwQW04aldWaEgvdVQwNEZRQXpkVlhaU21jTUFJWmU3U3BXVlJoRVVwVmNVdElGbFVZd2IyWjhDdDRFaHFVQmwwckYxRDJYSkxQeGZIdkxZdU5CYVl4UDVOZnNGY3BMQVZjRnJZRHc5TWhqclZhWFlKeDdsVGhJYno0WTRxOXBQVU9oamtDYUVyemQvUkY3d3F1Wm5ZU1N0c3p6d2xxMTlTaUl1dWZPVGU4ZnVrR0VTVXlKMmROTW93dDBGTUhRdVVXMUZMRC9PdmlzUHZ5djFsSFlKQTZXTnlFZWFYT1NwOUZJVEo2TUJka1dRPT08L1NQPg==&quot;;User ID=serivce-ogd@quadraam.onmicrosoft.com;Persist Security Info=False;Time Out=600;Schema Sample Size=25;Retry Count=5;Retry Sleep=100;Keep Alive=False;Max Received Message Size=4398046511104"
+          MicrosoftOnlineServicesAuth="True"
+          AuthType="MicrosoftOnlineService">
+          <Password
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAs4PS2ouaeUKkRhY+R0IbggAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAD+iZItcoy865NEgYvdImKGYU5IA1neaxsn14a1/FEXIAAAAAAOgAAAAAIAACAAAACX0niGjgnBxD4G2XExkVSVuqM56Ix4NEFAF7g0xswMmSAAAADNlnod5ELmtCaBd0l6eraogI4dr5jP9g0JfX9SmsWpQ0AAAAAD0Ukk6kceyL7c7Q+B9UgIEHPsB25xH15JYfr6TvFg1od5GQ9e+Pka3lPjLhjrJdVwc5awCNOc0D01RAVVbr+X</Password>
+        </ODataConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Staging_Quadraam]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{CD520CC2-DCC5-4622-9D40-D84ABB252CE2}"
+      DTS:ObjectName="Staging_Quadraam">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Staging_Quadraam;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E4EBA668-A02F-43EB-8298-EF2D6BC6246F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TargetTable">
+      <DTS:VariableValue
+        DTS:DataType="8">[SharePoint].[Leerlingaantallen]</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E37F09A1-9D2A-4116-A06D-FE6BF8366676}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Derived Column Kostenplaats"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column Kostenplaats"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column Kostenplaats.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column Kostenplaats.Inputs[Derived Column Input].Columns[KostenplaatsNaam]"
+                      cachedDataType="nText"
+                      cachedName="KostenplaatsNaam"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[KostenplaatsNaam]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[KostenplaatsNaam]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">KostenplaatsNaam</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column Kostenplaats.Inputs[Derived Column Input].Columns[KostenplaatsCode]"
+                      cachedDataType="r8"
+                      cachedName="KostenplaatsCode"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[KostenplaatsCode]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_NUMERIC,7,0)#{Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[KostenplaatsCode]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_NUMERIC,7,0)KostenplaatsCode</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column Kostenplaats.Inputs[Derived Column Input].Columns[Id_kostenplaats]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Id]"
+                      name="Id_kostenplaats"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Id]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Id_kostenplaats</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column Kostenplaats.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column Kostenplaats.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column Kostenplaats.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column Kostenplaats.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column Kostenplaats.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column Kostenplaats.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column Kostenplaats.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column Kostenplaats.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Derived Column Leerlingaantallen"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column Leerlingaantallen"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column Leerlingaantallen.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column Leerlingaantallen.Inputs[Derived Column Input].Columns[KostenplaatsId]"
+                      cachedDataType="i4"
+                      cachedName="KostenplaatsId"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[KostenplaatsId]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[KostenplaatsId]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">KostenplaatsId</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column Leerlingaantallen.Inputs[Derived Column Input].Columns[Schooljaar]"
+                      cachedDataType="r8"
+                      cachedName="Schooljaar"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Schooljaar]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Schooljaar]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Schooljaar</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column Leerlingaantallen.Inputs[Derived Column Input].Columns[Leerjaar]"
+                      cachedDataType="r8"
+                      cachedName="Leerjaar"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Leerjaar]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Leerjaar]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Leerjaar</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column Leerlingaantallen.Inputs[Derived Column Input].Columns[AantalLlnVSOOpname]"
+                      cachedDataType="r8"
+                      cachedName="AantalLlnVSOOpname"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnVSOOpname]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnVSOOpname]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">AantalLlnVSOOpname</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column Leerlingaantallen.Inputs[Derived Column Input].Columns[TotaalAantalLeerlingen]"
+                      cachedDataType="r8"
+                      cachedName="TotaalAantalLeerlingen"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[TotaalAantalLeerlingen]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[TotaalAantalLeerlingen]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TotaalAantalLeerlingen</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column Leerlingaantallen.Inputs[Derived Column Input].Columns[AantalLlnLWOOIndicatie]"
+                      cachedDataType="r8"
+                      cachedName="AantalLlnLWOOIndicatie"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnLWOOIndicatie]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnLWOOIndicatie]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">AantalLlnLWOOIndicatie</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column Leerlingaantallen.Inputs[Derived Column Input].Columns[AantalLlnPROIndicatie]"
+                      cachedDataType="r8"
+                      cachedName="AantalLlnPROIndicatie"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnPROIndicatie]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnPROIndicatie]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">AantalLlnPROIndicatie</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column Leerlingaantallen.Inputs[Derived Column Input].Columns[AantalLlnVSOVerwijzing]"
+                      cachedDataType="r8"
+                      cachedName="AantalLlnVSOVerwijzing"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnVSOVerwijzing]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnVSOVerwijzing]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">AantalLlnVSOVerwijzing</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column Leerlingaantallen.Inputs[Derived Column Input].Columns[AantalInstroom]"
+                      cachedDataType="r8"
+                      cachedName="AantalInstroom"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalInstroom]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalInstroom]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">AantalInstroom</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column Leerlingaantallen.Inputs[Derived Column Input].Columns[Gewijzigd]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Gewijzigd"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Gewijzigd]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Gewijzigd]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Gewijzigd</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column Leerlingaantallen.Inputs[Derived Column Input].Columns[Gemaakt]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Gemaakt"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Gemaakt]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Gemaakt]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Gemaakt</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column Leerlingaantallen.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column Leerlingaantallen.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column Leerlingaantallen.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column Leerlingaantallen.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column Leerlingaantallen.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column Leerlingaantallen.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column Leerlingaantallen.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column Leerlingaantallen.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[KostenplaatsId]"
+                      cachedDataType="i4"
+                      cachedName="KostenplaatsId"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[KostenplaatsId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[Schooljaar]"
+                      cachedDataType="r8"
+                      cachedName="Schooljaar"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Schooljaar]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[Leerjaar]"
+                      cachedDataType="r8"
+                      cachedName="Leerjaar"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Leerjaar]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[AantalLlnVSOOpname]"
+                      cachedDataType="r8"
+                      cachedName="AantalLlnVSOOpname"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[AantalLlnVSOOpname]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[TotaalAantalLeerlingen]"
+                      cachedDataType="r8"
+                      cachedName="TotaalAantalLeerlingen"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[TotaalAantalLeerlingen]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[AantalLlnLWOOIndicatie]"
+                      cachedDataType="r8"
+                      cachedName="AantalLlnLWOOIndicatie"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[AantalLlnLWOOIndicatie]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[AantalLlnPROIndicatie]"
+                      cachedDataType="r8"
+                      cachedName="AantalLlnPROIndicatie"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[AantalLlnPROIndicatie]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[AantalLlnVSOVerwijzing]"
+                      cachedDataType="r8"
+                      cachedName="AantalLlnVSOVerwijzing"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[AantalLlnVSOVerwijzing]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[AantalInstroom]"
+                      cachedDataType="r8"
+                      cachedName="AantalInstroom"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[AantalInstroom]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[Gewijzigd]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Gewijzigd"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Gewijzigd]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[Gemaakt]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Gemaakt"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Gemaakt]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[Id_kostenplaats]"
+                      cachedDataType="i4"
+                      cachedName="Id_kostenplaats"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[Id_kostenplaats]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[KostenplaatsCode]"
+                      cachedDataType="r8"
+                      cachedName="KostenplaatsCode"
+                      lineageId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[KostenplaatsCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output]"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[KostenplaatsCode]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[KostenplaatsCode]"
+                      name="KostenplaatsCode">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[KostenplaatsCode]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Schooljaar]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Schooljaar]"
+                      name="Schooljaar">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[Schooljaar]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Leerjaar]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Leerjaar]"
+                      name="Leerjaar">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[Leerjaar]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[AantalLlnVSOOpname]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[AantalLlnVSOOpname]"
+                      name="AantalLlnVSOOpname">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[AantalLlnVSOOpname]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[TotaalAantalLeerlingen]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[TotaalAantalLeerlingen]"
+                      name="TotaalAantalLeerlingen">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[TotaalAantalLeerlingen]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[AantalLlnLWOOIndicatie]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[AantalLlnLWOOIndicatie]"
+                      name="AantalLlnLWOOIndicatie">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[AantalLlnLWOOIndicatie]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[AantalLlnPROIndicatie]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[AantalLlnPROIndicatie]"
+                      name="AantalLlnPROIndicatie">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[AantalLlnPROIndicatie]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[AantalLlnVSOVerwijzing]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[AantalLlnVSOVerwijzing]"
+                      name="AantalLlnVSOVerwijzing">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[AantalLlnVSOVerwijzing]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[AantalInstroom]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[AantalInstroom]"
+                      name="AantalInstroom">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[AantalInstroom]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Gewijzigd]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Gewijzigd]"
+                      name="Gewijzigd">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[Gewijzigd]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Gemaakt]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Gemaakt]"
+                      name="Gemaakt">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[Gemaakt]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OData Source Kostenplaats"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="OData Source Component;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Read data from OData services"
+              name="OData Source Kostenplaats"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Name of the collection to be retrieved from the service."
+                  expressionType="Notify"
+                  name="CollectionName">Kostenplaats</property>
+                <property
+                  dataType="System.Int32"
+                  description="The default maximum length for a string that has no maxlength specified in the schema."
+                  name="DefaultStringLength">4000</property>
+                <property
+                  dataType="System.String"
+                  description="Query in the url. "
+                  expressionType="Notify"
+                  name="Query"></property>
+                <property
+                  dataType="System.String"
+                  description="Resource path of the collection to be retrieved from the service."
+                  expressionType="Notify"
+                  name="ResourcePath"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="When set to true, use the resource path as requested collection; otherwise, use the collection name."
+                  expressionType="Notify"
+                  name="UseResourcePath">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.OData</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OData Source Kostenplaats.Connections[Connection]"
+                  connectionManagerID="Package.ConnectionManagers[SharePoint]"
+                  connectionManagerRefId="Package.ConnectionManagers[SharePoint]"
+                  description="Connection to OData Service"
+                  name="Connection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[InhoudstypeId]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[InhoudstypeId]"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[InhoudstypeId]"
+                      name="InhoudstypeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[KostenplaatsNaam]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[KostenplaatsNaam]"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[KostenplaatsNaam]"
+                      name="KostenplaatsNaam"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[ActivumIdVoorCompliance]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[ActivumIdVoorCompliance]"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[ActivumIdVoorCompliance]"
+                      name="ActivumIdVoorCompliance"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[KostenplaatsCode]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[KostenplaatsCode]"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[KostenplaatsCode]"
+                      name="KostenplaatsCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[Id]"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Inhoudstype]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[Inhoudstype]"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Inhoudstype]"
+                      name="Inhoudstype"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Gewijzigd]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[Gewijzigd]"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Gewijzigd]"
+                      name="Gewijzigd"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Gemaakt]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[Gemaakt]"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Gemaakt]"
+                      name="Gemaakt"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[GemaaktDoorId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[GemaaktDoorId]"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[GemaaktDoorId]"
+                      name="GemaaktDoorId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[GewijzigdDoorId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[GewijzigdDoorId]"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[GewijzigdDoorId]"
+                      name="GewijzigdDoorId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Owshiddenversion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[Owshiddenversion]"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Owshiddenversion]"
+                      name="Owshiddenversion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Versie]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[Versie]"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Versie]"
+                      name="Versie"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Pad]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[Pad]"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Pad]"
+                      name="Pad"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[InhoudstypeId]"
+                      dataType="nText"
+                      name="InhoudstypeId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[KostenplaatsNaam]"
+                      dataType="nText"
+                      name="KostenplaatsNaam" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[ActivumIdVoorCompliance]"
+                      dataType="nText"
+                      name="ActivumIdVoorCompliance" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[KostenplaatsCode]"
+                      dataType="r8"
+                      name="KostenplaatsCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[Inhoudstype]"
+                      dataType="nText"
+                      name="Inhoudstype" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[Gewijzigd]"
+                      dataType="dbTimeStamp"
+                      name="Gewijzigd" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[Gemaakt]"
+                      dataType="dbTimeStamp"
+                      name="Gemaakt" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[GemaaktDoorId]"
+                      dataType="i4"
+                      name="GemaaktDoorId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[GewijzigdDoorId]"
+                      dataType="i4"
+                      name="GewijzigdDoorId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[Owshiddenversion]"
+                      dataType="i4"
+                      name="Owshiddenversion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[Versie]"
+                      dataType="nText"
+                      name="Versie" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].ExternalColumns[Pad]"
+                      dataType="nText"
+                      name="Pad" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output]"
+                  isErrorOut="true"
+                  name="Error output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[InhoudstypeId]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[InhoudstypeId]"
+                      name="InhoudstypeId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[KostenplaatsNaam]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[KostenplaatsNaam]"
+                      name="KostenplaatsNaam" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[ActivumIdVoorCompliance]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[ActivumIdVoorCompliance]"
+                      name="ActivumIdVoorCompliance" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[KostenplaatsCode]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[KostenplaatsCode]"
+                      name="KostenplaatsCode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[Inhoudstype]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[Inhoudstype]"
+                      name="Inhoudstype" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[Gewijzigd]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[Gewijzigd]"
+                      name="Gewijzigd" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[Gemaakt]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[Gemaakt]"
+                      name="Gemaakt" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[GemaaktDoorId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[GemaaktDoorId]"
+                      name="GemaaktDoorId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[GewijzigdDoorId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[GewijzigdDoorId]"
+                      name="GewijzigdDoorId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[Owshiddenversion]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[Owshiddenversion]"
+                      name="Owshiddenversion" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[Versie]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[Versie]"
+                      name="Versie" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[Pad]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Error output].Columns[Pad]"
+                      name="Pad" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OData Source Leerlingaantallen"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="OData Source Component;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Read data from OData services"
+              name="OData Source Leerlingaantallen"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Name of the collection to be retrieved from the service."
+                  expressionType="Notify"
+                  name="CollectionName">InvoerLeerlingaantallen</property>
+                <property
+                  dataType="System.Int32"
+                  description="The default maximum length for a string that has no maxlength specified in the schema."
+                  name="DefaultStringLength">4000</property>
+                <property
+                  dataType="System.String"
+                  description="Query in the url. "
+                  expressionType="Notify"
+                  name="Query"></property>
+                <property
+                  dataType="System.String"
+                  description="Resource path of the collection to be retrieved from the service."
+                  expressionType="Notify"
+                  name="ResourcePath"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="When set to true, use the resource path as requested collection; otherwise, use the collection name."
+                  expressionType="Notify"
+                  name="UseResourcePath">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.OData</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OData Source Leerlingaantallen.Connections[Connection]"
+                  connectionManagerID="Package.ConnectionManagers[SharePoint]"
+                  connectionManagerRefId="Package.ConnectionManagers[SharePoint]"
+                  description="Connection to OData Service"
+                  name="Connection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[KostenplaatsId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[KostenplaatsId]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[KostenplaatsId]"
+                      name="KostenplaatsId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Schooljaar]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Schooljaar]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Schooljaar]"
+                      name="Schooljaar"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Leerjaar]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Leerjaar]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Leerjaar]"
+                      name="Leerjaar"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnVSOOpname]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[AantalLlnVSOOpname]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnVSOOpname]"
+                      name="AantalLlnVSOOpname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[TotaalAantalLeerlingen]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[TotaalAantalLeerlingen]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[TotaalAantalLeerlingen]"
+                      name="TotaalAantalLeerlingen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnLWOOIndicatie]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[AantalLlnLWOOIndicatie]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnLWOOIndicatie]"
+                      name="AantalLlnLWOOIndicatie"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnPROIndicatie]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[AantalLlnPROIndicatie]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnPROIndicatie]"
+                      name="AantalLlnPROIndicatie"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnVSOVerwijzing]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[AantalLlnVSOVerwijzing]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnVSOVerwijzing]"
+                      name="AantalLlnVSOVerwijzing"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalInstroom]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[AantalInstroom]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalInstroom]"
+                      name="AantalInstroom"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Titel]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Titel]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Titel]"
+                      name="Titel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[InhoudstypeId]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[InhoudstypeId]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[InhoudstypeId]"
+                      name="InhoudstypeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[ActivumIdVoorCompliance]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[ActivumIdVoorCompliance]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[ActivumIdVoorCompliance]"
+                      name="ActivumIdVoorCompliance"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Id]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Inhoudstype]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Inhoudstype]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Inhoudstype]"
+                      name="Inhoudstype"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Gewijzigd]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Gewijzigd]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Gewijzigd]"
+                      name="Gewijzigd"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Gemaakt]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Gemaakt]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Gemaakt]"
+                      name="Gemaakt"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[GemaaktDoorId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[GemaaktDoorId]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[GemaaktDoorId]"
+                      name="GemaaktDoorId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[GewijzigdDoorId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[GewijzigdDoorId]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[GewijzigdDoorId]"
+                      name="GewijzigdDoorId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Owshiddenversion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Owshiddenversion]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Owshiddenversion]"
+                      name="Owshiddenversion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Versie]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Versie]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Versie]"
+                      name="Versie"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Pad]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Pad]"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Pad]"
+                      name="Pad"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[KostenplaatsId]"
+                      dataType="i4"
+                      name="KostenplaatsId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Schooljaar]"
+                      dataType="r8"
+                      name="Schooljaar" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Leerjaar]"
+                      dataType="r8"
+                      name="Leerjaar" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[AantalLlnVSOOpname]"
+                      dataType="r8"
+                      name="AantalLlnVSOOpname" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[TotaalAantalLeerlingen]"
+                      dataType="r8"
+                      name="TotaalAantalLeerlingen" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[AantalLlnLWOOIndicatie]"
+                      dataType="r8"
+                      name="AantalLlnLWOOIndicatie" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[AantalLlnPROIndicatie]"
+                      dataType="r8"
+                      name="AantalLlnPROIndicatie" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[AantalLlnVSOVerwijzing]"
+                      dataType="r8"
+                      name="AantalLlnVSOVerwijzing" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[AantalInstroom]"
+                      dataType="r8"
+                      name="AantalInstroom" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Titel]"
+                      dataType="nText"
+                      name="Titel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[InhoudstypeId]"
+                      dataType="nText"
+                      name="InhoudstypeId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[ActivumIdVoorCompliance]"
+                      dataType="nText"
+                      name="ActivumIdVoorCompliance" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Inhoudstype]"
+                      dataType="nText"
+                      name="Inhoudstype" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Gewijzigd]"
+                      dataType="dbTimeStamp"
+                      name="Gewijzigd" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Gemaakt]"
+                      dataType="dbTimeStamp"
+                      name="Gemaakt" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[GemaaktDoorId]"
+                      dataType="i4"
+                      name="GemaaktDoorId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[GewijzigdDoorId]"
+                      dataType="i4"
+                      name="GewijzigdDoorId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Owshiddenversion]"
+                      dataType="i4"
+                      name="Owshiddenversion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Versie]"
+                      dataType="nText"
+                      name="Versie" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].ExternalColumns[Pad]"
+                      dataType="nText"
+                      name="Pad" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output]"
+                  isErrorOut="true"
+                  name="Error output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[KostenplaatsId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[KostenplaatsId]"
+                      name="KostenplaatsId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Schooljaar]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Schooljaar]"
+                      name="Schooljaar" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Leerjaar]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Leerjaar]"
+                      name="Leerjaar" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[AantalLlnVSOOpname]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[AantalLlnVSOOpname]"
+                      name="AantalLlnVSOOpname" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[TotaalAantalLeerlingen]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[TotaalAantalLeerlingen]"
+                      name="TotaalAantalLeerlingen" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[AantalLlnLWOOIndicatie]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[AantalLlnLWOOIndicatie]"
+                      name="AantalLlnLWOOIndicatie" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[AantalLlnPROIndicatie]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[AantalLlnPROIndicatie]"
+                      name="AantalLlnPROIndicatie" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[AantalLlnVSOVerwijzing]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[AantalLlnVSOVerwijzing]"
+                      name="AantalLlnVSOVerwijzing" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[AantalInstroom]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[AantalInstroom]"
+                      name="AantalInstroom" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Titel]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Titel]"
+                      name="Titel" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[InhoudstypeId]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[InhoudstypeId]"
+                      name="InhoudstypeId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[ActivumIdVoorCompliance]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[ActivumIdVoorCompliance]"
+                      name="ActivumIdVoorCompliance" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Inhoudstype]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Inhoudstype]"
+                      name="Inhoudstype" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Gewijzigd]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Gewijzigd]"
+                      name="Gewijzigd" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Gemaakt]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Gemaakt]"
+                      name="Gemaakt" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[GemaaktDoorId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[GemaaktDoorId]"
+                      name="GemaaktDoorId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[GewijzigdDoorId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[GewijzigdDoorId]"
+                      name="GewijzigdDoorId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Owshiddenversion]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Owshiddenversion]"
+                      name="Owshiddenversion" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Versie]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Versie]"
+                      name="Versie" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Pad]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Error output].Columns[Pad]"
+                      name="Pad" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[SharePoint].[Tevredenheidscijfers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable">User::TargetTable</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">4</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Staging_Quadraam]"
+                  connectionManagerRefId="Package.ConnectionManagers[Staging_Quadraam]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gemaakt]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Gemaakt"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gemaakt]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Gemaakt]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gewijzigd]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Gewijzigd"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gewijzigd]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Gewijzigd]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KostenplaatsCode]"
+                      cachedDataType="r8"
+                      cachedName="KostenplaatsCode"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Kostenplaats]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[KostenplaatsCode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Leerjaar]"
+                      cachedDataType="r8"
+                      cachedName="Leerjaar"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Leerjaar]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Leerjaar]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AantalLlnVSOOpname]"
+                      cachedDataType="r8"
+                      cachedName="AantalLlnVSOOpname"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aantal lln VSO opname]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[AantalLlnVSOOpname]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AantalLlnVSOVerwijzing]"
+                      cachedDataType="r8"
+                      cachedName="AantalLlnVSOVerwijzing"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aantal lln VSO verwijzing]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[AantalLlnVSOVerwijzing]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AantalLlnLWOOIndicatie]"
+                      cachedDataType="r8"
+                      cachedName="AantalLlnLWOOIndicatie"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aantal lln LWOO indicatie]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[AantalLlnLWOOIndicatie]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AantalLlnPROIndicatie]"
+                      cachedDataType="r8"
+                      cachedName="AantalLlnPROIndicatie"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aantal lln PRO indicatie]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[AantalLlnPROIndicatie]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AantalInstroom]"
+                      cachedDataType="r8"
+                      cachedName="AantalInstroom"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Instroom]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[AantalInstroom]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotaalAantalLeerlingen]"
+                      cachedDataType="r8"
+                      cachedName="TotaalAantalLeerlingen"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Totaal aantal leerlingen]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[TotaalAantalLeerlingen]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Schooljaar]"
+                      cachedDataType="r8"
+                      cachedName="Schooljaar"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Jaar]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Schooljaar]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Jaar]"
+                      dataType="i4"
+                      name="Jaar" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gewijzigd]"
+                      dataType="dbTimeStamp2"
+                      name="Gewijzigd"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gemaakt]"
+                      dataType="dbTimeStamp2"
+                      name="Gemaakt"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Kostenplaats]"
+                      dataType="i4"
+                      name="Kostenplaats" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Leerjaar]"
+                      dataType="i4"
+                      name="Leerjaar" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aantal lln VSO opname]"
+                      dataType="i4"
+                      name="Aantal lln VSO opname" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aantal lln VSO verwijzing]"
+                      dataType="i4"
+                      name="Aantal lln VSO verwijzing" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aantal lln LWOO indicatie]"
+                      dataType="i4"
+                      name="Aantal lln LWOO indicatie" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aantal lln PRO indicatie]"
+                      dataType="i4"
+                      name="Aantal lln PRO indicatie" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Instroom]"
+                      dataType="wstr"
+                      length="255"
+                      name="Instroom" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Totaal aantal leerlingen]"
+                      dataType="i4"
+                      name="Totaal aantal leerlingen" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort Kostenplaats"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort Kostenplaats"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort Kostenplaats.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Inputs[Sort Input].Columns[InhoudstypeId]"
+                      cachedDataType="nText"
+                      cachedName="InhoudstypeId"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[InhoudstypeId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Inputs[Sort Input].Columns[KostenplaatsNaam]"
+                      cachedDataType="nText"
+                      cachedName="KostenplaatsNaam"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[KostenplaatsNaam]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Inputs[Sort Input].Columns[ActivumIdVoorCompliance]"
+                      cachedDataType="nText"
+                      cachedName="ActivumIdVoorCompliance"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[ActivumIdVoorCompliance]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Inputs[Sort Input].Columns[KostenplaatsCode]"
+                      cachedDataType="r8"
+                      cachedName="KostenplaatsCode"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[KostenplaatsCode]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Inputs[Sort Input].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Inputs[Sort Input].Columns[Inhoudstype]"
+                      cachedDataType="nText"
+                      cachedName="Inhoudstype"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Inhoudstype]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Inputs[Sort Input].Columns[Gewijzigd]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Gewijzigd"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Gewijzigd]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Inputs[Sort Input].Columns[Gemaakt]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Gemaakt"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Gemaakt]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Inputs[Sort Input].Columns[GemaaktDoorId]"
+                      cachedDataType="i4"
+                      cachedName="GemaaktDoorId"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[GemaaktDoorId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Inputs[Sort Input].Columns[GewijzigdDoorId]"
+                      cachedDataType="i4"
+                      cachedName="GewijzigdDoorId"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[GewijzigdDoorId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Inputs[Sort Input].Columns[Owshiddenversion]"
+                      cachedDataType="i4"
+                      cachedName="Owshiddenversion"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Owshiddenversion]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Inputs[Sort Input].Columns[Versie]"
+                      cachedDataType="nText"
+                      cachedName="Versie"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Versie]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Inputs[Sort Input].Columns[Pad]"
+                      cachedDataType="nText"
+                      cachedName="Pad"
+                      lineageId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Pad]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[InhoudstypeId]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[InhoudstypeId]"
+                      name="InhoudstypeId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[InhoudstypeId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[KostenplaatsNaam]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[KostenplaatsNaam]"
+                      name="KostenplaatsNaam">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[KostenplaatsNaam]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[ActivumIdVoorCompliance]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[ActivumIdVoorCompliance]"
+                      name="ActivumIdVoorCompliance">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[ActivumIdVoorCompliance]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[KostenplaatsCode]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[KostenplaatsCode]"
+                      name="KostenplaatsCode">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[KostenplaatsCode]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[Id_kostenplaats]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[Id_kostenplaats]"
+                      name="Id_kostenplaats"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[Inhoudstype]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[Inhoudstype]"
+                      name="Inhoudstype">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Inhoudstype]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[Gewijzigd]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[Gewijzigd]"
+                      name="Gewijzigd">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Gewijzigd]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[Gemaakt]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[Gemaakt]"
+                      name="Gemaakt">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Gemaakt]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[GemaaktDoorId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[GemaaktDoorId]"
+                      name="GemaaktDoorId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[GemaaktDoorId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[GewijzigdDoorId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[GewijzigdDoorId]"
+                      name="GewijzigdDoorId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[GewijzigdDoorId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[Owshiddenversion]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[Owshiddenversion]"
+                      name="Owshiddenversion">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Owshiddenversion]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[Versie]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[Versie]"
+                      name="Versie">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Versie]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[Pad]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output].Columns[Pad]"
+                      name="Pad">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output].Columns[Pad]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort Leerlingaantallen"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort Leerlingaantallen"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[KostenplaatsId]"
+                      cachedDataType="i4"
+                      cachedName="KostenplaatsId"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[KostenplaatsId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[Schooljaar]"
+                      cachedDataType="r8"
+                      cachedName="Schooljaar"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Schooljaar]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[Leerjaar]"
+                      cachedDataType="r8"
+                      cachedName="Leerjaar"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Leerjaar]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[AantalLlnVSOOpname]"
+                      cachedDataType="r8"
+                      cachedName="AantalLlnVSOOpname"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnVSOOpname]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[TotaalAantalLeerlingen]"
+                      cachedDataType="r8"
+                      cachedName="TotaalAantalLeerlingen"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[TotaalAantalLeerlingen]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[AantalLlnLWOOIndicatie]"
+                      cachedDataType="r8"
+                      cachedName="AantalLlnLWOOIndicatie"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnLWOOIndicatie]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[AantalLlnPROIndicatie]"
+                      cachedDataType="r8"
+                      cachedName="AantalLlnPROIndicatie"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnPROIndicatie]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[AantalLlnVSOVerwijzing]"
+                      cachedDataType="r8"
+                      cachedName="AantalLlnVSOVerwijzing"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnVSOVerwijzing]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[AantalInstroom]"
+                      cachedDataType="r8"
+                      cachedName="AantalInstroom"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalInstroom]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[Titel]"
+                      cachedDataType="nText"
+                      cachedName="Titel"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Titel]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[InhoudstypeId]"
+                      cachedDataType="nText"
+                      cachedName="InhoudstypeId"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[InhoudstypeId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[ActivumIdVoorCompliance]"
+                      cachedDataType="nText"
+                      cachedName="ActivumIdVoorCompliance"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[ActivumIdVoorCompliance]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[Inhoudstype]"
+                      cachedDataType="nText"
+                      cachedName="Inhoudstype"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Inhoudstype]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[Gewijzigd]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Gewijzigd"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Gewijzigd]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[Gemaakt]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Gemaakt"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Gemaakt]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[GemaaktDoorId]"
+                      cachedDataType="i4"
+                      cachedName="GemaaktDoorId"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[GemaaktDoorId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[GewijzigdDoorId]"
+                      cachedDataType="i4"
+                      cachedName="GewijzigdDoorId"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[GewijzigdDoorId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[Owshiddenversion]"
+                      cachedDataType="i4"
+                      cachedName="Owshiddenversion"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Owshiddenversion]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[Versie]"
+                      cachedDataType="nText"
+                      cachedName="Versie"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Versie]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input].Columns[Pad]"
+                      cachedDataType="nText"
+                      cachedName="Pad"
+                      lineageId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Pad]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[KostenplaatsId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[KostenplaatsId]"
+                      name="KostenplaatsId"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[KostenplaatsId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Schooljaar]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Schooljaar]"
+                      name="Schooljaar">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Schooljaar]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Leerjaar]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Leerjaar]"
+                      name="Leerjaar">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Leerjaar]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[AantalLlnVSOOpname]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[AantalLlnVSOOpname]"
+                      name="AantalLlnVSOOpname">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnVSOOpname]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[TotaalAantalLeerlingen]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[TotaalAantalLeerlingen]"
+                      name="TotaalAantalLeerlingen">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[TotaalAantalLeerlingen]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[AantalLlnLWOOIndicatie]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[AantalLlnLWOOIndicatie]"
+                      name="AantalLlnLWOOIndicatie">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnLWOOIndicatie]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[AantalLlnPROIndicatie]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[AantalLlnPROIndicatie]"
+                      name="AantalLlnPROIndicatie">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnPROIndicatie]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[AantalLlnVSOVerwijzing]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[AantalLlnVSOVerwijzing]"
+                      name="AantalLlnVSOVerwijzing">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalLlnVSOVerwijzing]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[AantalInstroom]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[AantalInstroom]"
+                      name="AantalInstroom">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[AantalInstroom]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Titel]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Titel]"
+                      name="Titel">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Titel]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[InhoudstypeId]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[InhoudstypeId]"
+                      name="InhoudstypeId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[InhoudstypeId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[ActivumIdVoorCompliance]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[ActivumIdVoorCompliance]"
+                      name="ActivumIdVoorCompliance">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[ActivumIdVoorCompliance]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Id]"
+                      name="Id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Inhoudstype]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Inhoudstype]"
+                      name="Inhoudstype">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Inhoudstype]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Gewijzigd]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Gewijzigd]"
+                      name="Gewijzigd">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Gewijzigd]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Gemaakt]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Gemaakt]"
+                      name="Gemaakt">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Gemaakt]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[GemaaktDoorId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[GemaaktDoorId]"
+                      name="GemaaktDoorId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[GemaaktDoorId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[GewijzigdDoorId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[GewijzigdDoorId]"
+                      name="GewijzigdDoorId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[GewijzigdDoorId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Owshiddenversion]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Owshiddenversion]"
+                      name="Owshiddenversion">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Owshiddenversion]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Versie]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Versie]"
+                      name="Versie">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Versie]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Pad]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output].Columns[Pad]"
+                      name="Pad">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output].Columns[Pad]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task\Sort Kostenplaats.Inputs[Sort Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column Kostenplaats.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output1]"
+              endId="Package\Data Flow Task\Sort Leerlingaantallen.Inputs[Sort Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column Leerlingaantallen.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Merge Join Output]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Merge Join Output"
+              startId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Output]"
+              endId="Package\Data Flow Task\Derived Column Kostenplaats.Inputs[Derived Column Input]"
+              name="Output"
+              startId="Package\Data Flow Task\OData Source Kostenplaats.Outputs[Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Output1]"
+              endId="Package\Data Flow Task\Derived Column Leerlingaantallen.Inputs[Derived Column Input]"
+              name="Output"
+              startId="Package\Data Flow Task\OData Source Leerlingaantallen.Outputs[Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output]"
+              endId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort Leerlingaantallen.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output1]"
+              endId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort Kostenplaats.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8CA164C7-4234-45A8-9321-0E84FF79387F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CD520CC2-DCC5-4622-9D40-D84ABB252CE2}"
+          SQLTask:SqlStatementSource="DECLARE @SQLString nvarchar(max) = N'TRUNCATE TABLE ' + ?&#xA;EXEC sp_executesql @SQLString" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::TargetTable"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="0" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{67811EDB-5453-415F-9A86-FD1B47759CA6}"
+      DTS:From="Package\Truncate Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

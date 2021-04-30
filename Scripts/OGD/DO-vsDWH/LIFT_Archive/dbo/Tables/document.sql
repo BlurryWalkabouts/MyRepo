@@ -1,0 +1,30 @@
+﻿CREATE TABLE [dbo].[document] (
+    [unid]           UNIQUEIDENTIFIER                                   NOT NULL,
+    [dataanmk]       DATETIME                                           NULL,
+    [datwijzig]      DATETIME                                           NULL,
+    [uidaanmk]       UNIQUEIDENTIFIER                                   NULL,
+    [uidwijzig]      UNIQUEIDENTIFIER                                   NULL,
+    [status]         INT                                                NULL,
+    [archiefid]      UNIQUEIDENTIFIER                                   NULL,
+    [archiefdatum]   DATETIME                                           NULL,
+    [doccode]        UNIQUEIDENTIFIER                                   NULL,
+    [mailing]        BIT                                                NULL,
+    [volgnummer]     INT                                                NULL,
+    [docnaam]        NVARCHAR (200)                                     NULL,
+    [ownname]        NVARCHAR (200)                                     NULL,
+    [import_naam]    NVARCHAR (200)                                     NULL,
+    [memo]           NVARCHAR (MAX)                                     NULL,
+    [versie]         INT                                                NULL,
+    [vertrouwelijk]  BIT                                                NULL,
+    [geimporteerd]   BIT                                                NULL,
+    [afkorting]      NVARCHAR (10)                                      NULL,
+    [documentformat] INT                                                NULL,
+    [locale]         NVARCHAR (10)                                      NULL,
+    [AuditDWKey] INT                                                NULL,
+    [ValidFrom]      DATETIME2 (0) GENERATED ALWAYS AS ROW START HIDDEN CONSTRAINT [DF_dbodocumentSysStart] DEFAULT (CONVERT([datetime2](0),'0000-01-01 00:00:00')) NOT NULL,
+    [ValidTo]        DATETIME2 (0) GENERATED ALWAYS AS ROW END HIDDEN   CONSTRAINT [DF_dbodocumentSysEnd] DEFAULT (CONVERT([datetime2](0),'9999-12-31 23:59:59')) NOT NULL,
+    CONSTRAINT [pk_dbodocument ] PRIMARY KEY CLUSTERED ([unid] ASC) WITH (DATA_COMPRESSION = PAGE),
+    PERIOD FOR SYSTEM_TIME ([ValidFrom], [ValidTo])
+)
+WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE=[History].[document], DATA_CONSISTENCY_CHECK=ON));
+

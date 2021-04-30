@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Metadata_Quadraam</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{52349c11-6c82-40f9-ad1a-b5c922f5f7e7}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Metadata_Quadraam</RootNamespace>
+    <AssemblyName>Metadata_Quadraam</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <Recovery>SIMPLE</Recovery>
+    <DefaultCollation>Latin1_General_CI_AS</DefaultCollation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Security\" />
+    <Folder Include="etl" />
+    <Folder Include="etl\Stored Procedures" />
+    <Folder Include="log" />
+    <Folder Include="log\Stored Procedures" />
+    <Folder Include="log\Tables" />
+    <Folder Include="etl-fk" />
+    <Folder Include="etl-fk\Tables" />
+    <Folder Include="etl-fk\Stored Procedures" />
+    <Folder Include="setup" />
+    <Folder Include="setup\Tables" />
+    <Folder Include="setup\Stored Procedures" />
+    <Folder Include="history" />
+    <Folder Include="history\Tables" />
+    <Folder Include="shared" />
+    <Folder Include="shared\Stored Procedures" />
+    <Folder Include="setup\Functions" />
+    <Folder Include="setup\Views" />
+    <Folder Include="log\Views" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Security\etl.sql" />
+    <Build Include="etl\Stored Procedures\RunETL.sql" />
+    <Build Include="Security\log.sql" />
+    <Build Include="log\Stored Procedures\Log.sql" />
+    <Build Include="log\Tables\ProcedureLog.sql" />
+    <Build Include="etl\Stored Procedures\LoadDimKostenplaats.sql" />
+    <Build Include="etl\Stored Procedures\LoadDimKostendrager.sql" />
+    <Build Include="etl\Stored Procedures\LoadDimGrootboek.sql" />
+    <Build Include="etl\Stored Procedures\LoadDimTransactieType.sql" />
+    <Build Include="etl\Stored Procedures\LoadDimScenario.sql" />
+    <Build Include="etl\Stored Procedures\LoadFactMutatie.sql" />
+    <Build Include="etl\Stored Procedures\LoadDimDatum.sql" />
+    <Build Include="etl-fk\Tables\ForeignKeys.sql" />
+    <Build Include="etl-fk\Stored Procedures\DisableForeignKey.sql" />
+    <Build Include="etl-fk\Stored Procedures\DisableForeignKeys.sql" />
+    <Build Include="etl-fk\Stored Procedures\EnableForeignKey.sql" />
+    <Build Include="etl-fk\Stored Procedures\EnableForeignKeys.sql" />
+    <Build Include="Security\setup.sql" />
+    <Build Include="setup\Tables\Metadata.sql" />
+    <Build Include="setup\Stored Procedures\LoadMetadata.sql" />
+    <Build Include="Security\history.sql" />
+    <Build Include="history\Tables\Metadata.sql" />
+    <Build Include="Security\shared.sql" />
+    <Build Include="shared\Stored Procedures\DisableVersioning.sql" />
+    <Build Include="shared\Stored Procedures\ToggleVersioning.sql" />
+    <Build Include="shared\Stored Procedures\EnableVersioning.sql" />
+    <None Include="setup\Stored Procedures\CreateStagingTables.sql" />
+    <Build Include="setup\Stored Procedures\LoadDataIntoStaging.sql" />
+    <None Include="setup\Stored Procedures\LoadDataIntoStagingSub.sql" />
+    <Build Include="etl\Stored Procedures\LoadDimDagboek.sql" />
+    <Build Include="etl\Stored Procedures\LoadDimMedewerker.sql" />
+    <Build Include="setup\Functions\TransformDataType.sql" />
+    <Build Include="setup\Functions\TransformColumnNameAfas.sql" />
+    <Build Include="etl\Stored Procedures\LoadFactVerzuim.sql" />
+    <Build Include="etl\Stored Procedures\LoadFactFTE.sql" />
+    <Build Include="etl\Stored Procedures\LoadFactWerkgeverskosten.sql" />
+    <Build Include="etl\Stored Procedures\LoadDimLooncomponent.sql" />
+    <Build Include="setup\Functions\TransformDataType.sql" />
+    <Build Include="setup\Functions\TransformTableNameDUO.sql" />
+    <Build Include="setup\Views\vwMetadataAfas.sql" />
+    <Build Include="setup\Views\vwMetadataDUO.sql" />
+    <Build Include="setup\Functions\vwMetadata.sql" />
+    <Build Include="log\Tables\TableChanges.sql" />
+    <Build Include="setup\Stored Procedures\LoadData.sql" />
+    <Build Include="setup\Stored Procedures\LoadMetadataSuper.sql" />
+    <Build Include="setup\Views\vwMetadataTables.sql" />
+    <Build Include="setup\Views\vwMetadataColumns.sql" />
+    <Build Include="etl\Stored Procedures\LoadDimDienstverband.sql" />
+    <Build Include="etl\Stored Procedures\LoadDimMaand.sql" />
+    <Build Include="etl\Stored Procedures\LoadDimJaar.sql" />
+    <Build Include="etl\Stored Procedures\LoadFactLeerlingaantalBegroot.sql" />
+    <Build Include="etl\Stored Procedures\LoadFactFormatieBegroting.sql" />
+    <Build Include="etl\Stored Procedures\LoadDimFunctie.sql" />
+    <Build Include="etl\Stored Procedures\LoadDimFunctieSchaal.sql" />
+    <Build Include="etl\Stored Procedures\LoadFactLeerlingaantalHistorie.sql" />
+    <Build Include="etl\Stored Procedures\LoadFactLeerlingBevordering.sql" />
+    <Build Include="etl\Stored Procedures\LoadFactToezichtsArrangement.sql" />
+    <Build Include="setup\Tables\CustomMetadata.sql" />
+    <PostDeploy Include="setup\Tables\CustomMetadataData.sql" />
+    <Build Include="setup\Views\vwMetadataMagister.sql" />
+    <Build Include="setup\Functions\RemoveNonAlphaCharacters.sql" />
+    <Build Include="log\Views\LastBatchLog.sql" />
+    <Build Include="etl\Stored Procedures\LoadFactTevredenheid.sql" />
+    <Build Include="etl\Stored Procedures\LoadDimFactuur.sql" />
+    <Build Include="etl\Stored Procedures\LoadFactLeerlingaantalRealisatie.sql" />
+    <Build Include="etl\Stored Procedures\LoadDimBevoegdheid.sql" />
+    <Build Include="setup\Stored Procedures\LoadSharePointForecast.sql" />
+    <Build Include="etl\Stored Procedures\LoadFactSalarissen.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="..\Solution Items\001.dacpac">
+      <HintPath>..\Solution Items\001.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseSqlCmdVariable>Exact</DatabaseSqlCmdVariable>
+    </ArtifactReference>
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="Archive_Quadraam">
+      <DefaultValue>Archive_Quadraam</DefaultValue>
+      <Value>$(SqlCmdVar__5)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ServerObjects">
+      <DefaultValue>Server Objects</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="DWH_Quadraam">
+      <DefaultValue>DWH_Quadraam</DefaultValue>
+      <Value>$(SqlCmdVar__2)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="Exact">
+      <DefaultValue>001</DefaultValue>
+      <Value>$(SqlCmdVar__3)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="Staging_Quadraam">
+      <DefaultValue>Staging_Quadraam</DefaultValue>
+      <Value>$(SqlCmdVar__4)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Metadata_Quadraam.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Server Objects\Server Objects.sqlproj">
+      <Name>Server Objects</Name>
+      <Project>{7152951f-c216-43d5-9763-02a5180af23f}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseSqlCmdVariable>ServerObjects</DatabaseSqlCmdVariable>
+    </ProjectReference>
+    <ProjectReference Include="..\DWH_Quadraam\DWH_Quadraam.sqlproj">
+      <Name>DWH_Quadraam</Name>
+      <Project>{fa6303ba-d65b-4d0c-93e6-c83340ba8c93}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseSqlCmdVariable>DWH_Quadraam</DatabaseSqlCmdVariable>
+    </ProjectReference>
+    <ProjectReference Include="..\Staging_Quadraam\Staging_Quadraam.sqlproj">
+      <Name>Staging_Quadraam</Name>
+      <Project>{1b938dfb-f8d2-4de1-94ce-229feb2566c1}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseSqlCmdVariable>Staging_Quadraam</DatabaseSqlCmdVariable>
+    </ProjectReference>
+    <ProjectReference Include="..\Archive_Quadraam\Archive_Quadraam.sqlproj">
+      <Name>Archive_Quadraam</Name>
+      <Project>{c3b5d585-21a8-4323-8a49-edcf26c97235}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseSqlCmdVariable>Archive_Quadraam</DatabaseSqlCmdVariable>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

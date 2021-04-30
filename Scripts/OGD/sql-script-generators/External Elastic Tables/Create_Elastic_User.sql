@@ -1,0 +1,14 @@
+--CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'MigratieInAzure!';
+
+CREATE DATABASE SCOPED CREDENTIAL sa_ogdw
+WITH IDENTITY = 'sa_ogdw', 
+SECRET = '';
+
+CREATE EXTERNAL DATA SOURCE [00_datamart]
+WITH
+(
+	TYPE=RDBMS,
+	LOCATION='ogdw.database.windows.net',
+	DATABASE_NAME='ogdw',
+	CREDENTIAL=sa_ogdw
+);

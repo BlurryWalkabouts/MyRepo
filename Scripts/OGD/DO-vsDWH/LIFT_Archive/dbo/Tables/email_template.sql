@@ -1,0 +1,31 @@
+﻿CREATE TABLE [dbo].[email_template] (
+    [unid]           UNIQUEIDENTIFIER                                   NOT NULL,
+    [dataanmk]       DATETIME                                           NULL,
+    [datwijzig]      DATETIME                                           NULL,
+    [uidaanmk]       UNIQUEIDENTIFIER                                   NULL,
+    [uidwijzig]      UNIQUEIDENTIFIER                                   NULL,
+    [status]         INT                                                NULL,
+    [name]           NVARCHAR (250)                                     NULL,
+    [subject]        NVARCHAR (250)                                     NULL,
+    [header_from]    NVARCHAR (MAX)                                     NULL,
+    [header_to]      NVARCHAR (MAX)                                     NULL,
+    [header_cc]      NVARCHAR (MAX)                                     NULL,
+    [header_bcc]     NVARCHAR (MAX)                                     NULL,
+    [body]           NVARCHAR (MAX)                                     NULL,
+    [cardcode]       INT                                                NULL,
+    [cardstate]      INT                                                NULL,
+    [mailbehavior]   INT                                                NULL,
+    [allow_import]   BIT                                                NULL,
+    [allow_send]     BIT                                                NULL,
+    [save_instances] BIT                                                NULL,
+    [font_family]    NVARCHAR (50)                                      NULL,
+    [font_size]      NVARCHAR (5)                                       NULL,
+    [locale]         NVARCHAR (10)                                      NULL,
+    [AuditDWKey] INT                                                NULL,
+    [ValidFrom]      DATETIME2 (0) GENERATED ALWAYS AS ROW START HIDDEN CONSTRAINT [DF_dboemail_templateSysStart] DEFAULT (CONVERT([datetime2](0),'0000-01-01 00:00:00')) NOT NULL,
+    [ValidTo]        DATETIME2 (0) GENERATED ALWAYS AS ROW END HIDDEN   CONSTRAINT [DF_dboemail_templateSysEnd] DEFAULT (CONVERT([datetime2](0),'9999-12-31 23:59:59')) NOT NULL,
+    CONSTRAINT [pk_dboemail_template ] PRIMARY KEY CLUSTERED ([unid] ASC) WITH (DATA_COMPRESSION = PAGE),
+    PERIOD FOR SYSTEM_TIME ([ValidFrom], [ValidTo])
+)
+WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE=[History].[email_template], DATA_CONSISTENCY_CHECK=ON));
+

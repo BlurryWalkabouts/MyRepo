@@ -1,0 +1,184 @@
+scalar udf`s 
+- use in select
+- don`t show up in statistics IO
+- also costs are hardcoded and near to nothing
+- time added to show actual time used (because this had becvome problem in azure aperently)
+- no paralelism, single threaded (query that has him goes single, udf query goes mutlithreaded)
+
+multistatement tvf
+- returns table 
+- worse, single threaded in call and function
+- no timestats in properties of query cache
+
+usder defined scalar functions in table
+- ANY querie against table are single
+
+
+how to find them
+- burn cache
+- then sp_blitzcache 
+- first record is select , this is the nr1 that CALLS function
+- number 2 and 3 are function
+- functions are top because they are often reused by multple queries
+
+FIX
+- SQL Server 2019 compat mode, but functions have been disabled in subsequent cu`s because MS didnt want to fix anymnore
+- or rewrite inline UDF (multi statement tvf without variable). So you get 1 query (kind of like view)
+  so they cant do inserts 
+- you can alter (need to drop create) mstvf to inline fuctions
+- you cant alter scalar to inline function. So copy query to caller query. You can copy / paste query of scalar to join cross apply (). Cte too
+
+queries most executed 
+- blitzcache @sort = xpm
+- blitzcache @sort = executions
+
+
+/*********************************** Lab 3 Setup Rewrites & Refactors *******************************/
+
+-- bcache with reads shows functions
+-- bcache with exucution sorts shows [usp_MQT36660] this uses function
+-- so sproc uses scalar function , poor performance
+-- rewrite query in sproc with scalar query in cte
+
+/**************** SPROC ***************************/
+DROP INDEX Votes_VoteTypeId on Votes 
+CREATE INDEX Votes_PostId_VoteTypeId on Votes (postid, VoteTypeId)
+
+ALTER     PROC [dbo].[usp_MQT36660] AS
+BEGIN
+/* Source: http://data.stackexchange.com/stackoverflow/query/36660/most-down-voted-questions */
+/*
+select top 20 
+	dbo.UpVotes(p.Id) as 'Vote count'
+	, p.Id AS [Post Link],p.Body
+from Posts p
+where p.PostTypeId = 1
+order by dbo.UpVotes(p.Id) desc
+*/
+
+WITH CTE AS 
+	(
+		SELECT  v.PostId, count(*) as VoteCount 
+		  FROM dbo.Votes v
+		  WHERE v.VoteTypeId=3
+ 		GROUP BY v.PostId
+	)
+
+select TOP 20
+	 	VoteCount as 'Vote count'
+	, p.Id AS [Post Link]
+	,p.Body
+from Posts p
+join CTE on CTE.PostId = p.Id
+where p.PostTypeId = 1
+order by VoteCount desc
+option (recompile)
+END
+
+
+/**************** FUNCTION ***************************/
+DROP  FUNCTION [dbo].[UpVotes] 
+CREATE   FUNCTION [dbo].[UpVotes] ( @PostId INT )
+RETURNS BIT
+    WITH RETURNS NULL ON NULL INPUT
+AS
+    BEGIN
+        DECLARE @VoteCount INT;
+		SELECT @VoteCount = SUM(1)
+		  FROM dbo.Votes v
+		  WHERE v.VoteTypeId=3
+		    AND PostId = @PostId
+        RETURN @VoteCount;
+    END;
+GO
+
+
+
+/*********************************** Lab 3 BRENTS DEMO *******************************/
+
+ALTER   PROC [dbo].[usp_RptQuestionsAndAnswersByMonth_Difficult] AS
+BEGIN
+/* From: https://data.stackexchange.com/stackoverflow/query/6134/total-questions-and-answers-per-month-for-the-last-12 */
+set nocount on 
+
+declare @oldestPost dateTime
+
+
+/************* arcitect is gonna optimze for random date *************/
+select top 1 @oldestPost = CreationDate from Posts 
+order by CreationDate desc;
+
+
+-- look at 30 day chunks, so stats remain fairly accurate 
+-- (month will depend on days per month)
+
+
+/************* something with months *************/
+
+create table #ranges (Id int identity, [start] datetime, [finish] datetime)
+
+insert #ranges
+select top 12 null, null
+from sysobjects
+
+update #ranges 
+  set 
+   [start] = DateAdd(d, (0 - Id) * 30, @oldestPost),
+   [finish] = DateAdd(d, (1 - Id) * 30, @oldestPost)
+
+   /************* select * from #ranges , appernetly it get table and groups on month *************/
+
+   
+/*************
+format sql .com 
+code will actually get date twice so rewrite, first try rewrite based on query PRINTSCREEN 
+  multiple columsn in select subselect so crosapply join with same query 
+ add clipply index suggestion  
+  turn stats on and add ex plan
+ long running query so use live execution plan through activity monitor
+ button only throws first query, activity monitor ->  active expensive queries -> show live exec planshows all !!!!!!!!
+ OR sp_BlitzWHo, but not animated, freezeframe
+ *************/
+       select start,
+           (
+               select count(*)
+               from Posts
+               where ParentId is null
+                     and CreationDate
+                     between [start] and [finish]
+           ) as [Total Questions],
+           (
+               select count(*)
+               from Posts
+               where ParentId is not null
+                     and CreationDate
+                     between [start] and [finish]
+           ) as [Total Answers]
+    from #ranges
+
+END
+
+/*************
+compare avg_duraiont and avg_reads in blitzcache
+logical reads are still bad
+BUT operations are down
+
+plan says keyhlookup , so we dont have index to satisfy 
+sp_blitzindex @tablenmae = 'posts'
+Find indexto use
+
+dat..... KB INCLUDE ParentID (DROP CREATE)
+
+down to 2 secs, index used logical reads down
+
+compares results
+
+TIMEBOXING - TUNING -  HALF HOUR IS DONE!!!!!!!!!
+TIMEBOXING - COMPLETE REWRITE - 15 MIN !!!!!!!!!!
+	
+PRINTSCREEN
+	
+again mismatching indexes on keylookups because rewrite used posttype , create index again for this
+
+
+/*********************************** END *******************************/

@@ -1,0 +1,67 @@
+
+/*********************************** Lab 4 DEMO *******************************/
+
+- Procedure or Function: [dbo].[mqt_Lab4_Level1]
+
+DbaUtils.dbo.sp_BlitzCache 
+copy paste Bcache Warnings
+check function
+get params = EXEC [dbo].[mqt_Lab4_Level1]  @EndDate = '2017-01-02 00:00:00.000', @StartDate = '2017-01-01 00:00:00.000'?>
+tuned union query to temp and create adjusted sproc to new NAME to create spereate spoc
+run new sproc, now it goes paralel
+find out if function goes inline and speeds up, compute scalar takes all of time, so no (funciton in order by is limitation to go inline)
+for performance reasons check times of initial plan . This helps narrow down big problems (statistics cpu time helps as well)
+add function logic to sproc, using cte, force decimal`s to appear = 1.0 * (same as CAST( AS FLOAT))
+after logical reads seem to be higher. But this is because they were not added due to using the function !@!!
+
+So serpeartion of logic because it causes single threading
+Then CTE unions to temp speeded up query
+Further rewriting is more trial and error, costs time
+last would be adding index to support query
+Inlining (scalar) functions is hard
+
+/*********************************** 5 *******************************/
+
+Work devided by MaxDop is not evenly distributend over threads. And Sortin memroy is devided after the arcitect  has though up plan. So this can hurt
+loop holes to trick exuction plan to implement paraleism operators
+
+SELECT TOP 21474816784 with cte for example could inject extra redistrubute paralel operator work 
+
+Try Temp to devide. Results in more acurate stats. Second query is refresh restart to redistribute, it does
+But still spill to disk in sort. First table is evenly distributed, but posts isnt because of users
+
+hint(maxdop=1) could be an easy fix , but still 1 thread so not best
+Changing Maxdop cores can help
+breaking query helps (john 1 query , others in other)
+YHou can only catch this by running live query plan
+
+spools are working coppies in tempdb
+tablespool eager helps to order deleted records from clustered Index to help when deleting them from other indexes.
+Paralel eager tablespool lies.... doesnt go paralel, but in sequeence. No index requjest (index spool , seek predicates shows witch columns to index
+
+Problem still is you have catch these LIVE (not index spool - eager spool))
+
+
+sp_whoisactive @getlocks = 1 , shows xml with actual locks
+
+delete mutlie mtables with users in london
+becasue > lock escalation 5000 records/locks -> object x lock ,each table delete cause many locks = slow
+
+also 
+create table location 
+insert locations ids to delete for all tables 
+
+So
+
+batch 1000 deletes
+still x locks but KEY locks. NOt a problem
+
+
+/*********************************** Deadlocks *******************************/
+sp_BlitzLocks 
+- second resultset 
+- otherwise first 
+
+SSMS save deadlock as "".xdml then use sentry one plan explorer
+
+

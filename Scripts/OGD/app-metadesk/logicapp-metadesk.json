@@ -1,0 +1,276 @@
+{
+    "$connections": {
+        "value": {
+            "sql": {
+                "connectionId": "/subscriptions/03d914ad-63f7-4fab-b24e-7b56e7da5a56/resourceGroups/OGD-EUW-RGR-PRD-OGD-DTF-01/providers/Microsoft.Web/connections/sql-1",
+                "connectionName": "sql-1",
+                "id": "/subscriptions/03d914ad-63f7-4fab-b24e-7b56e7da5a56/providers/Microsoft.Web/locations/westeurope/managedApis/sql"
+            },
+            "sql_1": {
+                "connectionId": "/subscriptions/03d914ad-63f7-4fab-b24e-7b56e7da5a56/resourceGroups/OGD-EUW-RGR-PRD-OGD-DTF-01/providers/Microsoft.Web/connections/sql-3",
+                "connectionName": "sql-3",
+                "id": "/subscriptions/03d914ad-63f7-4fab-b24e-7b56e7da5a56/providers/Microsoft.Web/locations/westeurope/managedApis/sql"
+            }
+        }
+    },
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Gather_json-serialized_change_activities": {
+                "inputs": {
+                    "body": {
+                        "LastModified": "@body('Gather_last_modified_dates_and_customer_key')?['outputparameters']?['LastModifiedChangeActivity']"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['sql']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/procedures/@{encodeURIComponent(encodeURIComponent('[metadesk].[usp_fetchChangeActivities]'))}"
+                },
+                "runAfter": {
+                    "Merge_serialised_changes_into_metadesk_db": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Gather_json-serialized_changed_changes": {
+                "inputs": {
+                    "body": {
+                        "LastModified": "@body('Gather_last_modified_dates_and_customer_key')?['outputparameters']?['LastModifiedChange']"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['sql']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/procedures/@{encodeURIComponent(encodeURIComponent('[metadesk].[usp_fetchChanges]'))}"
+                },
+                "runAfter": {
+                    "Merge_serialized_operator_groups_into_Metadesk": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Gather_json-serialized_changed_incidents": {
+                "inputs": {
+                    "body": {
+                        "LastModified": "@body('Gather_last_modified_dates_and_customer_key')?['outputparameters']?['LastModifiedIncident']"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['sql']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/procedures/@{encodeURIComponent(encodeURIComponent('[metadesk].[usp_fetchIncidents]'))}"
+                },
+                "runAfter": {
+                    "Merge_serialized_operator_groups_into_Metadesk": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Gather_json-serialized_changed_problems": {
+                "inputs": {
+                    "body": {
+                        "LastModified": "@body('Gather_last_modified_dates_and_customer_key')?['outputparameters']?['LastModifiedProblem']"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['sql']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/procedures/@{encodeURIComponent(encodeURIComponent('[metadesk].[usp_fetchProblems]'))}"
+                },
+                "runAfter": {
+                    "Merge_serialized_operator_groups_into_Metadesk": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Gather_json-serialized_operator_groups": {
+                "inputs": {
+                    "body": {
+                        "LastModified": "@body('Gather_last_modified_dates_and_customer_key')?['outputparameters']?['LastModifiedOperatorGroup']"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['sql']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/procedures/@{encodeURIComponent(encodeURIComponent('[metadesk].[usp_fetchOperatorGroups]'))}"
+                },
+                "runAfter": {
+                    "Gather_last_modified_dates_and_customer_key": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Gather_last_modified_dates_and_customer_key": {
+                "inputs": {
+                    "body": {
+                        "CustomerNumber": "@variables('CustomerNumber')"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['sql_1']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/procedures/@{encodeURIComponent(encodeURIComponent('[Fact].[usp_fetchLastModifiedForCustomer]'))}"
+                },
+                "runAfter": {
+                    "Set_CustomerNumber": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Merge_serialised_changes_into_metadesk_db": {
+                "inputs": {
+                    "body": {
+                        "CustomerNumber": "@variables('CustomerNumber')",
+                        "SerializedJson": "@body('Gather_json-serialized_changed_changes')?['outputparameters']?['JsonSerializedResult']"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['sql_1']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/procedures/@{encodeURIComponent(encodeURIComponent('[Fact].[usp_mergeChangesForCustomer]'))}"
+                },
+                "runAfter": {
+                    "Gather_json-serialized_changed_changes": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Merge_serialised_incidents_into_metadesk_db": {
+                "inputs": {
+                    "body": {
+                        "CustomerNumber": "@variables('CustomerNumber')",
+                        "SerializedJson": "@body('Gather_json-serialized_changed_incidents')?['outputparameters']?['JsonSerializedResult']"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['sql_1']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/procedures/@{encodeURIComponent(encodeURIComponent('[Fact].[usp_mergeIncidentsForCustomer]'))}"
+                },
+                "runAfter": {
+                    "Gather_json-serialized_changed_incidents": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Merge_serialised_problems_into_metadesk": {
+                "inputs": {
+                    "body": {
+                        "CustomerNumber": "@variables('CustomerNumber')",
+                        "SerializedJson": "@body('Gather_json-serialized_changed_problems')?['outputparameters']?['JsonSerializedResult']"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['sql_1']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/procedures/@{encodeURIComponent(encodeURIComponent('[Fact].[usp_mergeProblemsForCustomer]'))}"
+                },
+                "runAfter": {
+                    "Gather_json-serialized_changed_problems": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Merge_serialized_changeactivities_into_metadesk": {
+                "inputs": {
+                    "body": {
+                        "CustomerNumber": "@variables('CustomerNumber')",
+                        "SerializedJson": "@body('Gather_json-serialized_change_activities')?['outputparameters']?['JsonSerializedResult']"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['sql_1']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/procedures/@{encodeURIComponent(encodeURIComponent('[Fact].[usp_mergeChangeActivitiesForCustomer]'))}"
+                },
+                "runAfter": {
+                    "Gather_json-serialized_change_activities": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Merge_serialized_operator_groups_into_Metadesk": {
+                "inputs": {
+                    "body": {
+                        "CustomerNumber": "@variables('CustomerNumber')",
+                        "SerializedJson": "@body('Gather_json-serialized_operator_groups')?['outputparameters']?['JsonSerializedResult']"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['sql_1']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/procedures/@{encodeURIComponent(encodeURIComponent('[Dim].[usp_mergeOperatorGroupsForCustomer]'))}"
+                },
+                "runAfter": {
+                    "Gather_json-serialized_operator_groups": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Set_CustomerNumber": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "CustomerNumber",
+                            "type": "String",
+                            "value": "001013"
+                        }
+                    ]
+                },
+                "runAfter": {},
+                "type": "InitializeVariable"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "Schedule_-_5_minutes_refresh": {
+                "recurrence": {
+                    "frequency": "Minute",
+                    "interval": 5
+                },
+                "type": "Recurrence"
+            }
+        }
+    }
+}

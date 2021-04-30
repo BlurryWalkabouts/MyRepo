@@ -1,0 +1,20 @@
+﻿CREATE TABLE [Dim].[Functie]
+(
+	[FunctieKey]			INT				IDENTITY (1,1) NOT FOR REPLICATION,
+	[MedewerkerKey]			INT				NOT NULL,
+	[KostenplaatsKey]		INT				NOT NULL,
+	[KostendragerKey]		INT				NOT NULL,
+	[DienstverbandKey]		INT				NOT NULL,			 
+	[FunctieOmschrijving]	NVARCHAR(100)	NOT NULL,
+	[FunctieType]			NVARCHAR(50)	NOT NULL,
+	[BegindatumFunctie]		DATE			NOT NULL,
+	[EinddatumFunctie]		DATE			NOT NULL,
+	[FunctiePercentage]		DECIMAL(6,5)	NOT NULL,
+	[IsFunctie]				BIT				NULL,
+	[IsFormatieVerdeling]	BIT				NULL,
+	CONSTRAINT [PK_Functie] PRIMARY KEY ([FunctieKey]),
+	CONSTRAINT [FK_Functie_KostenplaatsKey] FOREIGN KEY ([KostenplaatsKey]) REFERENCES [Dim].[Kostenplaats]([KostenplaatsKey]),
+	CONSTRAINT [FK_Functie_KostendragerKey] FOREIGN KEY ([KostendragerKey]) REFERENCES [Dim].[Kostendrager]([KostendragerKey]),
+	CONSTRAINT [FK_Functie_DienstverbandKey] FOREIGN KEY ([DienstverbandKey]) REFERENCES [Dim].[Dienstverband]([DienstverbandKey]),
+	CONSTRAINT [FK_Functie_MedewerkerKey] FOREIGN KEY ([MedewerkerKey]) REFERENCES [Dim].[Medewerker]([MedewerkerKey]),
+)

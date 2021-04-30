@@ -1,0 +1,1149 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/20/2017 2:31:51 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DWH-TEST"
+  DTS:CreatorName="DWH-TEST\OGD_WILLEMS"
+  DTS:DTSID="{1C442C51-0991-4A36-BC6E-61F1131C66F6}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LocaleID="1043"
+  DTS:ObjectName="SP_Contactgegevens"
+  DTS:PackageType="5"
+  DTS:VersionBuild="46"
+  DTS:VersionGUID="{7D232EB5-1ABC-4FB5-ADCC-750C3931F6DD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SharePoint]"
+      DTS:CreationName="ODATA"
+      DTS:DTSID="{91F409C8-9993-4700-8C98-362CE5352AFC}"
+      DTS:ObjectName="SharePoint">
+      <DTS:ObjectData>
+        <ODataConnectionManager
+          UserName="serivce-ogd@quadraam.onmicrosoft.com"
+          Url="https://quadraam.sharepoint.com/teams/Bruikleenovereenkomst/_vti_bin/listdata.svc"
+          ConnectionString="Service Document Url=https://quadraam.sharepoint.com/teams/Bruikleenovereenkomst/_vti_bin/listdata.svc;Include Atom Elements=Auto;Include Expanded Entities=False;Integrated Security=False;Cookie=&quot;SPOIDCRL=77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48U1A+VjQsMGguZnxtZW1iZXJzaGlwfDEwMDNiZmZkYTkwNGI2MDZAbGl2ZS5jb20sMCMuZnxtZW1iZXJzaGlwfHNlcml2Y2Utb2dkQHF1YWRyYWFtLm9ubWljcm9zb2Z0LmNvbSwxMzE3MjE2NzM4ODAwMDAwMDAsMTMxNjQ5MDk5ODEwMDAwMDAwLDEzMTcyNTk5Mzg4Nzc2MTgxNywwLjAuMC4wLDQsMzNmMjI4NDQtOTRjMi00NTJiLWFlMDktYmVlZTdkZGNhNDcyLCwsMjEzZDZjOWUtYTBlMC01MDAwLWMxZDctODZiMjdlYzdjNmJjLDIxM2Q2YzllLWEwZTAtNTAwMC1jMWQ3LTg2YjI3ZWM3YzZiYywsMCwwLDAsczNKeXZxTkhGT29MdEtJY2cyMG0zbWlTTHVWajcvY0I1ODUrVWhUektSb201QS9xWnRpSXg1eUFjTTZBbWRMb3RJeFJTa3U5OGVPOVBWZnovK29lRWJBdTUvSVMwTFpiTXdoL2dha0lGVmcxR3VpMmN4Zm9UYjgrTU1CZktwdDNCeXZtNUI3R1hRS0I5UDN0MEYwRGcremFTUVYzR1pLdUJ0SjNrSjFodmd5QlVBNG8zaWJjZ3JSUi80eHNIa2psV2U2NHFPYkppcnpxWmw2cUwrN0NYcmpCQitEVHdYaERhQkJWM05LOUFxbUNONlJLeDAvVFkxMkF6dGw1UzlyWkw3V1pGK1BXdHRVNXYzdlg5S1I4VVBJTzhNUjVrVHZCQlJJdFkxRHJQV0hyV2tQa2xrRzc4WTcxZTRNS3QzR2NqR2d4TGVaSU9kWXcyZ05XK2lhb3hBPT08L1NQPg==&quot;;User ID=serivce-ogd@quadraam.onmicrosoft.com;Persist Security Info=False;Time Out=600;Schema Sample Size=25;Retry Count=5;Retry Sleep=100;Keep Alive=False;Max Received Message Size=4398046511104"
+          MicrosoftOnlineServicesAuth="True"
+          AuthType="MicrosoftOnlineService">
+          <Password
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAL9qnO2og10SLG9jtlN2y7QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACXxZF+as4eAKgahcBzo37FOeSxYlDgm4fD51bfSVplNAAAAAAOgAAAAAIAACAAAAD3rStlRrH6lUiEZ6vn9a6GYHPenGRlwmEDM9F5X6K2rSAAAADItYcJYlmRT/fpnNw8NyoDvB6rWgjygO/2yusY0fVCuUAAAACiASN6dSxKHqTvFf0l0bxRtoQyCnp1jrBO3FQQ639tCC4oGxzJlZMi3mVj+OehRFXrJKa5heK3bC94WpyXyO5Y</Password>
+        </ODataConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Staging_Quadraam]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DA3A98F6-8512-4B27-BD45-62C3253366BF}"
+      DTS:ObjectName="Staging_Quadraam">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Staging_Quadraam;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C72D881E-1F4A-4BAB-94B1-CAD815634A46}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TargetTable">
+      <DTS:VariableValue
+        DTS:DataType="8">[SharePoint].[Contactgegevens]</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{ABE8FD57-DB38-42C0-9FCC-1FC78230F083}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Afleveradres]"
+                      cachedDataType="nText"
+                      cachedName="Afleveradres"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Afleveradres]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Postcode]"
+                      cachedDataType="nText"
+                      cachedName="Postcode"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Postcode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Woonplaats]"
+                      cachedDataType="nText"
+                      cachedName="Woonplaats"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Woonplaats]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Hoofdtelefoonnummer]"
+                      cachedDataType="nText"
+                      cachedName="Hoofdtelefoonnummer"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Hoofdtelefoonnummer]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[BudgethouderId]"
+                      cachedDataType="i4"
+                      cachedName="BudgethouderId"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[BudgethouderId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[ManagementassistentId]"
+                      cachedDataType="i4"
+                      cachedName="ManagementassistentId"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[ManagementassistentId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[LITOId]"
+                      cachedDataType="i4"
+                      cachedName="LITOId"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[LITOId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[OntvangenBestellingId]"
+                      cachedDataType="i4"
+                      cachedName="OntvangenBestellingId"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[OntvangenBestellingId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[KostenplaatscodeId]"
+                      cachedDataType="i4"
+                      cachedName="KostenplaatscodeId"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[KostenplaatscodeId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[SchoolKopie]"
+                      cachedDataType="nText"
+                      cachedName="SchoolKopie"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[SchoolKopie]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Afleveradres]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Afleveradres]"
+                      name="Afleveradres"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Afleveradres]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Postcode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Postcode]"
+                      name="Postcode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Postcode]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Woonplaats]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Woonplaats]"
+                      name="Woonplaats"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Woonplaats]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Hoofdtelefoonnummer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Hoofdtelefoonnummer]"
+                      name="Hoofdtelefoonnummer"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Hoofdtelefoonnummer]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[BudgethouderId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[BudgethouderId]"
+                      name="BudgethouderId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[BudgethouderId]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ManagementassistentId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ManagementassistentId]"
+                      name="ManagementassistentId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[ManagementassistentId]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[LITOId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[LITOId]"
+                      name="LITOId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[LITOId]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[OntvangenBestellingId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[OntvangenBestellingId]"
+                      name="OntvangenBestellingId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[OntvangenBestellingId]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[KostenplaatscodeId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[KostenplaatscodeId]"
+                      name="KostenplaatscodeId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[KostenplaatscodeId]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[School]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[School]"
+                      name="School"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[SchoolKopie]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OData Source Contactgegevens"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="OData Source Component;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Read data from OData services"
+              name="OData Source Contactgegevens"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Name of the collection to be retrieved from the service."
+                  expressionType="Notify"
+                  name="CollectionName">Contactgegevens</property>
+                <property
+                  dataType="System.Int32"
+                  description="The default maximum length for a string that has no maxlength specified in the schema."
+                  name="DefaultStringLength">4000</property>
+                <property
+                  dataType="System.String"
+                  description="Query in the url. "
+                  expressionType="Notify"
+                  name="Query"></property>
+                <property
+                  dataType="System.String"
+                  description="Resource path of the collection to be retrieved from the service."
+                  expressionType="Notify"
+                  name="ResourcePath"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="When set to true, use the resource path as requested collection; otherwise, use the collection name."
+                  expressionType="Notify"
+                  name="UseResourcePath">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.OData</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OData Source Contactgegevens.Connections[Connection]"
+                  connectionManagerID="Package.ConnectionManagers[SharePoint]"
+                  connectionManagerRefId="Package.ConnectionManagers[SharePoint]"
+                  description="Connection to OData Service"
+                  name="Connection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Afleveradres]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Afleveradres]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Afleveradres]"
+                      name="Afleveradres"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Postcode]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Postcode]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Postcode]"
+                      name="Postcode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Woonplaats]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Woonplaats]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Woonplaats]"
+                      name="Woonplaats"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Hoofdtelefoonnummer]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Hoofdtelefoonnummer]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Hoofdtelefoonnummer]"
+                      name="Hoofdtelefoonnummer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[BudgethouderId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[BudgethouderId]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[BudgethouderId]"
+                      name="BudgethouderId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[ManagementassistentId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[ManagementassistentId]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[ManagementassistentId]"
+                      name="ManagementassistentId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[LITOId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[LITOId]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[LITOId]"
+                      name="LITOId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[OntvangenBestellingId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[OntvangenBestellingId]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[OntvangenBestellingId]"
+                      name="OntvangenBestellingId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Titel]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Titel]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Titel]"
+                      name="Titel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[InhoudstypeId]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[InhoudstypeId]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[InhoudstypeId]"
+                      name="InhoudstypeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[ActivumIdVoorCompliance]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[ActivumIdVoorCompliance]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[ActivumIdVoorCompliance]"
+                      name="ActivumIdVoorCompliance"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[SchoolKopie]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[SchoolKopie]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[SchoolKopie]"
+                      name="SchoolKopie"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[KostenplaatscodeId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[KostenplaatscodeId]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[KostenplaatscodeId]"
+                      name="KostenplaatscodeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Id]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Inhoudstype]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Inhoudstype]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Inhoudstype]"
+                      name="Inhoudstype"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Gewijzigd]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Gewijzigd]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Gewijzigd]"
+                      name="Gewijzigd"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Gemaakt]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Gemaakt]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Gemaakt]"
+                      name="Gemaakt"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[GemaaktDoorId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[GemaaktDoorId]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[GemaaktDoorId]"
+                      name="GemaaktDoorId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[GewijzigdDoorId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[GewijzigdDoorId]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[GewijzigdDoorId]"
+                      name="GewijzigdDoorId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Owshiddenversion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Owshiddenversion]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Owshiddenversion]"
+                      name="Owshiddenversion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Versie]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Versie]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Versie]"
+                      name="Versie"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Pad]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Pad]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Pad]"
+                      name="Pad"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Afleveradres]"
+                      dataType="nText"
+                      name="Afleveradres" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Postcode]"
+                      dataType="nText"
+                      name="Postcode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Woonplaats]"
+                      dataType="nText"
+                      name="Woonplaats" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Hoofdtelefoonnummer]"
+                      dataType="nText"
+                      name="Hoofdtelefoonnummer" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[BudgethouderId]"
+                      dataType="i4"
+                      name="BudgethouderId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[ManagementassistentId]"
+                      dataType="i4"
+                      name="ManagementassistentId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[LITOId]"
+                      dataType="i4"
+                      name="LITOId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[OntvangenBestellingId]"
+                      dataType="i4"
+                      name="OntvangenBestellingId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Titel]"
+                      dataType="nText"
+                      name="Titel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[InhoudstypeId]"
+                      dataType="nText"
+                      name="InhoudstypeId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[ActivumIdVoorCompliance]"
+                      dataType="nText"
+                      name="ActivumIdVoorCompliance" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[SchoolKopie]"
+                      dataType="nText"
+                      name="SchoolKopie" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[KostenplaatscodeId]"
+                      dataType="i4"
+                      name="KostenplaatscodeId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Inhoudstype]"
+                      dataType="nText"
+                      name="Inhoudstype" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Gewijzigd]"
+                      dataType="dbTimeStamp"
+                      name="Gewijzigd" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Gemaakt]"
+                      dataType="dbTimeStamp"
+                      name="Gemaakt" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[GemaaktDoorId]"
+                      dataType="i4"
+                      name="GemaaktDoorId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[GewijzigdDoorId]"
+                      dataType="i4"
+                      name="GewijzigdDoorId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Owshiddenversion]"
+                      dataType="i4"
+                      name="Owshiddenversion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Versie]"
+                      dataType="nText"
+                      name="Versie" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].ExternalColumns[Pad]"
+                      dataType="nText"
+                      name="Pad" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output]"
+                  isErrorOut="true"
+                  name="Error output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Afleveradres]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Afleveradres]"
+                      name="Afleveradres" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Postcode]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Postcode]"
+                      name="Postcode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Woonplaats]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Woonplaats]"
+                      name="Woonplaats" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Hoofdtelefoonnummer]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Hoofdtelefoonnummer]"
+                      name="Hoofdtelefoonnummer" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[BudgethouderId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[BudgethouderId]"
+                      name="BudgethouderId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[ManagementassistentId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[ManagementassistentId]"
+                      name="ManagementassistentId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[LITOId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[LITOId]"
+                      name="LITOId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[OntvangenBestellingId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[OntvangenBestellingId]"
+                      name="OntvangenBestellingId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Titel]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Titel]"
+                      name="Titel" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[InhoudstypeId]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[InhoudstypeId]"
+                      name="InhoudstypeId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[ActivumIdVoorCompliance]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[ActivumIdVoorCompliance]"
+                      name="ActivumIdVoorCompliance" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[SchoolKopie]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[SchoolKopie]"
+                      name="SchoolKopie" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[KostenplaatscodeId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[KostenplaatscodeId]"
+                      name="KostenplaatscodeId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Inhoudstype]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Inhoudstype]"
+                      name="Inhoudstype" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Gewijzigd]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Gewijzigd]"
+                      name="Gewijzigd" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Gemaakt]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Gemaakt]"
+                      name="Gemaakt" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[GemaaktDoorId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[GemaaktDoorId]"
+                      name="GemaaktDoorId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[GewijzigdDoorId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[GewijzigdDoorId]"
+                      name="GewijzigdDoorId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Owshiddenversion]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Owshiddenversion]"
+                      name="Owshiddenversion" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Versie]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Versie]"
+                      name="Versie" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Pad]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Error output].Columns[Pad]"
+                      name="Pad" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable">User::TargetTable</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">4</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Staging_Quadraam]"
+                  connectionManagerRefId="Package.ConnectionManagers[Staging_Quadraam]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gewijzigd]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Gewijzigd"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gewijzigd]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Gewijzigd]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gemaakt]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Gemaakt"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gemaakt]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Gemaakt]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContactID]"
+                      lineageId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Afleveradres]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Afleveradres"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Afleveradres]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Afleveradres]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Postcode]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Postcode"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Postcode]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Postcode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Woonplaats]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Woonplaats"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Plaats]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Woonplaats]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Hoofdtelefoonnummer]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Hoofdtelefoonnummer"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Hoofdtelefoonnummer]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Hoofdtelefoonnummer]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BudgethouderId]"
+                      cachedDataType="i4"
+                      cachedName="BudgethouderId"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Budgethouder]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[BudgethouderId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LITOId]"
+                      cachedDataType="i4"
+                      cachedName="LITOId"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LITO]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[LITOId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OntvangenBestellingId]"
+                      cachedDataType="i4"
+                      cachedName="OntvangenBestellingId"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OntvangerBestelling]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[OntvangenBestellingId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KostenplaatscodeId]"
+                      cachedDataType="i4"
+                      cachedName="KostenplaatscodeId"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KostenplaatsCode]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[KostenplaatscodeId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ManagementassistentId]"
+                      cachedDataType="i4"
+                      cachedName="ManagementassistentId"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Managementassistent]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ManagementassistentId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[School]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="School"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[School]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[School]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gewijzigd]"
+                      dataType="dbTimeStamp"
+                      name="Gewijzigd" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gemaakt]"
+                      dataType="dbTimeStamp"
+                      name="Gemaakt" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContactID]"
+                      dataType="i4"
+                      name="ContactID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[School]"
+                      dataType="wstr"
+                      length="100"
+                      name="School" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Afleveradres]"
+                      dataType="wstr"
+                      length="100"
+                      name="Afleveradres" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Postcode]"
+                      dataType="wstr"
+                      length="100"
+                      name="Postcode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Plaats]"
+                      dataType="wstr"
+                      length="100"
+                      name="Plaats" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Hoofdtelefoonnummer]"
+                      dataType="wstr"
+                      length="100"
+                      name="Hoofdtelefoonnummer" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Budgethouder]"
+                      dataType="wstr"
+                      length="100"
+                      name="Budgethouder" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Managementassistent]"
+                      dataType="wstr"
+                      length="100"
+                      name="Managementassistent" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LITO]"
+                      dataType="wstr"
+                      length="100"
+                      name="LITO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OntvangerBestelling]"
+                      dataType="wstr"
+                      length="100"
+                      name="OntvangerBestelling" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KostenplaatsCode]"
+                      dataType="wstr"
+                      length="100"
+                      name="KostenplaatsCode" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Output]"
+              endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+              name="Output"
+              startId="Package\Data Flow Task\OData Source Contactgegevens.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D0633721-14CC-4353-BBD4-E510597EE68B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DA3A98F6-8512-4B27-BD45-62C3253366BF}"
+          SQLTask:SqlStatementSource="DECLARE @SQLString nvarchar(max) = N'TRUNCATE TABLE ' + ?&#xA;EXEC sp_executesql @SQLString" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::TargetTable"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="0" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C801CAB9-774E-4DF0-AFE1-8AF450AD45F8}"
+      DTS:From="Package\Truncate Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

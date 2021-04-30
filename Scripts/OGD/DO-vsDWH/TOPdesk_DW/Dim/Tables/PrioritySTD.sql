@@ -1,0 +1,6 @@
+﻿CREATE TABLE [Dim].[PrioritySTD]
+(
+	[PrioritySTDKey] INT            IDENTITY (1,1) NOT FOR REPLICATION,
+	[Name]           NVARCHAR (100) NULL,
+	CONSTRAINT [PK_PrioritySTD] PRIMARY KEY CLUSTERED ([PrioritySTDKey] ASC)
+)

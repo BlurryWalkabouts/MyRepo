@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseName>lift-archive</TargetDatabaseName>
+    <DeployScriptFileName>02 - Archive.sql</DeployScriptFileName>
+    <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
+    <DropObjectsNotInSource>True</DropObjectsNotInSource>
+    <DoNotDropTables>True</DoNotDropTables>
+    <DoNotDropRoleMembership>True</DoNotDropRoleMembership>
+    <DoNotDropPermissions>True</DoNotDropPermissions>
+    <DoNotDropDatabaseRoles>True</DoNotDropDatabaseRoles>
+    <ExcludeLogins>True</ExcludeLogins>
+    <ExcludeUsers>True</ExcludeUsers>
+    <ExcludeServerRoleMembership>True</ExcludeServerRoleMembership>
+    <ExcludeServerRoles>True</ExcludeServerRoles>
+    <TargetConnectionString></TargetConnectionString>
+    <ProfileVersionNumber>1</ProfileVersionNumber>
+  </PropertyGroup>
+</Project>

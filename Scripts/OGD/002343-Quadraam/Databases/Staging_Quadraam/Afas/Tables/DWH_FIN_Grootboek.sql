@@ -1,0 +1,26 @@
+﻿CREATE TABLE [Afas].[DWH_FIN_Grootboek] (
+    [Nummer]                NVARCHAR (16)  NULL,
+    [Omschrijving]          NVARCHAR (50)  NULL,
+    [Geblokkeerd]           BIT            NULL,
+    [Categoriecode]         NVARCHAR (20)  NULL,
+    [Hoofdrubriek]          NVARCHAR (100) NULL,
+    [Rubriek]               NVARCHAR (100) NULL,
+    [EFJVerdichting]        NVARCHAR (100) NULL,
+    [EFJSpecificatie]       NVARCHAR (100) NULL,
+    [Inverst_tbv_EFJ]       BIT            NULL,
+    [Cum_afsch_tbv_EFJ]     BIT            NULL,
+    [Company]               NVARCHAR (3)   NULL,
+    [Verbijzonderingsas_1]  NVARCHAR (100) NULL,
+    [Verbijzonderingsas_2]  NVARCHAR (100) NULL,
+    [Categorienaam]         NVARCHAR (100) NULL,
+    [Soort_rekening]        NVARCHAR (100) NULL,
+    [Type_verzamelrekening] NVARCHAR (100) NULL,
+    [Hoofdgroep]            NVARCHAR (2)   NULL,
+    [Subgroep]              NVARCHAR (2)   NULL,
+    [Subgroep_2]            NVARCHAR (2)   NULL,
+    [Code]                  NVARCHAR (4)   NULL,
+    [Verdichtingscode_code] NVARCHAR (20)  NULL,
+    [Hoofdverdichting_code] NVARCHAR (20)  NULL,
+    [Voorkeur_btwcode]      NVARCHAR (3)   NULL
+);
+

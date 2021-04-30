@@ -1,0 +1,280 @@
+stages:
+  - compile
+  - test
+  - deploy
+
+## Block for LIFT
+build:LIFT_DW:
+ only: 
+  - PRPL01
+ stage: compile
+ script: '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe" ^
+  .\LIFT_DW\LIFT_DW.sqlproj ^
+  /p:PublishProfile=Release ^
+  /p:GenerateSqlPackage=True ^
+  /p:DBDeployOnBuild=True'
+ cache:
+  untracked: true
+  paths:
+   - LIFT_DW/bin/Debug/LIFT_DW.dacpac
+  key: LIFT_DW
+
+deploy:LIFT_DW:
+ only: 
+  - PRPL01
+ stage: deploy
+ dependencies:
+  - build:LIFT_DW
+ script: '"C:\Program Files (x86)\Microsoft SQL Server\140\DAC\bin\SqlPackage.exe" ^
+  /Action:Publish ^
+  /SourceFile:".\LIFT_DW\bin\Debug\LIFT_DW.dacpac" ^
+  /Profile:".\LIFT_DW\PRPL01-Prod.publish.xml" ^
+  /p:RegisterDataTierApplication=false ^
+  /p:IgnoreColumnOrder=True ^
+  /p:BackupDatabaseBeforeChanges=False ^
+  /p:IgnoreLoginSids=True ^
+  /p:IgnorePermissions=True ^
+  /p:IgnoreRoleMembership=True ^
+  /p:TreatVerificationErrorsAsWarnings=True ^
+  /p:CompareUsingTargetCollation=True'
+ cache:
+  key: LIFT_DW
+  paths:
+   - LIFT_DW/bin/Debug/LIFT_DW.dacpac
+
+## LIFT_Staging 
+build:LIFT_Staging:
+ only: 
+  - PRPL01
+ stage: compile
+ script: '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe" ^
+  .\LIFT_Staging\LIFT_Staging.sqlproj ^
+  /p:PublishProfile=Release ^
+  /p:GenerateSqlPackage=True ^
+  /p:DBDeployOnBuild=True'
+ cache:
+  untracked: true
+  paths:
+   - LIFT_Staging/bin/Debug/LIFT_Staging.dacpac
+  key: LIFT_Staging 
+
+deploy:LIFT_Staging:
+ only: 
+  - PRPL01
+ stage: deploy
+ dependencies:
+  - build:LIFT_Staging
+ script: '"C:\Program Files (x86)\Microsoft SQL Server\140\DAC\bin\SqlPackage.exe" ^
+  /Action:Publish ^
+  /SourceFile:".\LIFT_Staging\bin\Debug\LIFT_Staging.dacpac" ^
+  /Profile:".\LIFT_Staging\PRPL01-Prod.publish.xml" ^
+  /p:RegisterDataTierApplication=false ^
+  /p:IgnoreColumnOrder=True ^
+  /p:BackupDatabaseBeforeChanges=False ^
+  /p:IgnoreLoginSids=True ^
+  /p:IgnorePermissions=True ^
+  /p:IgnoreRoleMembership=True ^
+  /p:TreatVerificationErrorsAsWarnings=True ^
+  /p:CompareUsingTargetCollation=True'
+ cache:
+  key: LIFT_Staging
+  paths:
+   - LIFT_Staging/bin/Debug/LIFT_Staging.dacpac
+
+## LIFT_Archive
+build:LIFT_Archive:
+ only: 
+  - PRPL01
+ stage: compile
+ script: '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe" ^
+  .\LIFT_Archive\LIFT_Archive.sqlproj ^
+  /p:PublishProfile=Release ^
+  /p:GenerateSqlPackage=True ^
+  /p:DBDeployOnBuild=True'
+ cache:
+  untracked: true
+  paths:
+   - LIFT_Archive/bin/Debug/LIFT_Archive.dacpac
+  key: LIFT_Archive
+
+deploy:LIFT_Archive:
+ only: 
+  - PRPL01
+ stage: deploy
+ dependencies:
+  - build:LIFT_Archive
+ script: '"C:\Program Files (x86)\Microsoft SQL Server\140\DAC\bin\SqlPackage.exe" ^
+  /Action:Publish ^
+  /SourceFile:".\LIFT_Archive\bin\Debug\LIFT_Archive.dacpac" ^
+  /Profile:".\LIFT_Archive\PRPL01-Prod.publish.xml" ^
+  /p:RegisterDataTierApplication=false ^
+  /p:IgnoreColumnOrder=True ^
+  /p:BackupDatabaseBeforeChanges=False ^
+  /p:IgnoreLoginSids=True ^
+  /p:IgnorePermissions=True ^
+  /p:IgnoreRoleMembership=True ^
+  /p:TreatVerificationErrorsAsWarnings=True ^
+  /p:CompareUsingTargetCollation=True'
+ cache:
+  key: LIFT_Archive
+  paths:
+   - LIFT_Archive/bin/Debug/LIFT_Archive.dacpac
+
+## Block for TOPdesk   
+build:TOPdesk_DW:
+ only: 
+  - PRPL01
+ stage: compile
+ script: '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe" ^
+  .\TOPdesk_DW\TOPdesk_DW.sqlproj ^
+  /p:PublishProfile=Release ^
+  /p:GenerateSqlPackage=True ^
+  /p:DBDeployOnBuild=True'
+ cache:
+  untracked: true
+  paths:
+   - TOPdesk_DW/bin/Debug/TOPdesk_DW.dacpac
+  key: TOPdesk_DW
+
+deploy:TOPdesk_DW:
+ only: 
+  - PRPL01
+ stage: deploy
+ dependencies:
+  - build:TOPdesk_DW
+ script: '"C:\Program Files (x86)\Microsoft SQL Server\140\DAC\bin\SqlPackage.exe" ^
+  /Action:Publish ^
+  /SourceFile:".\TOPdesk_DW\bin\Debug\TOPdesk_DW.dacpac" ^
+  /Profile:".\TOPdesk_DW\PRPL01-Prod.publish.xml" ^
+  /p:RegisterDataTierApplication=false ^
+  /p:IgnoreColumnOrder=True ^
+  /p:BackupDatabaseBeforeChanges=False ^
+  /p:IgnoreLoginSids=True ^
+  /p:IgnorePermissions=True ^
+  /p:IgnoreRoleMembership=True ^
+  /p:TreatVerificationErrorsAsWarnings=True ^
+  /p:CompareUsingTargetCollation=True'
+ cache:
+  key: TOPdesk_DW
+  paths:
+   - TOPdesk_DW/bin/Debug/TOPdesk_DW.dacpac
+
+## TOPdesk_Staging
+build:TOPdesk_Staging:
+ only: 
+  - PRPL01
+ stage: compile
+ script: '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe" ^
+  .\OGDW_Staging\OGDW_Staging.sqlproj ^
+  /p:PublishProfile=Release ^
+  /p:GenerateSqlPackage=True ^
+  /p:DBDeployOnBuild=True'
+ cache:
+  untracked: true
+  paths:
+   - OGDW_Staging/bin/Debug/OGDW_Staging.dacpac
+  key: TOPdesk_Staging
+
+deploy:TOPdesk_Staging:
+ only: 
+  - PRPL01
+ stage: deploy
+ dependencies:
+  - build:TOPdesk_Staging
+ script: '"C:\Program Files (x86)\Microsoft SQL Server\140\DAC\bin\SqlPackage.exe" ^
+  /Action:Publish ^
+  /SourceFile:".\OGDW_Staging\bin\Debug\OGDW_Staging.dacpac" ^
+  /Profile:".\OGDW_Staging\PRPL01-Prod.publish.xml" ^
+  /p:RegisterDataTierApplication=false ^
+  /p:IgnoreColumnOrder=True ^
+  /p:BackupDatabaseBeforeChanges=False ^
+  /p:IgnoreLoginSids=True ^
+  /p:IgnorePermissions=True ^
+  /p:IgnoreRoleMembership=True ^
+  /p:TreatVerificationErrorsAsWarnings=True ^
+  /p:CreateNewDatabase=False ^
+  /p:BlockOnPossibleDataLoss=False ^
+  /p:CompareUsingTargetCollation=True'
+ cache:
+  key: TOPdesk_Staging
+  paths:
+   - OGDW_Staging/bin/Debug/OGDW_Staging.dacpac
+
+## TOPdesk_Archive
+build:TOPdesk_Archive:
+ only: 
+  - PRPL01
+ stage: compile
+ script: '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe" ^
+  .\OGDW_Archive\OGDW_Archive.sqlproj ^
+  /p:PublishProfile=Release ^
+  /p:GenerateSqlPackage=True ^
+  /p:DBDeployOnBuild=True'
+ cache:
+  untracked: true
+  paths:
+   - OGDW_Archive/bin/Debug/OGDW_Archive.dacpac
+  key: TOPdesk_Archive
+
+deploy:TOPdesk_Archive:
+ only: 
+  - PRPL01
+ stage: deploy
+ dependencies:
+  - build:TOPdesk_Archive
+ script: '"C:\Program Files (x86)\Microsoft SQL Server\140\DAC\bin\SqlPackage.exe" ^
+  /Action:Publish ^
+  /SourceFile:".\OGDW_Archive\bin\Debug\OGDW_Archive.dacpac" ^
+  /Profile:".\OGDW_Archive\PRPL01-Prod.publish.xml" ^
+  /p:RegisterDataTierApplication=false ^
+  /p:IgnoreColumnOrder=True ^
+  /p:BackupDatabaseBeforeChanges=False ^
+  /p:IgnoreLoginSids=True ^
+  /p:IgnorePermissions=True ^
+  /p:IgnoreRoleMembership=True ^
+  /p:TreatVerificationErrorsAsWarnings=True ^
+  /p:CompareUsingTargetCollation=True'
+ cache:
+  key: TOPdesk_Archive
+  paths:
+   - OGDW_Archive/bin/Debug/OGDW_Archive.dacpac
+
+## Metadata
+build:OGDW_Metadata:
+ only: 
+ - PRPL01
+ stage: compile
+ script: '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe" /m ^
+  .\OGDW_Metadata\OGDW_Metadata.sqlproj ^
+  /p:PublishProfile=Release ^
+  /p:GenerateSqlPackage=True ^
+  /p:DBDeployOnBuild=True'
+ cache:
+  untracked: true
+  paths:
+   - OGDW_Metadata/bin/Debug/OGDW_Metadata.dacpac
+  key: OGDW_Metadata
+
+deploy:OGDW_Metadata:
+ only: 
+  - PRPL01
+ stage: deploy
+ dependencies:
+  - build:OGDW_Metadata
+ script: '"C:\Program Files (x86)\Microsoft SQL Server\140\DAC\bin\SqlPackage.exe" ^
+  /Action:Publish ^
+  /SourceFile:".\OGDW_Metadata\bin\Debug\OGDW_Metadata.dacpac" ^
+  /Profile:".\OGDW_Metadata\PRPL01-Prod.publish.xml"
+  /p:RegisterDataTierApplication=false ^
+  /p:IgnoreColumnOrder=True ^
+  /p:BackupDatabaseBeforeChanges=False ^
+  /p:IgnoreLoginSids=True ^
+  /p:IgnorePermissions=True ^
+  /p:IgnoreRoleMembership=True ^
+  /p:TreatVerificationErrorsAsWarnings=True ^
+  /p:CompareUsingTargetCollation=True ^
+  /p:BlockOnPossibleDataLoss=True'
+ cache:
+  key: OGDW_Metadata
+  paths:
+   - OGDW_Metadata/bin/Debug/OGDW_Metadata.dacpac

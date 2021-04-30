@@ -1,0 +1,22 @@
+﻿CREATE TABLE [Fact].[Tevredenheid] (
+    [JaarKey]						INT            NOT NULL,
+    [KostenplaatsKey]				INT            NOT NULL,		
+	[DoelstellingMedewerkers]		DECIMAL (3, 1) NULL,		
+	[TevredenheidMedewerkers]		DECIMAL (3, 1) NULL,
+	NormMedewerkers					DECIMAL (3, 1) NULL,
+	[DoelstellingManagement]		DECIMAL (3, 1) NULL,
+	[TevredenheidManagement]		DECIMAL (3, 1) NULL,
+	[DoelstellingOOP]				DECIMAL (3, 1) NULL,
+	[TevredenheidOOP]				DECIMAL (3, 1) NULL,
+	[DoelstellingDocenten]			DECIMAL (3, 1) NULL,
+	[TevredenheidDocenten]			DECIMAL (3, 1) NULL,
+	DoelstellingOuders				DECIMAL (3, 1) NULL,
+	[TevredenheidOuders]			DECIMAL (3, 1) NULL,
+	NormOuders						DECIMAL (3, 1) NULL,
+	DoelstellingLeerlingen			DECIMAL (3, 1) NULL,
+	TevredenheidLeerlingen			DECIMAL (3, 1) NULL,
+	NormLeerlingen					DECIMAL (3, 1) NULL,
+	CONSTRAINT [FK_Tevredenheid_JaarKey] FOREIGN KEY ([JaarKey]) REFERENCES [Dim].[Jaar]([JaarKey]),
+	CONSTRAINT [FK_Tevredenheid_KostenplaatsKey] FOREIGN KEY ([KostenplaatsKey]) REFERENCES [Dim].[Kostenplaats]([KostenplaatsKey]),
+);
+

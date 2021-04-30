@@ -1,0 +1,27 @@
+﻿CREATE TABLE [DUO].[gemiddelde_eindscores_bo_sbo] (
+    [BevoegdGezagNummer]       NVARCHAR (5)  NULL,
+    [BrinNummer]               NVARCHAR (4)  NULL,
+    [CetAantal]                NVARCHAR (6)  NULL,
+    [CetGem]                   NVARCHAR (16) NULL,
+    [DenominatieVestiging]     NVARCHAR (24) NULL,
+    [DrempelAantal]            NVARCHAR (5)  NULL,
+    [DrempelGem]               NVARCHAR (1)  NULL,
+    [Gemeentenaam]             NVARCHAR (17) NULL,
+    [Gemeentenummer]           NVARCHAR (4)  NULL,
+    [IepAantal]                NVARCHAR (5)  NULL,
+    [IepGem]                   NVARCHAR (16) NULL,
+    [InstellingsnaamVestiging] NVARCHAR (30) NULL,
+    [Leerjaar8]                NVARCHAR (3)  NULL,
+    [OntheffingRedenNd]        NVARCHAR (4)  NULL,
+    [PeildatumLeerlingen]      NVARCHAR (8)  NULL,
+    [Plaatsnaam]               NVARCHAR (20) NULL,
+    [PostcodeVestiging]        NVARCHAR (6)  NULL,
+    [PrikdatumScores]          NVARCHAR (8)  NULL,
+    [Provincie]                NVARCHAR (13) NULL,
+    [Route8Aantal]             NVARCHAR (5)  NULL,
+    [Route8Gem]                NVARCHAR (16) NULL,
+    [SoortPo]                  NVARCHAR (3)  NULL,
+    [Vestigingsnummer]         NVARCHAR (2)  NULL,
+    [Jaar]                     VARCHAR (9)   NULL
+);
+

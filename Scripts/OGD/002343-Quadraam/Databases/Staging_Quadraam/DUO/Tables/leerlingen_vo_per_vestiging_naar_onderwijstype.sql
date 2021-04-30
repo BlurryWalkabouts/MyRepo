@@ -1,0 +1,27 @@
+﻿CREATE TABLE [DUO].[leerlingen_vo_per_vestiging_naar_onderwijstype] (
+    [Afdeling]                             NVARCHAR (50) NULL,
+    [BrinNummer]                           NVARCHAR (4)  NULL,
+    [Elementcode]                          NVARCHAR (4)  NULL,
+    [InstellingsnaamVestiging]             NVARCHAR (30) NULL,
+    [LeerOfVerblijfsjaar1Man]              NVARCHAR (3)  NULL,
+    [LeerOfVerblijfsjaar1Vrouw]            NVARCHAR (3)  NULL,
+    [LeerOfVerblijfsjaar2Man]              NVARCHAR (3)  NULL,
+    [LeerOfVerblijfsjaar2Vrouw]            NVARCHAR (3)  NULL,
+    [LeerOfVerblijfsjaar3Man]              NVARCHAR (3)  NULL,
+    [LeerOfVerblijfsjaar3Vrouw]            NVARCHAR (3)  NULL,
+    [LeerOfVerblijfsjaar4Man]              NVARCHAR (3)  NULL,
+    [LeerOfVerblijfsjaar4Vrouw]            NVARCHAR (2)  NULL,
+    [LeerOfVerblijfsjaar5Man]              NVARCHAR (2)  NULL,
+    [LeerOfVerblijfsjaar5Vrouw]            NVARCHAR (2)  NULL,
+    [LeerOfVerblijfsjaar6Man]              NVARCHAR (2)  NULL,
+    [LeerOfVerblijfsjaar6Vrouw]            NVARCHAR (2)  NULL,
+    [LwooIndicatie]                        NVARCHAR (1)  NULL,
+    [OnderwijstypeVoEnLeerOfVerblijfsjaar] NVARCHAR (25) NULL,
+    [Opleidingsnaam]                       NVARCHAR (69) NULL,
+    [PlaatsnaamVestiging]                  NVARCHAR (15) NULL,
+    [ProvincieVestiging]                   NVARCHAR (13) NULL,
+    [Vestigingsnummer]                     NVARCHAR (2)  NULL,
+    [VmboSector]                           NVARCHAR (20) NULL,
+    [Jaar]                                 VARCHAR (9)   NULL
+);
+

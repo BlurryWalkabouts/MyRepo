@@ -1,0 +1,28 @@
+﻿CREATE TABLE [Dim].[Employee]
+(
+	[EmployeeKey]       INT              NOT NULL,
+	[unid]              UNIQUEIDENTIFIER NULL,
+	[EmployeeNumber]    NVARCHAR (9)     NULL,
+	[LastName]          NVARCHAR (30)    NULL,
+	[GivenName]         NVARCHAR (20)    NULL,
+	[Prefixes]          NVARCHAR (10)    NULL,
+	[Initials]          NVARCHAR (10)    NULL,
+	[LastNameFirst]     AS               LastName + ', ' + GivenName + CASE WHEN Prefixes <> '' THEN ' ' + Prefixes ELSE '' END,
+	[FullName]          AS               GivenName + ' ' + CASE WHEN Prefixes <> '' THEN Prefixes + ' ' ELSE '' END + LastName,
+	[BirthYear]         INT              NULL,
+	[EmailAddress]      NVARCHAR (120)   NULL,
+	[PostalCode]        NVARCHAR (4)     NULL,
+	[City]              NVARCHAR (30)    NULL,
+	[PhoneNumber]       NVARCHAR (20)    NULL,
+	[BusinessTeam]      NVARCHAR (35)    NULL,
+	[HRRepresentative]  NVARCHAR (35)    NULL,
+	[ContractStartDate] DATE             NULL,
+	[ContractEndDate]   DATE             NULL,
+	[ContractType]      NVARCHAR (60)    NULL,
+	[ContractHours]     SMALLINT         NULL,
+	[HasActiveContract] BIT              NOT NULL,
+	[ExternalRate]      MONEY            NULL,
+	[OwnsCar]           BIT              NULL,
+	[HasDriversLicense] BIT              NULL,
+	CONSTRAINT [PK_Employee] PRIMARY KEY CLUSTERED ([EmployeeKey] ASC)
+)

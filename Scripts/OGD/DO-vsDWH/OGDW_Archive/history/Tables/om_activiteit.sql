@@ -1,0 +1,25 @@
+﻿CREATE TABLE [history].[om_activiteit] (
+    [unid]              VARCHAR (36)   COLLATE SQL_Latin1_General_CP1_CS_AS NOT NULL,
+    [afgemeld]          BIT            NOT NULL,
+    [behandelaarid]     VARCHAR (36)   COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+    [bestedetijd]       BIGINT         NOT NULL,
+    [datumafgemeld]     DATETIME2 (7)  NULL,
+    [einddatumgepland]  DATETIME2 (7)  NOT NULL,
+    [naam]              NVARCHAR (255) NOT NULL,
+    [overgeslagen]      BIT            NOT NULL,
+    [reeksid]           VARCHAR (36)   COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+    [schemaid]          VARCHAR (36)   COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+    [startdatumgepland] DATETIME2 (7)  NOT NULL,
+    [status]            INT            NOT NULL,
+    [nummer]            NVARCHAR (255) NOT NULL,
+    [dataanmk]          DATETIME2 (7)  NULL,
+    [datwijzig]         DATETIME2 (7)  NULL,
+    [uidaanmk]          VARCHAR (36)   COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+    [uidwijzig]         VARCHAR (36)   COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+    [operatorgroupid]   VARCHAR (36)   COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+    [AuditDWKey]        INT            NOT NULL,
+    [SourceDatabaseKey] INT            NULL,
+    [ValidFrom]         DATETIME2 (0)  NOT NULL,
+    [ValidTo]           DATETIME2 (0)  NOT NULL
+);
+

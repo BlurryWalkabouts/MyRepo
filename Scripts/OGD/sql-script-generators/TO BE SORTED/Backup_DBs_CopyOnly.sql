@@ -1,0 +1,9 @@
+BACKUP DATABASE SP_Anywhere365_WSS_Content
+TO DISK = 'H:\BACKUP\SP_Anywhere365_WSS_Content_Copy.bak'
+WITH COPY_ONLY;
+GO
+
+BACKUP LOG SP_Anywhere365_WSS_Content
+TO DISK = 'H:\BACKUP\SP_Anywhere365_WSS_Content_Copy.trn'
+WITH COPY_ONLY;
+GO

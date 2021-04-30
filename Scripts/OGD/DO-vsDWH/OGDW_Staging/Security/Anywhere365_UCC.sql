@@ -1,0 +1,5 @@
+﻿CREATE SCHEMA [Anywhere365_UCC]
+    AUTHORIZATION [dbo];
+
+
+

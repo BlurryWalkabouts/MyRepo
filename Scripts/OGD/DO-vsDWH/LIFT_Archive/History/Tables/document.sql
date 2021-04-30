@@ -1,0 +1,27 @@
+﻿CREATE TABLE [History].[document] (
+    [unid]           UNIQUEIDENTIFIER NOT NULL,
+    [dataanmk]       DATETIME         NULL,
+    [datwijzig]      DATETIME         NULL,
+    [uidaanmk]       UNIQUEIDENTIFIER NULL,
+    [uidwijzig]      UNIQUEIDENTIFIER NULL,
+    [status]         INT              NULL,
+    [archiefid]      UNIQUEIDENTIFIER NULL,
+    [archiefdatum]   DATETIME         NULL,
+    [doccode]        UNIQUEIDENTIFIER NULL,
+    [mailing]        BIT              NULL,
+    [volgnummer]     INT              NULL,
+    [docnaam]        NVARCHAR (200)   NULL,
+    [ownname]        NVARCHAR (200)   NULL,
+    [import_naam]    NVARCHAR (200)   NULL,
+    [memo]           NVARCHAR (MAX)   NULL,
+    [versie]         INT              NULL,
+    [vertrouwelijk]  BIT              NULL,
+    [geimporteerd]   BIT              NULL,
+    [afkorting]      NVARCHAR (10)    NULL,
+    [documentformat] INT              NULL,
+    [locale]         NVARCHAR (10)    NULL,
+    [AuditDWKey] INT              NULL,
+    [ValidFrom]      DATETIME2 (0)    NOT NULL,
+    [ValidTo]        DATETIME2 (0)    NOT NULL
+);
+

@@ -1,0 +1,31 @@
+﻿CREATE PROCEDURE [etl].[ExecuteBatches]
+AS 
+BEGIN
+
+DECLARE ExecuteBatches CURSOR FOR
+(
+SELECT Sproc
+FROM etl.GenerateBatchForArchive
+)
+ORDER BY Step
+
+DECLARE @SQLString varchar(max)
+
+OPEN ExecuteBatches
+FETCH NEXT FROM ExecuteBatches INTO @SQLString
+WHILE @@FETCH_STATUS = 0
+BEGIN
+	BEGIN TRANSACTION
+		BEGIN TRY
+			EXEC (@SQLString)
+		END TRY
+		BEGIN CATCH
+			IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION
+		END CATCH
+	IF @@TRANCOUNT > 0 COMMIT TRANSACTION
+	FETCH NEXT FROM ExecuteBatches INTO @SQLString
+END
+CLOSE ExecuteBatches
+DEALLOCATE ExecuteBatches
+
+END

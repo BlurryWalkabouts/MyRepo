@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseName>Metadata_Quadraam</TargetDatabaseName>
+    <DeployScriptFileName>Metadata_Quadraam.sql</DeployScriptFileName>
+    <TargetConnectionString>Data Source=localhost;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True</TargetConnectionString>
+    <ProfileVersionNumber>1</ProfileVersionNumber>
+  </PropertyGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="DWH_Quadraam">
+      <Value>DWH_Quadraam</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="Exact">
+      <Value>001</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ServerObjects">
+      <Value>Server Objects</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="Staging_Quadraam">
+      <Value>Staging_Quadraam</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+</Project>

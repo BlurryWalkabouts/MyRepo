@@ -1,0 +1,8 @@
+﻿CREATE TABLE [TOPdesk].[change_problem_link] (
+    [changeid]          VARCHAR (36) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+    [problemid]         VARCHAR (36) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+    [unid]              VARCHAR (36) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+    [AuditDWKey]        INT          NOT NULL,
+    [SourceDatabaseKey] INT          NULL
+);
+

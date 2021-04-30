@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [TOPdesk4]
+	AUTHORIZATION [dbo]

@@ -1,0 +1,369 @@
+-- check stat
+dbcc show_statistics ('dbo.users','_WA_Sys_0000000A_33D4B598')
+-- run full  scan
+update statistics dbo.users with fullscan
+-- not always refelected back so burn the cache
+dbcc freeproccache
+
+-- Common Tools Continued: Multi-Statement Batches
+index creates stats aswell
+
+recompile to rebuild plan based on what has changed since creation
+ and return query back to arcitect (QO)
+
+2019 compat mode , adds more mem incase of disk spill
+
+hash match means group in buckets and set in certain order
+stream aggregate means it dosent need to order and can pass on the flow, better !!!
+
+minimum amount of memroy grant = 1024 kb
+
+index seek + key lookup are handcuffed , always stay togehter
+
+-- Specialist Tools: CTEs, Temp Tables, and APPLY
+table variables dont have statistics, but also ignore transactions as do variables
+
+use cte`s to group quries and see what sql server would do to optimize
+
+apply`s can be good , but must have an index . They are like sub queries , but also return extra columns
+
+-- check stat
+dbcc show_statistics ('dbo.users','_WA_Sys_0000000A_33D4B598')
+-- run full  scan
+update statistics dbo.users with fullscan
+-- not always refelected back so burn the cache
+dbcc freeproccache
+
+-- Common Tools Continued: Multi-Statement Batches
+index creates stats aswell
+
+recompile to rebuild plan based on what has changed since creation
+ and return query back to arcitect (QO)
+
+2019 compat mode , adds more mem incase of disk spill
+
+hash match means group in buckets and set in certain order
+stream aggregate means it dosent need to order and can pass on the flow, better !!!
+
+minimum amount of memroy grant = 1024 kb
+
+index seek + key lookup are handcuffed , always stay togehter
+
+-- Specialist Tools: CTEs, Temp Tables, and APPLY
+table variables dont have statistics, but also ignore transactions as do variables
+
+use cte`s to group quries and see what sql server would do to optimize
+
+apply`s can be good , but must have an index . They are like sub queries , but also return extra columns
+
+
+/***************************************** Bad Estimate LAB **************************************/
+
+
+CREATE OR ALTER PROC [dbo].[mqt_Lab1_Level1] @UserId INT = 26837 AS
+BEGIN
+/* Source: http://data.stackexchange.com/stackoverflow/query/6925/newer-users-with-more-reputation-than-me */
+
+
+SELECT u.Id as [User Link], u.Reputation, u.Reputation - me.Reputation as Difference
+FROM dbo.Users me 
+INNER JOIN dbo.Users u 
+	ON u.CreationDate > me.CreationDate
+	AND u.Reputation > me.Reputation
+WHERE me.Id = @UserId
+
+END
+GO
+
+-- whats happening
+from dbo.users me
+wehure me.id = @userid
+
+from dbo.users u
+where u.creationdate > ???
+and u.reputation > ???
+
+-- clippy is asking for index
+create index users_cr_rep on dbo.users (creationdate, reputation)
+
+-- but estimations gets worst, becuase query is starting with me part, so tear apart
+
+DECLARE creationdate DATETIME, @reputation int:
+select top 1 @creationdate = creationdate , @reputation = reputation
+from dbo.users me 
+where me.id = @userid 
+
+select u.id as [user link], u.reputati0ojn , u.reputation - @reputation as difference
+from dbo.users u
+where u.creationdate > @creationdate
+and u.reputation > @reputation
+
+-- still bad , beecause huge memroy grant add recompile to force reevaluation by arcitexct
+
+DECLARE creationdate DATETIME, @reputation int:
+select top 1 @creationdate = creationdate , @reputation = reputation
+from dbo.users me 
+where me.id = @userid 
+
+select u.id as [user link], u.reputati0ojn , u.reputation - @reputation as difference
+from dbo.users u
+where u.creationdate > @creationdate
+and u.reputation > @reputation OPTION (RECOMPILE)
+
+-- temp table demo of same gives bad estimates on creationdate (complete table)
+-- sp_blitzIndex @TableName = ''
+
+-- table variable also bad results
+
+-- child sproc works, but paramter sniffing, recompile could fix this if necassary
+-- sproc 1
+begin
+DECLARE creationdate DATETIME, @reputation int:
+select top 1 @creationdate = creationdate , @reputation = reputation
+from dbo.users me 
+where me.id = @userid 
+
+exec dbo.mgt_lab1_level1_child @creationdate = @creationdate, @reputati0ojn = @reputati0ojn
+end
+-- sproc 2
+select u.id as [user link], u.reputati0ojn , u.reputation - @reputation as difference
+from dbo.users u
+where u.creationdate > @creationdate
+and u.reputation > @reputation OPTION (RECOMPILE)
+
+
+/***************************************** Bad Estimate LAB **************************************/
+
+CREATE OR ALTER PROC [dbo].[mqt_Lab1_Q975] AS
+BEGIN
+/* Source: http://data.stackexchange.com/stackoverflow/query/975/users-with-more-than-one-duplicate-account-and-a-more-than-1000-reputation-in-agg */
+
+-- Users with more than one duplicate account and a more that 1000 reputation in aggregate
+-- A list of users that have duplicate accounts on site, based on the EmailHash and lots of reputation is riding on it
+
+SELECT 
+    u1.EmailHash,
+    Count(u1.Id) AS Accounts,
+    (
+        SELECT Cast(u2.Id AS varchar) + ' (' + u2.DisplayName + ' ' + Cast(u2.Reputation as varchar) + '), ' 
+        FROM Users u2 
+        WHERE u2.EmailHash = u1.EmailHash order by u2.Reputation desc FOR XML PATH ('')) AS IdsAndNames
+FROM
+    Users u1
+WHERE
+    u1.EmailHash IS NOT NULL
+    and (select sum(u3.Reputation) from Users u3 where u3.EmailHash = u1.EmailHash) > 1000  
+    and (select count(*) from Users u3 where u3.EmailHash = u1.EmailHash and Reputation > 10) > 1
+GROUP BY
+    u1.EmailHash
+HAVING
+    Count(u1.Id) > 1
+ORDER BY 
+    Accounts DESC
+
+END
+GO
+
+
+CREATE OR ALTER PROC dbo.mqt_Lab1_Report_UsersByQuestion_ByDisplayName @DisplayName NVARCHAR(40) = 'Brent Ozar' AS
+BEGIN
+SELECT TOP 200 r.DisplayName, r.UserId, r.CreationDate, r.LastAccessDate, u.AboutMe, r.Questions, r.Answers, r.Comments
+  FROM dbo.Report_UsersByQuestions r
+  INNER JOIN dbo.Users u ON r.DisplayName = u.DisplayName
+  WHERE r.DisplayName = @DisplayName
+  ORDER BY r.LastAccessDate;
+END
+GO
+
+/***************************************** LAB **************************************/
+-- u1 predicate problem with emailhash
+
+-- check selectivity = 0
+select count(*) FROM  Users u1 WHERE u1.EmailHash IS NOT NULL
+
+-- arcitect always assumes that 1 row will return
+
+-- so we break out part of query that doesnt work
+if exists (select * FROM  Users u1 WHERE u1.EmailHash IS NOT NULL)
+BEGIN
+
+-- works but plans will still be created all at once
+-- then add recompile if exist to speed up
+
+-- better you could use constraint 
+-- best is to create filtered index
+create index emailhash_filtered on emailhash
+where emailhash is not null
+
+-- check using blitzindex @tablename =- 'users', uses hardly anything
+
+-- but still funky with 0`s, and mem grants are still off. But it is fast
+
+
+/***************************************** BlitzCache tune EXEC usp_QueryLab2 **************************************/
+-- FIX
+
+-- [dbo].[usp_RptMostControversialPosts] 
+
+USE [StackOverflow]
+GO
+/****** Object:  StoredProcedure [dbo].[usp_RptMostControversialPosts]    Script Date: 28-4-2021 14:05:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+ALTER     PROC [dbo].[usp_RptMostControversialPosts] AS
+BEGIN
+/* Source: http://data.stackexchange.com/stackoverflow/query/466/most-controversial-posts-on-the-site */
+set nocount on 
+
+CREATE TABLE #VoteStats (PostId int, up int, down int) 
+
+insert into #VoteStats (PostId , up , down ) 
+select
+    PostId, 
+    up = sum(case when VoteTypeId = 2 then 1 else 0 end), 
+    down = sum(case when VoteTypeId = 3 then 1 else 0 end)
+from Votes
+where VoteTypeId in (2,3)
+group by PostId
+order by up desc
+
+set nocount off
+
+
+select top 100 p.Id as [Post Link] , up, down from #VoteStats 
+join Posts p on PostId = p.Id
+where down > (up * 0.5) and p.CommunityOwnedDate is null and p.ClosedDate is null
+
+END
+
+
+
+
+-- #Report_UsersByQuestions
+ALTER   PROC [dbo].[mqt_Lab2_Level1] @DisplayName NVARCHAR(40) = 'Brent Ozar' AS
+BEGIN
+/* 
+Turn on actual execution plans and SET STATISTICS IO ON, and then run this
+stored proc with the default parameters:
+
+EXEC dbo.mqt_Lab2_Level1
+
+Look at the actual query plan, and think about:
+
+* On the driver table (top right), were the estimated number of rows correct?
+* Is the top right operation a seek, or a scan? Why?
+* Are there any warnings on the query plan?
+
+No matter what values you call the parameter with, you get about the same plan
+and about the same amount of logical reads, so it's not a parameter sniffing
+problem.
+
+How could you get a more accurate estimate, and get a seek instead of a scan?
+
+6update statistics dbo.Report_UsersByQuestions with fullscan
+DBCC FREEPROCCACHE (0x050006000F5CA7603029DAC39301000001000000000000000000000000000000000000000000000000000000);
+Create index Report_UsersByQuestions_LastAccessDate_displayname on Report_UsersByQuestions(LastAccessDate,displayname)
+*/
+
+
+
+SELECT [UserId], CAST([DisplayName]AS NVARCHAR)as [DisplayName], [CreationDate], [LastAccessDate], [Location], [Questions], [Answers], [Comments]
+INTO #Report_UsersByQuestions 
+FROM dbo.Report_UsersByQuestions 
+
+SELECT r.DisplayName, r.UserId, r.CreationDate, r.LastAccessDate, u.AboutMe, r.Questions, r.Answers, r.Comments
+  FROM #Report_UsersByQuestions r
+  INNER JOIN dbo.Users u ON r.DisplayName = u.DisplayName
+  WHERE r.DisplayName = @DisplayName
+  ORDER BY r.LastAccessDate
+  OPTION (recompile)
+END
+
+END
+
+-- usp_UserActivityByHour
+
+
+ALTER   PROC [dbo].[usp_UserActivityByHour] @UserId INT AS
+BEGIN
+/* From: https://data.stackexchange.com/stackoverflow/query/17321/my-activity-by-utc-hour */
+SELECT
+ datepart(hour,CreationDate) AS hour,
+ count(CASE WHEN PostTypeId = 1 THEN 1 END) AS questions,
+ count(CASE WHEN PostTypeId = 2 THEN 1 END) AS answers
+FROM dbo.Posts
+WHERE
+  PostTypeId IN (1,2) AND
+  OwnerUserId=@UserId
+GROUP BY datepart(hour,CreationDate)
+ORDER BY hour
+OPTION (RECOMPILE)
+END
+
+
+
+
+/************************* BRENTS DEMO ****************************/
+
+--  get info on waits since startup for feeling of problem
+sp_blitzcache @sincestartup= 1
+
+-- pagelatch_sh so heavy on reads from file
+dbautils.dbo.sp_blitzcache @sortorder = 'reads'
+
+/* info 
+plan cache in results is same for sproc and induvidual statements
+cost in result is meaningless, base on arcitect
+*/
+
+dbautils.dbo.sp_blitzcache @storedprocname = 'mqt_lab2_level1' , @sortorder = 'reads'
+
+-- plan shows implicit conversions , check blitzcache column with info about problem
+--- dificult to find out otherwis
+
+add cast to where
+
+-- compare results back to back
+set stats time , io on
+exec level1
+-- 170000 logical reads
+exec levl1_tuned 
+-- new one went full
+
+-- still implicit conversion
+
+you could also fix on sproc param as varchar
+
+-- less, but
+join conversion is also bad 
+
+-- clippy suggests index, 
+-- now run blitzindex @table=users
+-- check datatypes
+select * from INFORMATION_SCHEMA.columns where column_name = 'displayname'
+
+
+/*
+WITH ProblemColumns AS (
+    SELECT COLUMN_NAME, COUNT(DISTINCT DATA_TYPE) AS DIFFERENT_TYPES
+    FROM INFORMATION_SCHEMA.COLUMNS
+    GROUP BY COLUMN_NAME
+    HAVING COUNT(DISTINCT DATA_TYPE) > 1
+)
+SELECT C.* 
+FROM ProblemColumns pc
+INNER JOIN INFORMATION_SCHEMA.COLUMNS c ON pc.COLUMN_NAME = c.COLUMN_NAME
+ORDER BY c.COLUMN_NAME, c.DATA_TYPE
+*/
+
+seems like report field should have been nvarchar
+alter table  alter column displayname gives error because of indxex. So drop then alter and recreate
+
+clippy still wants index, create on displayname
+
+query runs intstanly
+

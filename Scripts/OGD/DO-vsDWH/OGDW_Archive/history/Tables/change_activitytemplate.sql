@@ -1,0 +1,12 @@
+﻿CREATE TABLE [history].[change_activitytemplate] (
+    [number]               NVARCHAR (255) NULL,
+    [operatorgroupid]      VARCHAR (36)   COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+    [duration_in_minutes]  BIGINT         NULL,
+    [duration_in_workdays] BIGINT         NULL,
+    [unid]                 VARCHAR (36)   COLLATE SQL_Latin1_General_CP1_CS_AS NOT NULL,
+    [AuditDWKey]           INT            NOT NULL,
+    [SourceDatabaseKey]    INT            NOT NULL,
+    [ValidFrom]            DATETIME2 (0)  NOT NULL,
+    [ValidTo]              DATETIME2 (0)  NOT NULL
+);
+

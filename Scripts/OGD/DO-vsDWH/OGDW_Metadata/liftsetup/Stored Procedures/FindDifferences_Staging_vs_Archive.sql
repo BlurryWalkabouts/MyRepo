@@ -1,0 +1,110 @@
+﻿CREATE PROCEDURE [liftsetup].[FindDifferences_Staging_vs_Archive]
+AS
+BEGIN
+
+-- ========================================================================
+-- Author: Mark Versteegh
+-- Creation date: 20161109
+-- Description: Zoekt de verschillen tussen LIFT_Staging en LIFT_Archive 
+-- ========================================================================
+
+DECLARE @staging_schema sysname = CONCAT('Lift', (SELECT lift_version FROM lift.dbo_version))
+DECLARE @archive_schema sysname = 'dbo'
+
+-- Tabellen wel in staging, niet in archive
+DECLARE @new_tables table (TABLE_NAME sysname)
+INSERT INTO @new_tables (TABLE_NAME)
+SELECT TABLE_NAME FROM [$(LIFT_Staging)].INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA = @staging_schema
+EXCEPT
+SELECT TABLE_NAME FROM [$(LIFT_Archive)].INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA = @archive_schema
+
+-- Tabellen wel in archive, niet in staging
+DECLARE @old_tables table (TABLE_NAME sysname)
+INSERT INTO @old_tables (TABLE_NAME)
+SELECT TABLE_NAME FROM [$(LIFT_Archive)].INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA = @archive_schema
+EXCEPT
+SELECT TABLE_NAME FROM [$(LIFT_Staging)].INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA = @staging_schema
+
+SELECT [oud/nieuw] = 'Tabel alleen in staging', TABLE_NAME FROM @new_tables
+UNION
+SELECT [oud/nieuw] = 'Tabel alleen in archive', TABLE_NAME FROM @old_tables
+
+-- Kolommen wel in staging, niet in archive, exclusief nieuwe tabellen
+SELECT [oud/nieuw] = 'Kolom alleen in staging', TABLE_NAME, COLUMN_NAME
+FROM [$(LIFT_Staging)].INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_SCHEMA = @staging_schema AND TABLE_NAME NOT IN (SELECT TABLE_NAME FROM @new_tables)
+EXCEPT
+SELECT [oud/nieuw] = 'Kolom alleen in staging', TABLE_NAME, COLUMN_NAME
+FROM [$(LIFT_Archive)].INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_SCHEMA = @archive_schema
+UNION
+
+-- Kolommen wel in archive, niet in staging:
+SELECT [oud/nieuw] = 'Kolom alleen in archive', TABLE_NAME, COLUMN_NAME
+FROM [$(LIFT_Archive)].INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_SCHEMA = @archive_schema AND COLUMN_NAME NOT IN ('ValidFrom', 'ValidTo') AND TABLE_NAME NOT IN (SELECT TABLE_NAME FROM @old_tables)
+EXCEPT
+SELECT [oud/nieuw] = 'Kolom alleen in archive', TABLE_NAME, COLUMN_NAME
+FROM [$(LIFT_Staging)].INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_SCHEMA = @staging_schema
+
+-- Kolommen wel in staging, niet in archive, exclusief nieuwe tabellen
+SELECT
+	[oud/nieuw] = 'Alleen in staging'
+	, TABLE_NAME
+	, COLUMN_NAME
+--	, ORDINAL_POSITION
+--	, IS_NULLABLE
+	, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH, CHARACTER_OCTET_LENGTH, NUMERIC_PRECISION, NUMERIC_PRECISION_RADIX, NUMERIC_SCALE
+	, DATETIME_PRECISION, CHARACTER_SET_CATALOG, CHARACTER_SET_NAME, CHARACTER_SET_NAME, COLLATION_CATALOG,COLLATION_NAME, COLLATION_SCHEMA
+FROM
+	[$(LIFT_Staging)].INFORMATION_SCHEMA.COLUMNS
+WHERE 1=1
+	AND TABLE_SCHEMA = @staging_schema 
+	AND TABLE_NAME NOT IN (SELECT TABLE_NAME FROM @new_tables)
+EXCEPT
+SELECT
+	[oud/nieuw] = 'Alleen in staging'
+	, TABLE_NAME
+	, COLUMN_NAME
+--	, ORDINAL_POSITION -- Deze is altijd verschoven
+--	, IS_NULLABLE -- Deze verschilt voor alle unids
+	, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH, CHARACTER_OCTET_LENGTH, NUMERIC_PRECISION, NUMERIC_PRECISION_RADIX, NUMERIC_SCALE
+	, DATETIME_PRECISION, CHARACTER_SET_CATALOG, CHARACTER_SET_NAME, CHARACTER_SET_NAME, COLLATION_CATALOG,COLLATION_NAME, COLLATION_SCHEMA
+FROM
+	[$(LIFT_Archive)].INFORMATION_SCHEMA.COLUMNS
+WHERE 1=1
+	AND TABLE_SCHEMA = @archive_schema
+	AND COLUMN_NAME NOT IN ('ValidFrom', 'ValidTo')
+UNION
+
+-- Kolommen wel in archive, niet in staging
+SELECT
+	[oud/nieuw] = 'Alleen in archive'
+	, TABLE_NAME
+	, COLUMN_NAME
+--	, ORDINAL_POSITION -- Deze is altijd verschoven
+--	, IS_NULLABLE
+	, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH, CHARACTER_OCTET_LENGTH, NUMERIC_PRECISION, NUMERIC_PRECISION_RADIX, NUMERIC_SCALE
+	, DATETIME_PRECISION, CHARACTER_SET_CATALOG, CHARACTER_SET_NAME, CHARACTER_SET_NAME, COLLATION_CATALOG,COLLATION_NAME, COLLATION_SCHEMA
+FROM
+	[$(LIFT_Archive)].INFORMATION_SCHEMA.COLUMNS
+WHERE 1=1
+	AND TABLE_SCHEMA = @archive_schema
+	AND COLUMN_NAME NOT IN ('ValidFrom', 'ValidTo')
+	AND TABLE_NAME NOT IN (SELECT TABLE_NAME FROM @old_tables)
+EXCEPT
+SELECT
+	[oud/nieuw] = 'Alleen in archive'
+	, TABLE_NAME
+	, COLUMN_NAME
+--	, ORDINAL_POSITION
+--	, IS_NULLABLE
+	, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH, CHARACTER_OCTET_LENGTH, NUMERIC_PRECISION, NUMERIC_PRECISION_RADIX, NUMERIC_SCALE
+	, DATETIME_PRECISION, CHARACTER_SET_CATALOG, CHARACTER_SET_NAME, CHARACTER_SET_NAME, COLLATION_CATALOG,COLLATION_NAME, COLLATION_SCHEMA
+FROM
+	[$(LIFT_Staging)].INFORMATION_SCHEMA.COLUMNS
+WHERE 1=1
+	AND TABLE_SCHEMA = @staging_schema
+
+END

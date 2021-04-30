@@ -1,0 +1,117 @@
+Ter info
+
+ 
+
+Met vriendelijke groet,
+
+ 
+
+Joris Huijs
+
+TOPdeskteam
+
+ 
+
+logo_thuis
+
+Operator Groep Delft
+
+(T): +31 (0) 88 653 2490
+
+(E): joris.huijs@ogd.nl
+
+(W): www.ogd.nl
+
+ 
+
+From: TOPdesk Support <support@topdesk.com> 
+Sent: Monday, October 1, 2018 5:14 PM
+To: Joris Huijs <joris.huijs@ogd.nl>
+Subject: Afmelding TOPdesk incident 18 10 139
+
+ 
+
+TOPdesk Support
+
+18 10 139
+
+
+
+Want to get more out of TOPdesk?
+Subscribe to the monthly Product Update
+and discover new features
+
+
+
+ 
+
+Geachte heer Huijs,
+
+Uw incident, 18 10 139, dat u heeft aangemeld bij TOPdesk Support is afgemeld. Mocht u nog vragen of opmerkingen hebben, dan kunt u dit op ons Extranet aangeven.
+
+
+
+ 
+
+Actie:
+Naar aanleiding van uw vraag over de kolom currentPhase stuur ik u het volgende overzicht:
+
+currentphase = 1 preliminary request for change
+currentphase = 2 request for change
+currentphase = 3 rejected request for change
+currentphase = 4 simple change
+currentphase = 5 extensive change in progress
+currentphase = 6 extensive change in evaluation
+currentphase = 7 closed extensive change
+currentphase = 8 canceled extensive change
+
+Ik verwacht hiermee uw vraag te hebben beantwoord. Voor nu sluit ik deze melding. Mocht u nog verdere vragen hebben over deze melding, neem dan gerust contact met ons op.
+
+ 
+
+
+
+Op 01-10-2018 heeft u het volgende incident aangemeld bij TOPdesk Support:
+ 
+
+ 
+
+Verzoek:
+Betreft het incident een storing?
+- Nee
+
+Verzoek
+- De tabel Change kent een kolom CurrentPhase, waar een interger ingevuld kan worden. Welke integerwaarde komt overeen met welke fase van een wijziging? Ofwel, wat betekend waarde 1 t/m x in deze kolom?
+
+ 
+
+
+Beoordeel onze dienstverlening
+Bij TOPdesk willen we de kwaliteit van onze dienstverlening continu verbeteren. U kunt ons hierbij helpen door vijf korte vragen te beantwoorden over de afhandeling van deze melding. Alvast bedankt voor uw hulp!
+ 
+
+Geef ons feedback
+
+
+Mocht u nog vragen of opmerkingen hebben kunt u contact opnemen met TOPdesk Support.
+
+Met vriendelijke groet,
+Maarten Smeyers
+TOPdesk Support
+
+
+ 
+
+ 
+
+Goed om te weten!
+Ons kennissysteem bevat meer dan 1.500 vaak gestelde vragen. Dagelijks worden nieuwe artikelen toegevoegd.
+Misschien staat het antwoord op uw vraag er ook tussen!
+
+ 
+
+
+
+Wij streven samen met u naar een 5-star review! Nieuwsgierig naar de huidige reviews? Kijk op Gartner
+
+extranet.topdesk.com   support@topdesk.com   +31 15 270 09 11   topdesk.nl/consultancy
